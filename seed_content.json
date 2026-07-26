@@ -1,0 +1,106 @@
+{
+  "programs": [
+    {
+      "slug": "clean-water",
+      "title": "Clean Water",
+      "shortDescription": "Building wells and water systems that provide safe drinking water to villages in West Africa.",
+      "fullDescription": "Access to clean, safe drinking water is a fundamental human right. Yet millions in West Africa still lack this basic necessity. Our Clean Water program builds wells, water purification systems, and sustainable water infrastructure in communities across Cote d'Ivoire and Mali. We work with local communities to ensure every water system is maintained and serves generations to come.",
+      "heroImage": "https://w15230.proweaversite15.com/images/clean-water-hero.jpg",
+      "icon": "droplet",
+      "sortOrder": 1,
+      "isActive": true
+    },
+    {
+      "slug": "education",
+      "title": "Education & Scholarships",
+      "shortDescription": "Operating schools and providing scholarships to children in need across West Africa.",
+      "fullDescription": "Education is the most powerful tool for breaking the cycle of poverty. We operate schools and provide scholarships to children who would otherwise not have access to quality education. Our schools in Cote d'Ivoire currently serve over 332 students, providing them with the knowledge and skills to build brighter futures. We also invest in teacher training and provide learning materials to ensure quality education.",
+      "heroImage": "https://w15230.proweaversite15.com/images/education-hero.jpg",
+      "icon": "book-open",
+      "sortOrder": 2,
+      "isActive": true
+    },
+    {
+      "slug": "healthcare",
+      "title": "Healthcare",
+      "shortDescription": "Delivering medical care and health education to underserved communities in West Africa.",
+      "fullDescription": "Healthcare access saves lives. We deliver medical care, health education, and preventive services to communities that lack basic healthcare infrastructure. Our healthcare programs serve three villages in Mali, bringing essential services to those who need them most. From prenatal care to childhood vaccinations, our healthcare programs are saving lives every day.",
+      "heroImage": "https://w15230.proweaversite15.com/images/healthcare-hero.jpg",
+      "icon": "heart-pulse",
+      "sortOrder": 3,
+      "isActive": true
+    }
+  ],
+  "projects": [
+    {
+      "programSlug": "clean-water",
+      "name": "Village Well Project - Mali",
+      "country": "Mali",
+      "description": "Construction of community wells providing safe drinking water to rural villages.",
+      "stats": { "villages": 3, "wellsBuilt": 5, "peopleServed": 2500 }
+    },
+    {
+      "programSlug": "education",
+      "name": "Schools in Cote d'Ivoire",
+      "country": "Cote d'Ivoire",
+      "description": "Operating schools providing quality education to children in underserved communities.",
+      "stats": { "students": 332, "schools": 2, "teachers": 15 }
+    },
+    {
+      "programSlug": "healthcare",
+      "name": "Mobile Health Clinics - Mali",
+      "country": "Mali",
+      "description": "Delivering essential healthcare services to villages without medical infrastructure.",
+      "stats": { "villages": 3, "patientsServed": 1200, "healthWorkers": 8 }
+    }
+  ],
+  "impactStories": [
+    {
+      "title": "Clean Water Transforms a Village",
+      "subtitle": "Mali, West Africa",
+      "description": "In a rural village in Mali, families used to walk miles each day to collect water from contaminated sources. After GAD built a community well with a purification system, children no longer miss school to fetch water, and waterborne diseases have dramatically decreased.",
+      "ctaText": "Support Clean Water",
+      "image": "https://w15230.proweaversite15.com/images/impact-water.jpg",
+      "sortOrder": 1,
+      "isActive": true
+    },
+    {
+      "title": "A Future Through Education",
+      "subtitle": "Cote d'Ivoire",
+      "description": "When Fatima enrolled in our school in Cote d'Ivoire, she was one of the first girls in her village to receive a formal education. Today, she is training to become a nurse, inspired by the healthcare workers who served her community through GAD.",
+      "ctaText": "Support Education",
+      "image": "https://w15230.proweaversite15.com/images/impact-education.jpg",
+      "sortOrder": 2,
+      "isActive": true
+    },
+    {
+      "title": "Healthcare on the Frontlines",
+      "subtitle": "Mali, West Africa",
+      "description": "Our mobile health clinics in Mali have provided essential care to three villages that previously had no access to medical services. From prenatal care to childhood vaccinations, our healthcare programs are saving lives every day.",
+      "ctaText": "Support Healthcare",
+      "image": "https://w15230.proweaversite15.com/images/impact-healthcare.jpg",
+      "sortOrder": 3,
+      "isActive": true
+    }
+  ],
+  "siteContent": {
+    "orgName": "Global Approach To Development",
+    "tagline": "Building Sustainable Futures",
+    "mission": "We provide clean water, quality education, and accessible healthcare to communities in West Africa. Every child deserves a chance to thrive.",
+    "founder": {
+      "name": "Dr. Keuleya Ruth Ble",
+      "title": "MD, MPH",
+      "bio": "A medical doctor with a Master of Public Health degree, Dr. Ble brings over a decade of experience in healthcare and community development. Her vision of sustainable, community-driven change continues to guide every aspect of GAD's work."
+    },
+    "stats": {
+      "studentsEnrolled": 332,
+      "villagesServed": 3,
+      "yearsOfImpact": 10,
+      "foundedYear": 2014,
+      "ein": "47-2155496",
+      "location": "Ontario, CA"
+    },
+    "programs": "Clean Water, Education & Scholarships, Healthcare",
+    "countries": ["Cote d'Ivoire", "Mali"]
+  }
+}
