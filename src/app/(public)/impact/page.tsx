@@ -1,114 +1,82 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Impact",
-  description:
-    "See how Global Approach To Development is making a real difference in West Africa through clean water, education, and healthcare.",
+  title: "Impact",
+  description: "See the real impact of Global Approach To Development on communities in West Africa.",
 };
 
-const fallbackStats = [
-  { value: "332+", label: "Students Enrolled", detail: "Across schools in Cote d'Ivoire" },
-  { value: "3", label: "Villages Served", detail: "Healthcare access in Mali" },
-  { value: "10+", label: "Years of Service", detail: "Founded in 2014" },
-  { value: "$0", label: "Admin Overhead", detail: "100% goes to programs" },
+const impactSections = [
+  {
+    title: "Classrooms Full of Hope",
+    subtitle: "Fueling the future, one desk at a time",
+    description: "With your support, hundreds of students now have access to a safe, engaging learning environment. From the youngest pupils to eager teens, your donations help provide the notebooks, pens, and classroom space they need to thrive.",
+    ctaText: "Help more kids learn",
+    ctaHref: "/donate",
+    color: "bg-blue-50",
+  },
+  {
+    title: "Team Spirit and Safe Play",
+    subtitle: "Building confidence through sport",
+    description: "Every week, these young players come together to train, play, and support one another — building teamwork, discipline, and confidence. Their enthusiasm is unstoppable. With your support, we can provide them with the resources to grow even further.",
+    ctaText: "Support community sports",
+    ctaHref: "/donate",
+    color: "bg-green-50",
+  },
+  {
+    title: "Tools That Transform Learning",
+    subtitle: "Creating spaces that inspire learning",
+    description: "Students now have lockers to store their materials and a new projector that brings interactive lessons to life. These improvements help create a more organized, engaging, and modern learning environment. A game changer in rural areas.",
+    ctaText: "Support Classroom Upgrades",
+    ctaHref: "/donate",
+    color: "bg-purple-50",
+  },
 ];
 
-const fallbackStories = [
-  {
-    title: "Clean Water Transforms a Village",
-    subtitle: "",
-    description:
-      "In a rural village in Mali, families used to walk miles each day to collect water from contaminated sources. After GAD built a community well with a purification system, children no longer miss school to fetch water, and waterborne diseases have dramatically decreased.",
-  },
-  {
-    title: "A Future Through Education",
-    subtitle: "",
-    description:
-      "When Fatima enrolled in our school in Cote d'Ivoire, she was one of the first girls in her village to receive a formal education. Today, she is training to become a nurse, inspired by the healthcare workers who served her community through GAD.",
-  },
-  {
-    title: "Healthcare on the Frontlines",
-    subtitle: "",
-    description:
-      "Our mobile health clinics in Mali have provided essential care to three villages that previously had no access to medical services. From prenatal care to childhood vaccinations, our healthcare programs are saving lives every day.",
-  },
-];
-
-export default async function ImpactPage() {
-  let stories = fallbackStories;
-
-  try {
-    const dbStories = await prisma.impactStory.findMany({
-      where: { isActive: true },
-      orderBy: { sortOrder: "asc" },
-    });
-
-    if (dbStories.length > 0) {
-      stories = dbStories.map((s) => ({
-        title: s.title,
-        subtitle: s.subtitle,
-        description: s.description,
-      }));
-    }
-  } catch {
-    // Use fallback data if DB is unavailable
-  }
-
+export default function ImpactPage() {
   return (
     <>
       <section className="bg-primary py-16 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold">Our Impact</h1>
+          <h1 className="text-4xl font-bold">Impact</h1>
           <p className="mt-4 max-w-2xl text-white/80">
             Real results. Real change. Every dollar donated goes directly to our programs.
           </p>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            {fallbackStats.map((stat) => (
-              <div key={stat.label} className="rounded-xl border p-6 text-center">
-                <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                <div className="mt-2 text-sm font-semibold">{stat.label}</div>
-                <div className="mt-1 text-xs text-muted">{stat.detail}</div>
-              </div>
-            ))}
+      {impactSections.map((section, i) => (
+        <section
+          key={section.title}
+          className={`section-padding ${i % 2 === 1 ? "bg-gray-50" : ""}`}
+        >
+          <div className="mx-auto max-w-4xl">
+            <div className={`rounded-2xl ${section.color} p-8 sm:p-12`}>
+              <h2 className="text-2xl font-bold sm:text-3xl">{section.title}</h2>
+              <p className="mt-2 text-lg font-medium text-primary">{section.subtitle}</p>
+              <p className="mt-4 text-muted">{section.description}</p>
+              <Link
+                href={section.ctaHref}
+                className="mt-6 inline-block rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+              >
+                {section.ctaText}
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-gray-50">
-        <div className="mx-auto max-w-4xl space-y-8">
-          <h2 className="text-2xl font-bold">Stories of Change</h2>
-          <div className="space-y-6">
-            {stories.map((story) => (
-              <div key={story.title} className="rounded-xl border p-6">
-                <h3 className="text-lg font-semibold">{story.title}</h3>
-                {story.subtitle && (
-                  <p className="mt-1 text-sm font-medium text-primary">{story.subtitle}</p>
-                )}
-                <p className="mt-2 text-sm text-muted">{story.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       <section className="bg-accent py-16 text-center text-white">
         <div className="mx-auto max-w-3xl px-4">
-          <h2 className="text-3xl font-bold">Help Us Do More</h2>
+          <h2 className="text-3xl font-bold">Reach Out to Us Now!</h2>
           <p className="mt-4 text-white/80">
-            Your support directly impacts communities. Join us in building a better future.
+            Join us in making a difference by supporting crucial initiatives that provide education, healthcare, and clean water to underserved communities. Contact us today to learn more.
           </p>
           <Link
-            href="/donate"
+            href="/contact"
             className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary transition-colors hover:bg-gray-100"
           >
-            Donate Now
+            Contact Us
           </Link>
         </div>
       </section>

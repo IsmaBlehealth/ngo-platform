@@ -2,9 +2,9 @@
   "programs": [
     {
       "slug": "clean-water",
-      "title": "Clean Water",
-      "shortDescription": "Building wells and water systems that provide safe drinking water to villages in West Africa.",
-      "fullDescription": "Access to clean, safe drinking water is a fundamental human right. Yet millions in West Africa still lack this basic necessity. Our Clean Water program builds wells, water purification systems, and sustainable water infrastructure in communities across Cote d'Ivoire and Mali. We work with local communities to ensure every water system is maintained and serves generations to come.",
+      "title": "Clean Water Initiatives",
+      "shortDescription": "We deliver sustainable solutions to provide clean water to underserved communities.",
+      "fullDescription": "Access to clean water is a fundamental right that many communities still lack. Our Clean Water Initiatives focus on delivering sustainable water solutions to underserved regions, ensuring safe and reliable water sources. By addressing waterborne diseases and improving sanitation, we help communities thrive and reduce health risks. Each project empowers local populations by providing the tools and education needed to maintain clean water systems. Together, we're creating healthier futures through accessible clean water.",
       "heroImage": "https://w15230.proweaversite15.com/images/clean-water-hero.jpg",
       "icon": "droplet",
       "sortOrder": 1,
@@ -13,8 +13,8 @@
     {
       "slug": "education",
       "title": "Education & Scholarships",
-      "shortDescription": "Operating schools and providing scholarships to children in need across West Africa.",
-      "fullDescription": "Education is the most powerful tool for breaking the cycle of poverty. We operate schools and provide scholarships to children who would otherwise not have access to quality education. Our schools in Cote d'Ivoire currently serve over 332 students, providing them with the knowledge and skills to build brighter futures. We also invest in teacher training and provide learning materials to ensure quality education.",
+      "shortDescription": "We empower students with scholarships, breaking barriers to higher education.",
+      "fullDescription": "Education is the key to breaking cycles of poverty, and we are committed to making it accessible to all. Through our Education & Scholarships program, we provide financial support and educational resources to underprivileged students, enabling them to pursue higher learning. Our goal is to eliminate barriers to education and give students the tools they need to succeed academically. By investing in education, we are investing in a future where everyone has the opportunity to reach their potential. Support these initiatives and help build a brighter tomorrow.",
       "heroImage": "https://w15230.proweaversite15.com/images/education-hero.jpg",
       "icon": "book-open",
       "sortOrder": 2,
@@ -22,9 +22,9 @@
     },
     {
       "slug": "healthcare",
-      "title": "Healthcare",
-      "shortDescription": "Delivering medical care and health education to underserved communities in West Africa.",
-      "fullDescription": "Healthcare access saves lives. We deliver medical care, health education, and preventive services to communities that lack basic healthcare infrastructure. Our healthcare programs serve three villages in Mali, bringing essential services to those who need them most. From prenatal care to childhood vaccinations, our healthcare programs are saving lives every day.",
+      "title": "Healthcare & Medical Aid",
+      "shortDescription": "Our programs provide essential healthcare services to underserved populations.",
+      "fullDescription": "Good health is the foundation of a strong community, and our Healthcare & Medical Aid programs aim to provide vital medical services to underserved populations. We bring essential healthcare, including preventative care, treatments, and emergency aid, directly to those in need. By improving access to medical services, we are reducing health disparities and promoting overall well-being. Our programs also focus on educating communities about health practices to ensure long-term benefits. Help us deliver crucial medical aid to those who need it most.",
       "heroImage": "https://w15230.proweaversite15.com/images/healthcare-hero.jpg",
       "icon": "heart-pulse",
       "sortOrder": 3,
@@ -41,10 +41,24 @@
     },
     {
       "programSlug": "education",
-      "name": "Schools in Cote d'Ivoire",
+      "name": "Groupe Scolaire Agbe Elementary School",
       "country": "Cote d'Ivoire",
-      "description": "Operating schools providing quality education to children in underserved communities.",
-      "stats": { "students": 332, "schools": 2, "teachers": 15 }
+      "description": "The communities we serve represent 62.4 percent of the rural population in Ivory Coast living below the poverty line. For their children, the only option to access elementary education was a daunting 25-mile walk. In 2011, community members came together to establish a school using clay and wood. GAD intervened by constructing a school that ensures a secure learning atmosphere. The original school started with just 58 students. By 2015, GAD completed a new primary school facility currently serving 332 students, comprising 166 girls and 166 boys. Our curriculum covers kindergarten through 5th grade with a national passing rate of 99%.",
+      "stats": { "students": 332, "schools": 2, "passingRate": 99, "yearFounded": 2011, "yearNewSchool": 2015 }
+    },
+    {
+      "programSlug": "education",
+      "name": "Groupe Scolaire Agbe Secondary School",
+      "country": "Cote d'Ivoire",
+      "description": "Following the completion of the elementary school, we discovered that students had to travel 54 miles to access secondary education. GAD acknowledged the necessity for these students to pursue their education beyond grade 5 within their own community. GAD initiated the construction of a middle and high school in 2016 and completed the project in 2019.",
+      "stats": { "yearStarted": 2016, "yearCompleted": 2019 }
+    },
+    {
+      "programSlug": "education",
+      "name": "Schools in Mali",
+      "country": "Mali",
+      "description": "Mali is the largest land-locked country in the Sahel region of West Africa, one of the poorest countries in the world with an average annual GDP per capita of about $660. During a visit to Sikasso, Mali in 2010, one member of the group taught French to local children. Word spread and more than 50 children came to learn. We divided children into two groups: ages 2-9 and 10-16, providing two sessions per week. We now serve villages around Sikasso including Zandjougoula, Kozansso-dioula, and Zanadougou. Our programs include Children's Clubs, Literacy Courses, and Art Education.",
+      "stats": { "villages": 3, "initialChildren": 50 }
     },
     {
       "programSlug": "healthcare",
@@ -56,41 +70,90 @@
   ],
   "impactStories": [
     {
-      "title": "Clean Water Transforms a Village",
-      "subtitle": "Mali, West Africa",
-      "description": "In a rural village in Mali, families used to walk miles each day to collect water from contaminated sources. After GAD built a community well with a purification system, children no longer miss school to fetch water, and waterborne diseases have dramatically decreased.",
-      "ctaText": "Support Clean Water",
-      "image": "https://w15230.proweaversite15.com/images/impact-water.jpg",
+      "title": "Classrooms Full of Hope",
+      "subtitle": "Fueling the future, one desk at a time",
+      "description": "With your support, hundreds of students now have access to a safe, engaging learning environment. From the youngest pupils to eager teens, your donations help provide the notebooks, pens, and classroom space they need to thrive.",
+      "ctaText": "Help more kids learn",
+      "image": "https://w15230.proweaversite15.com/images/impact-classrooms.jpg",
       "sortOrder": 1,
       "isActive": true
     },
     {
-      "title": "A Future Through Education",
-      "subtitle": "Cote d'Ivoire",
-      "description": "When Fatima enrolled in our school in Cote d'Ivoire, she was one of the first girls in her village to receive a formal education. Today, she is training to become a nurse, inspired by the healthcare workers who served her community through GAD.",
-      "ctaText": "Support Education",
-      "image": "https://w15230.proweaversite15.com/images/impact-education.jpg",
+      "title": "Team Spirit and Safe Play",
+      "subtitle": "Building confidence through sport",
+      "description": "Every week, these young players come together to train, play, and support one another — building teamwork, discipline, and confidence. Their enthusiasm is unstoppable. With your support, we can provide them with the resources to grow even further.",
+      "ctaText": "Support community sports",
+      "image": "https://w15230.proweaversite15.com/images/impact-sports.jpg",
       "sortOrder": 2,
       "isActive": true
     },
     {
-      "title": "Healthcare on the Frontlines",
-      "subtitle": "Mali, West Africa",
-      "description": "Our mobile health clinics in Mali have provided essential care to three villages that previously had no access to medical services. From prenatal care to childhood vaccinations, our healthcare programs are saving lives every day.",
-      "ctaText": "Support Healthcare",
-      "image": "https://w15230.proweaversite15.com/images/impact-healthcare.jpg",
+      "title": "Tools That Transform Learning",
+      "subtitle": "Creating spaces that inspire learning",
+      "description": "Students now have lockers to store their materials and a new projector that brings interactive lessons to life. These improvements help create a more organized, engaging, and modern learning environment. A game changer in rural areas.",
+      "ctaText": "Support Classroom Upgrades",
+      "image": "https://w15230.proweaversite15.com/images/impact-tools.jpg",
       "sortOrder": 3,
       "isActive": true
     }
   ],
+  "blogPosts": [
+    {
+      "slug": "about-child-trauma",
+      "title": "About Child Trauma",
+      "excerpt": "A traumatic event is a frightening, dangerous, or violent event that poses a threat to a child's life or bodily integrity.",
+      "content": "A traumatic event is a frightening, dangerous, or violent event that poses a threat to a child's life or bodily integrity. Witnessing a traumatic event that threatens the life or physical security of a loved one can also be traumatic. For young children, their sense of safety is closely tied to the security they perceive from their caregivers.\n\nTraumatic events can trigger intense emotional and physical reactions that may last well beyond the incident. Children may experience feelings of terror, helplessness, or fear, along with physical symptoms such as rapid heartbeat, vomiting, or loss of bladder or bowel control.\n\nSome common sources of trauma include physical, sexual, or psychological abuse, neglect, and trafficking; natural and technological disasters or terrorism; family or community violence; sudden or violent loss of a loved one; substance use disorder; refugee and war experiences; serious accidents or life-threatening illness; and military-related stress.\n\nChildren who have experienced life-threatening situations or witnessed violence may show symptoms of child-traumatic stress. These reactions may manifest as ongoing emotional distress, symptoms of depression or anxiety, changes in behavior, and challenges in self-regulation.",
+      "author": "globalapproachle",
+      "publishedAt": "2024-09-19",
+      "category": "Healthcare"
+    },
+    {
+      "slug": "global-impact-of-clean-water",
+      "title": "Global Impact of Clean Water on Health and Development",
+      "excerpt": "Clean water initiatives play a crucial role in shaping the health and development of communities around the world.",
+      "content": "Clean water initiatives play a crucial role in shaping the health and development of communities around the world. By improving access to safe water, these initiatives help reduce diseases, foster well-being, and enable long-term community development.",
+      "author": "globalapproachle",
+      "publishedAt": "2024-09-19",
+      "category": "Clean Water"
+    },
+    {
+      "slug": "scholarships-for-underprivileged",
+      "title": "Scholarships for Underprivileged: Breaking Barriers",
+      "excerpt": "Scholarships provide a critical lifeline for underprivileged students, allowing them to pursue higher education despite financial hardships.",
+      "content": "Scholarships provide a critical lifeline for underprivileged students, allowing them to pursue higher education despite financial hardships. These programs not only offer financial support but also create opportunities for personal and academic growth.",
+      "author": "globalapproachle",
+      "publishedAt": "2024-09-19",
+      "category": "Education"
+    },
+    {
+      "slug": "mobile-health-clinics",
+      "title": "Mobile Health Clinics Bringing Aid to Remote Regions",
+      "excerpt": "Mobile health clinics are revolutionizing access to healthcare for populations in remote and underserved regions.",
+      "content": "Mobile health clinics are revolutionizing access to healthcare for populations in remote and underserved regions. These clinics bridge the gap between rural communities and essential medical services, offering a lifeline to those who may otherwise go without care.",
+      "author": "globalapproachle",
+      "publishedAt": "2024-09-19",
+      "category": "Healthcare"
+    }
+  ],
   "siteContent": {
     "orgName": "Global Approach To Development",
-    "tagline": "Building Sustainable Futures",
-    "mission": "We provide clean water, quality education, and accessible healthcare to communities in West Africa. Every child deserves a chance to thrive.",
+    "tagline": "Progress Through Equal Opportunity",
+    "heroSubtitle": "We believe in creating pathways to education, health, and empowerment, ensuring that underserved communities can thrive and contribute globally.",
+    "welcomeText": "Welcome to Global Approach To Development, where we are dedicated to making a meaningful difference in communities across the globe. Our focus is on addressing the pressing needs of vulnerable populations through impactful programs in education, clean water, healthcare, and economic empowerment. We believe that sustainable change comes from empowering individuals and providing them with the tools to build better futures.",
+    "mission": "Our mission is to eliminate poverty, health disparities, gender inequality, and improve the overall health of underserved populations. That's no different from the desire of other human beings around the world. We have a common problem, not only in underserved countries but also in developed countries. We have the same global threats to our development, education, economy, and health.",
+    "vision": "Our Vision is to improve the quality of life of under-served populations globally and to give a deprived community and children the opportunity to thrive, to learn, to give back and to live in a better world.",
+    "donateMessage": "Thank you for making a gift to support Global Approach To Development. Your donation will enable us to serve vulnerable communities. All donations are tax-deductible.\n\nIf possible, please consider a monthly contribution. Your monthly gift sustains our efforts and means we can always be there for children, community members, and underserved populations no matter what happens.",
     "founder": {
       "name": "Dr. Keuleya Ruth Ble",
       "title": "MD, MPH",
+      "quote": "There is no love more sincere than the love of giving",
       "bio": "A medical doctor with a Master of Public Health degree, Dr. Ble brings over a decade of experience in healthcare and community development. Her vision of sustainable, community-driven change continues to guide every aspect of GAD's work."
+    },
+    "contact": {
+      "phone": "909-728-8111",
+      "email": "info@gapdev.org",
+      "address": "3200 E Guasti Rd., Suite 100, Ontario, CA 91761",
+      "secondaryEmail": "detictner77@gmail.com"
     },
     "stats": {
       "studentsEnrolled": 332,
@@ -100,7 +163,32 @@
       "ein": "47-2155496",
       "location": "Ontario, CA"
     },
-    "programs": "Clean Water, Education & Scholarships, Healthcare",
-    "countries": ["Cote d'Ivoire", "Mali"]
+    "navigation": ["Home", "Programs", "Impact", "About Us", "Blog", "Contact Us"],
+    "socialMedia": {
+      "facebook": "#",
+      "twitter": "#",
+      "instagram": "#",
+      "linkedin": "#",
+      "youtube": "#"
+    },
+    "whyItMatters": {
+      "title": "Building Brighter Futures",
+      "subtitle": "The Future of Humanity",
+      "intro": "At Global Approach to Development, we focus on providing education, clean drinking water, and access to health care. Why?",
+      "reasons": [
+        {
+          "title": "It Breaks The Cycle Of Poverty",
+          "description": "Economic development and community empowerment start with childhood development. Investing in children education promotes growth, stability and better return in investment. We believe that for a country or a continent to develop, it needs to improve the lives of its people. Improving the economy starts by reducing poverty."
+        },
+        {
+          "title": "It Improves Well-Being",
+          "description": "For a child to grow up with strong, positive value, and make positive contributions to society, he/she needs to be guided in developing the qualities of character that are valued by his family and by the community in which he/she lives. GAD understands the importance of building a brighter future for our children; therefore, we emphasize the educational needs of children in our target geographies."
+        },
+        {
+          "title": "It Empowers Communities",
+          "description": "Quality early learning for underserved children can improve health outcomes, foster valuable skills, strengthen our workforce, and grow our economy. The lack of education and health are significant contributing factors to poverty. Solving the health crisis, and reducing poverty start with investing in our children."
+        }
+      ]
+    }
   }
 }

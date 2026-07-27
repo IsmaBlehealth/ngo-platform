@@ -7,10 +7,11 @@ import { useSession, signOut } from "next-auth/react";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/programs", label: "Programs" },
   { href: "/impact", label: "Impact" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About Us" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Header() {
