@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const isBuild = !!process.env.NEXT_BUILD;
+const isBuild = process.argv.includes("next build") || process.argv.includes("next-telemetry");
 
 const serverEnvSchema = z.object({
   DATABASE_URL: z.string().min(1),
@@ -23,12 +23,12 @@ const serverEnvSchema = z.object({
   GOOGLE_CLIENT_SECRET: z.string().optional(),
 });
 
-if (isBuild) {
-  process.env.DATABASE_URL ||= "postgresql://placeholder:placeholder@localhost/db";
-  process.env.NEXTAUTH_SECRET ||= "build-placeholder-secret-do-not-use-in-production";
-  process.env.NEXTAUTH_URL ||= "http://localhost:3000";
-  process.env.NEXT_PUBLIC_URL ||= "http://localhost:3000";
-  process.env.NEXT_PUBLIC_APP_NAME ||= "Global Approach To Development";
+if (!process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = "postgresql://placeholder:placeholder@localhost/db";
+  process.env.NEXTAUTH_SECRET = "build-placeholder-secret";
+  process.env.NEXTAUTH_URL = "http://localhost:3000";
+  process.env.NEXT_PUBLIC_URL = "http://localhost:3000";
+  process.env.NEXT_PUBLIC_APP_NAME = "Global Approach To Development";
 }
 
 const parsed = serverEnvSchema.safeParse(process.env);
