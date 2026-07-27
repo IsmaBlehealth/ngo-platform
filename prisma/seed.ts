@@ -1,11 +1,13 @@
+import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import seedData from "../seed_content.json";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
+const directUrl = (process.env.DIRECT_URL || process.env.DATABASE_URL || "").replace("-pooler.", ".");
 const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL!,
+  connectionString: directUrl,
 });
 const prisma = new PrismaClient({ adapter });
 
