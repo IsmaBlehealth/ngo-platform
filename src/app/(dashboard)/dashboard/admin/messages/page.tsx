@@ -3,6 +3,10 @@ import { prisma } from "@/lib/prisma";
 import { sanitize } from "@/lib/sanitize";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  title: "Contact Messages",
+};
+
 export default async function AdminMessagesPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/login");

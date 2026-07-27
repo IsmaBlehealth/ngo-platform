@@ -1,6 +1,10 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
+export const metadata = {
+  title: "Dashboard",
+};
+
 export default async function DashboardPage() {
   const session = await auth();
 

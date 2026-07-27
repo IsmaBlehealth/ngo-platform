@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const amounts = [25, 50, 100, 250, 500];
 
@@ -22,6 +22,11 @@ export default function DonatePage() {
   const [donationType, setDonationType] = useState<"ONE_TIME" | "MONTHLY">("ONE_TIME");
   const [provider, setProvider] = useState<Provider>("stripe");
   const [loading, setLoading] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
+  }, []);
 
   const finalAmount = customAmount ? parseInt(customAmount, 10) * 100 : amount * 100;
 
@@ -31,7 +36,10 @@ export default function DonatePage() {
     try {
       const res = await fetch("/api/donations", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
         body: JSON.stringify({
           amount: finalAmount,
           type: donationType,

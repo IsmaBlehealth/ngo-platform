@@ -3,6 +3,10 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
+export const metadata = {
+  title: "My Donations",
+};
+
 export default async function DonationsPage() {
   const session = await auth();
   if (!session?.user) redirect("/auth/login");

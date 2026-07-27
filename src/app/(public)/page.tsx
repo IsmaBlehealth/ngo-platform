@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
+export const metadata = {
+  title: "Home",
+  description:
+    "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa. Global Approach To Development — Progress Through Equal Opportunity.",
+};
+
 const fallbackPrograms = [
   {
     slug: "clean-water",

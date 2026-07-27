@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -11,10 +11,15 @@ export default function ResetPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
 
   const token = typeof window !== "undefined"
     ? new URLSearchParams(window.location.search).get("token")
     : null;
+
+  useEffect(() => {
+    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -35,7 +40,10 @@ export default function ResetPasswordPage() {
     try {
       const res = await fetch("/api/auth/reset-password", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
         body: JSON.stringify({ token, password }),
       });
 

@@ -57,12 +57,12 @@ model User {
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 
-  donations        Donation[]
-  sponsorships     Sponsorship[]
-  accounts         Account[]
-  sessions         Session[]
+  donations            Donation[]
+  sponsorships         Sponsorship[]
+  accounts             Account[]
+  sessions             Session[]
+  passwordResetTokens  PasswordResetToken[]
 
-  @@index([email])
   @@index([role])
   @@map("users")
 }
@@ -284,6 +284,9 @@ model PasswordResetToken {
   used      Boolean  @default(false)
   createdAt DateTime @default(now())
 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@index([token])
+  @@index([userId])
   @@map("password_reset_tokens")
 }

@@ -13,7 +13,7 @@ export default function Footer() {
               Building sustainable futures through clean water, quality education,
               and accessible healthcare in West Africa.
             </p>
-            <p className="mt-4 text-xs text-white/50">
+            <p className="mt-4 text-xs text-white/70">
               501(c)(3) Nonprofit Organization | EIN: 47-2155496
             </p>
             <div className="mt-4 space-y-1 text-sm text-white/70">
@@ -78,7 +78,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t border-white/10 pt-8 text-center text-xs text-white/50">
+        <div className="mt-8 border-t border-white/10 pt-8 text-center text-xs text-white/70">
           &copy; 2024 - {year} Global Approach To Development. All rights reserved. |{" "}
           <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
         </div>

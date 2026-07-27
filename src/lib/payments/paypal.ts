@@ -7,12 +7,19 @@ import type {
 } from "./types";
 
 const PAYPAL_API = "https://api-m.paypal.com";
-const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || "";
-const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || "";
-const PAYPAL_WEBHOOK_ID = process.env.PAYPAL_WEBHOOK_ID || "";
+
+function getPayPalConfig() {
+  const { env } = require("@/lib/env");
+  return {
+    clientId: env.PAYPAL_CLIENT_ID || "",
+    clientSecret: env.PAYPAL_CLIENT_SECRET || "",
+    webhookId: env.PAYPAL_WEBHOOK_ID || "",
+  };
+}
 
 async function getAccessToken(): Promise<string> {
-  const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`).toString("base64");
+  const config = getPayPalConfig();
+  const auth = Buffer.from(`${config.clientId}:${config.clientSecret}`).toString("base64");
   const res = await fetch(`${PAYPAL_API}/v1/oauth2/token`, {
     method: "POST",
     headers: {
@@ -34,6 +41,7 @@ async function verifyWebhookSignature(
   body: string,
   headers: Record<string, string | null>
 ): Promise<boolean> {
+  const config = getPayPalConfig();
   const transmissionId = headers["paypal-transmission-id"];
   const certId = headers["paypal-cert-id"];
   const sig = headers["paypal-transmission-sig"];
@@ -58,7 +66,7 @@ async function verifyWebhookSignature(
         transmission_id: transmissionId,
         transmission_sig: sig,
         transmission_time: timestamp,
-        webhook_id: PAYPAL_WEBHOOK_ID,
+        webhook_id: config.webhookId,
         webhook_event: JSON.parse(body),
       }),
     });
@@ -77,7 +85,6 @@ export const paypalProvider: PaymentProvider = {
     const accessToken = await getAccessToken();
 
     if (params.type === "MONTHLY") {
-      // PayPal Subscriptions API
       const res = await fetch(`${PAYPAL_API}/v1/billing/plans`, {
         method: "POST",
         headers: {
@@ -116,7 +123,6 @@ export const paypalProvider: PaymentProvider = {
 
       const plan = await res.json();
 
-      // Create subscription approval URL
       const subRes = await fetch(`${PAYPAL_API}/v1/billing/subscriptions`, {
         method: "POST",
         headers: {
@@ -151,7 +157,6 @@ export const paypalProvider: PaymentProvider = {
       };
     }
 
-    // One-time PayPal Order
     const res = await fetch(`${PAYPAL_API}/v2/checkout/orders`, {
       method: "POST",
       headers: {

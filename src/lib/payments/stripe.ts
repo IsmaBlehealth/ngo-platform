@@ -8,16 +8,21 @@ import type {
 } from "./types";
 
 let stripeInstance: Stripe | null = null;
-const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || "";
 
 function getStripe(): Stripe {
   if (stripeInstance) return stripeInstance;
-  stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+  const { env } = require("@/lib/env");
+  stripeInstance = new Stripe(env.STRIPE_SECRET_KEY || "", {
     apiVersion: "2026-06-24.dahlia",
     typescript: true,
     maxNetworkRetries: 2,
   });
   return stripeInstance;
+}
+
+function getStripeWebhookSecret(): string {
+  const { env } = require("@/lib/env");
+  return env.STRIPE_WEBHOOK_SECRET || "";
 }
 
 export const stripeProvider: PaymentProvider = {
@@ -66,7 +71,7 @@ export const stripeProvider: PaymentProvider = {
     if (!sig) return false;
 
     try {
-      getStripe().webhooks.constructEvent(body, sig, STRIPE_WEBHOOK_SECRET);
+      getStripe().webhooks.constructEvent(body, sig, getStripeWebhookSecret());
       return true;
     } catch {
       return false;
@@ -85,7 +90,7 @@ export const stripeProvider: PaymentProvider = {
     const event = getStripe().webhooks.constructEvent(
       body,
       sig,
-      STRIPE_WEBHOOK_SECRET
+      getStripeWebhookSecret()
     );
 
     switch (event.type) {

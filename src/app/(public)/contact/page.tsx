@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -14,6 +14,11 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string[]>>({});
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
+  }, []);
 
   function handleChange(field: string, value: string | boolean) {
     setForm({ ...form, [field]: value });
@@ -29,7 +34,10 @@ export default function ContactPage() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
         body: JSON.stringify(form),
       });
       if (res.ok) {
@@ -53,7 +61,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold">Contact Us</h1>
           <p className="mt-4 max-w-2xl text-white/80">
-            We would love to hear from you…why not get in touch?
+            We would love to hear from you...why not get in touch?
           </p>
         </div>
       </section>
@@ -137,12 +145,14 @@ export default function ContactPage() {
                     <input
                       id="name"
                       required
+                      aria-describedby={errors.name?.length ? "name-error" : undefined}
+                      aria-invalid={errors.name?.length ? "true" : undefined}
                       value={form.name}
                       onChange={(e) => handleChange("name", e.target.value)}
                       className="mt-1 block w-full rounded-lg border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                     {errors.name && errors.name.length > 0 && (
-                      <p className="mt-1 text-xs text-red-600">{errors.name[0]}</p>
+                      <p id="name-error" className="mt-1 text-xs text-red-600">{errors.name[0]}</p>
                     )}
                   </div>
                   <div>
@@ -151,12 +161,14 @@ export default function ContactPage() {
                       id="email"
                       type="email"
                       required
+                      aria-describedby={errors.email?.length ? "email-error" : undefined}
+                      aria-invalid={errors.email?.length ? "true" : undefined}
                       value={form.email}
                       onChange={(e) => handleChange("email", e.target.value)}
                       className="mt-1 block w-full rounded-lg border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                     {errors.email && errors.email.length > 0 && (
-                      <p className="mt-1 text-xs text-red-600">{errors.email[0]}</p>
+                      <p id="email-error" className="mt-1 text-xs text-red-600">{errors.email[0]}</p>
                     )}
                   </div>
                 </div>
@@ -187,12 +199,14 @@ export default function ContactPage() {
                     id="message"
                     required
                     rows={5}
+                    aria-describedby={errors.message?.length ? "message-error" : undefined}
+                    aria-invalid={errors.message?.length ? "true" : undefined}
                     value={form.message}
                     onChange={(e) => handleChange("message", e.target.value)}
                     className="mt-1 block w-full rounded-lg border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                   {errors.message && errors.message.length > 0 && (
-                    <p className="mt-1 text-xs text-red-600">{errors.message[0]}</p>
+                    <p id="message-error" className="mt-1 text-xs text-red-600">{errors.message[0]}</p>
                   )}
                 </div>
                 <div className="flex items-start gap-2">

@@ -74,5 +74,7 @@ export const RATE_LIMITS = {
   contact: { limit: 5, windowMs: 60_000 },
   donation: { limit: 10, windowMs: 60_000 },
   register: { limit: 3, windowMs: 300_000 },
+  forgotPassword: { limit: 3, windowMs: 300_000 },
+  resetPassword: { limit: 5, windowMs: 300_000 },
   webhook: { limit: 100, windowMs: 60_000 },
 } as const;
