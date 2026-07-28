@@ -66,12 +66,12 @@ export default async function ProgramsPage() {
     });
 
     if (dbPrograms.length > 0) {
-      programs = dbPrograms.map((p, i) => ({
+      programs = dbPrograms.map((p: { slug: string; title: string; fullDescription: string; projects: { name: string }[] }, i: number) => ({
         id: p.slug,
         title: p.title,
         image: fallbackPrograms[i]?.image || fallbackPrograms[0].image,
         description: p.fullDescription,
-        highlights: p.projects.map((proj) => proj.name),
+        highlights: p.projects.map((proj: { name: string }) => proj.name),
         stats: fallbackPrograms[i]?.stats || { number: "1", label: "Program" },
       }));
     }

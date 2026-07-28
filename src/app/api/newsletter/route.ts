@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { emailSchema } from "@/lib/validation";
-import { rateLimit, getRateLimitKey, RATE_LIMITS } from "@/lib/rate-limit";
+import { rateLimit, getRateLimitKey } from "@/lib/rate-limit";
 import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {

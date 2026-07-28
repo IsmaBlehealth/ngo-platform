@@ -18,7 +18,9 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (session?.user) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFirstName(session.user.name?.split(" ")[0] || "");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
     }
   }, [session]);

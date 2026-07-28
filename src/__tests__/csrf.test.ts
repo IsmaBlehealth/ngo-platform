@@ -28,7 +28,6 @@ describe("rate limit constants", () => {
 
   it("donation rate limit is reasonable", () => {
     const limit = 10;
-    const windowMs = 60_000;
     expect(limit).toBeGreaterThan(0);
     expect(limit).toBeLessThanOrEqual(20);
   });

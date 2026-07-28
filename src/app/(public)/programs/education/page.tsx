@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function EducationPage() {
-  let programs = await prisma.program.findMany({
+  await prisma.program.findMany({
     where: { slug: "education" },
     include: { projects: true },
   }).catch(() => []);

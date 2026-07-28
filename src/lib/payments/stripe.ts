@@ -6,12 +6,12 @@ import type {
   CheckoutResult,
   WebhookResult,
 } from "./types";
+import { env } from "@/lib/env";
 
 let stripeInstance: Stripe | null = null;
 
 function getStripe(): Stripe {
   if (stripeInstance) return stripeInstance;
-  const { env } = require("@/lib/env");
   stripeInstance = new Stripe(env.STRIPE_SECRET_KEY || "", {
     apiVersion: "2026-06-24.dahlia",
     typescript: true,
@@ -21,7 +21,6 @@ function getStripe(): Stripe {
 }
 
 function getStripeWebhookSecret(): string {
-  const { env } = require("@/lib/env");
   return env.STRIPE_WEBHOOK_SECRET || "";
 }
 

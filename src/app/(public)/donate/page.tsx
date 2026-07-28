@@ -248,7 +248,7 @@ export default function DonatePage() {
                     <span className="text-2xl">🏫</span>
                     <div>
                       <p className="font-semibold">$250</p>
-                      <p className="text-sm text-white/70">Supports a child's full school year</p>
+                      <p className="text-sm text-white/70">{'Supports a child\'s full school year'}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

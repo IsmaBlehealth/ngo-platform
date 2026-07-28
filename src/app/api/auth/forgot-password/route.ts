@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { emailSchema } from "@/lib/validation";
-import { rateLimit, getRateLimitKey, getClientIp, RATE_LIMITS } from "@/lib/rate-limit";
+import { rateLimit, getRateLimitKey, getClientIp } from "@/lib/rate-limit";
 import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
 import { sendEmail, passwordResetEmail } from "@/lib/email";

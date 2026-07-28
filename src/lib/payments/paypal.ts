@@ -5,11 +5,11 @@ import type {
   CheckoutResult,
   WebhookResult,
 } from "./types";
+import { env } from "@/lib/env";
 
 const PAYPAL_API = "https://api-m.paypal.com";
 
 function getPayPalConfig() {
-  const { env } = require("@/lib/env");
   return {
     clientId: env.PAYPAL_CLIENT_ID || "",
     clientSecret: env.PAYPAL_CLIENT_SECRET || "",
@@ -211,6 +211,7 @@ export const paypalProvider: PaymentProvider = {
     body: string,
     _headers: Record<string, string | null>
   ): Promise<WebhookResult> {
+    void _headers;
     const event = JSON.parse(body);
 
     switch (event.event_type) {

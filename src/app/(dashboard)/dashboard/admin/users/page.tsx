@@ -17,7 +17,7 @@ export default async function AdminUsersPage() {
   });
 
   const roleCounts = users.reduce(
-    (acc, u) => {
+    (acc: Record<string, number>, u: { role: string }) => {
       acc[u.role] = (acc[u.role] || 0) + 1;
       return acc;
     },

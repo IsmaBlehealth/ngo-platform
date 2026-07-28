@@ -16,7 +16,7 @@ export default async function AdminMessagesPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  const unreadCount = messages.filter((m) => !m.isRead).length;
+  const unreadCount = messages.filter((m: { isRead: boolean }) => !m.isRead).length;
 
   return (
     <div className="space-y-6">

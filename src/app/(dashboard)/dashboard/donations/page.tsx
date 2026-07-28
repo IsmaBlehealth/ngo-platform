@@ -18,8 +18,8 @@ export default async function DonationsPage() {
   });
 
   const totalDonated = donations
-    .filter((d) => d.status === "COMPLETED")
-    .reduce((sum, d) => sum + Number(d.amount), 0);
+    .filter((d: { status: string }) => d.status === "COMPLETED")
+    .reduce((sum: number, d: { amount: unknown }) => sum + Number(d.amount), 0);
 
   return (
     <div className="space-y-6">

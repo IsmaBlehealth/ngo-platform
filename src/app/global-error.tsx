@@ -1,6 +1,7 @@
 "use client";
 
 import * as Sentry from "@sentry/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function GlobalError({
   error,
@@ -9,6 +10,7 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const router = useRouter();
   Sentry.captureException(error);
 
   return (
@@ -31,12 +33,12 @@ export default function GlobalError({
             >
               Try Again
             </button>
-            <a
-              href="/"
+            <button
+              onClick={() => router.push("/")}
               className="px-6 py-3 border-2 border-[#0D5C63] text-[#0D5C63] rounded-xl font-medium hover:bg-[#0D5C63]/5 transition-colors"
             >
               Go Home
-            </a>
+            </button>
           </div>
         </div>
       </body>
