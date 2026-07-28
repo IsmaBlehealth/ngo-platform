@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import FloatingDonateBar from '@/components/FloatingDonateBar';
+import HeroCarousel from '@/components/HeroCarousel';
 
 const programs = [
   {
@@ -46,79 +47,20 @@ export default function HomePage() {
       <FloatingDonateBar />
 
       {/* ═══ HERO — Overlapping Composition ═══ */}
-      <section className="relative min-h-[100vh] overflow-hidden bg-primary-dark">
-        {/* Background image with parallax feel */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1920&q=80"
-            alt="Children smiling"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Gradient mask: transparent → dark */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/80 to-transparent" />
-        </div>
+      <HeroCarousel />
 
-        <div className="relative z-10 flex min-h-[100vh] items-center">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <ScrollReveal>
-                <p className="micro-header text-accent mb-4">
-                  Global Approach To Development
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={1}>
-                <h1 className="text-tight text-5xl font-black leading-tight text-white sm:text-7xl lg:text-8xl">
-                  Every Child
-                  <br />
-                  <span className="stat-number">Deserves a Future</span>
-                </h1>
-              </ScrollReveal>
-              <ScrollReveal delay={2}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
-                  Building sustainable futures through clean water, education, and healthcare
-                  in communities across Africa and Latin America.
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={3}>
-                <div className="mt-10 flex flex-wrap gap-4">
-                  <Link href="/donate" className="btn-primary">
-                    Donate Now
-                    <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
-                  <Link href="/about" className="btn-secondary !border-white/30 !text-white hover:!bg-white/10">
-                    Learn More
-                  </Link>
+      {/* ═══ STATS BAR — Overlapping hero ═══ */}
+      <section className="relative -mt-16 z-30 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="card-depth rounded-2xl bg-white p-6 sm:p-8">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            {stats.map((s, i) => (
+              <ScrollReveal key={s.label} delay={i}>
+                <div className="text-center">
+                  <p className={`stat-number text-3xl font-black sm:text-4xl ${s.color}`}>{s.number}</p>
+                  <p className="mt-1 text-sm font-medium text-muted">{s.label}</p>
                 </div>
               </ScrollReveal>
-            </div>
-          </div>
-        </div>
-
-        {/* Wave divider at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-20">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0,80 C360,120 720,40 1080,80 C1260,100 1380,90 1440,80 L1440,120 L0,120 Z" fill="white"/>
-          </svg>
-        </div>
-
-        {/* Overlapping stats bar — floats over hero */}
-        <div className="overlap-up relative z-30 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="card-depth rounded-2xl bg-white p-6 sm:p-8">
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-              {stats.map((s, i) => (
-                <ScrollReveal key={s.label} delay={i}>
-                  <div className="text-center">
-                    <p className={`stat-number text-3xl font-black sm:text-4xl ${s.color}`}>{s.number}</p>
-                    <p className="mt-1 text-sm font-medium text-muted">{s.label}</p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
