@@ -168,7 +168,7 @@ export default function RegisterPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               className={`mt-1 block w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
                 confirmPassword.length === 0
-                  ? "border-gray-200 focus:border-primary focus:ring-primary"
+                  ? "border-primary/10 focus:border-primary focus:ring-primary"
                   : passwordsMatch
                     ? "border-green-500 focus:border-green-500 focus:ring-green-500"
                     : "border-red-500 focus:border-red-500 focus:ring-red-500"

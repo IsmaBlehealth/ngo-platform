@@ -108,7 +108,7 @@ export default function DonatePage() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
             {/* Form */}
             <div className="lg:col-span-3">
-              <div className="rounded-2xl bg-white p-8 shadow-lg">
+              <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg">
                 <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
                   <label htmlFor="donate-website">Leave this empty</label>
                   <input id="donate-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
@@ -121,7 +121,7 @@ export default function DonatePage() {
                     className={`flex-1 py-3.5 text-sm font-semibold transition-colors ${
                       donationType === "ONE_TIME"
                         ? "bg-primary text-white"
-                        : "bg-gray-50 text-muted hover:bg-gray-100"
+                        : "bg-[#FAF9F6] text-muted hover:bg-[#f1f4f9]"
                     }`}
                   >
                     One-Time Donation
@@ -131,7 +131,7 @@ export default function DonatePage() {
                     className={`flex-1 py-3.5 text-sm font-semibold transition-colors ${
                       donationType === "MONTHLY"
                         ? "bg-primary text-white"
-                        : "bg-gray-50 text-muted hover:bg-gray-100"
+                        : "bg-[#FAF9F6] text-muted hover:bg-[#f1f4f9]"
                     }`}
                   >
                     Monthly Giving
@@ -147,7 +147,7 @@ export default function DonatePage() {
                       className={`rounded-xl border-2 py-4 text-base font-bold transition-all ${
                         amount === a && !customAmount
                           ? "border-accent bg-accent text-white shadow-md scale-105"
-                          : "border-gray-200 text-foreground/70 hover:border-accent hover:text-accent"
+                          : "border-primary/10 text-foreground/70 hover:border-accent hover:text-accent"
                       }`}
                     >
                       {formatCurrency(a * 100)}
@@ -159,7 +159,7 @@ export default function DonatePage() {
                     placeholder="Other"
                     value={customAmount}
                     onChange={(e) => setCustomAmount(e.target.value)}
-                    className="rounded-xl border-2 border-gray-200 px-3 py-4 text-base font-bold text-center focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
+                    className="rounded-xl border-2 border-primary/10 px-3 py-4 text-base font-bold text-center focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
                   />
                 </div>
 
@@ -174,7 +174,7 @@ export default function DonatePage() {
                       className={`flex-1 py-3.5 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
                         provider === "stripe"
                           ? "bg-primary text-white"
-                          : "bg-gray-50 text-muted hover:bg-gray-100"
+                          : "bg-[#FAF9F6] text-muted hover:bg-[#f1f4f9]"
                       }`}
                     >
                       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -187,7 +187,7 @@ export default function DonatePage() {
                       className={`flex-1 py-3.5 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
                         provider === "paypal"
                           ? "bg-[#0070ba] text-white"
-                          : "bg-gray-50 text-muted hover:bg-gray-100"
+                          : "bg-[#FAF9F6] text-muted hover:bg-[#f1f4f9]"
                       }`}
                     >
                       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -259,7 +259,7 @@ export default function DonatePage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-gray-50 p-6 border border-gray-100">
+              <div className="rounded-2xl bg-[#FAF9F6] p-6 border border-primary/10">
                 <h3 className="text-lg font-bold text-primary">100% Goes to Programs</h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
                   Every dollar you donate goes directly to our programs. No administrative overhead.

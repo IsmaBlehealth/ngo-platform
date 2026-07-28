@@ -137,7 +137,7 @@ export default function ContactPage() {
           {infoCards.map((card) => (
             <div
               key={card.title}
-              className="bento-card bg-white rounded-xl p-8 flex flex-col items-center text-center"
+              className="bento-card bg-[#FAF9F6] rounded-xl p-8 flex flex-col items-center text-center"
             >
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 text-3xl">
                 {card.icon}
@@ -159,12 +159,12 @@ export default function ContactPage() {
 
         {/* Contact Form — bento-card with dot pattern */}
         <section>
-          <div className="bento-card bg-white relative overflow-hidden rounded-[2rem] p-8 md:p-12 lg:p-16">
+          <div className="bento-card bg-[#FAF9F6] relative overflow-hidden rounded-[2rem] p-8 md:p-12 lg:p-16">
             {/* Decorative dot pattern */}
             <div
               className="absolute inset-0 opacity-[0.03]"
               style={{
-                backgroundImage: "radial-gradient(circle at 2px 2px, #1e3a5f 1px, transparent 0)",
+                backgroundImage: "radial-gradient(circle at 2px 2px, #0D5C63 1px, transparent 0)",
                 backgroundSize: "24px 24px",
               }}
             />
@@ -315,7 +315,7 @@ export default function ContactPage() {
             title="Office location"
           />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full max-w-sm px-4">
-            <div className="bento-card bg-white/90 backdrop-blur-md rounded-xl p-6 text-center">
+            <div className="bento-card bg-[#FAF9F6]/90 backdrop-blur-md rounded-xl p-6 text-center">
               <p className="text-foreground mb-3 font-semibold">
                 3200 E Guasti Rd., Suite 100<br />
                 Ontario, CA 91761

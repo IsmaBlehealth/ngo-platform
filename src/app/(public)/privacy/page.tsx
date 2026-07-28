@@ -32,7 +32,7 @@ export default function PrivacyPage() {
       {/* Content */}
       <section className="section-padding">
         <div className="mx-auto max-w-3xl">
-          <div className="rounded-2xl bg-white p-8 shadow-lg">
+          <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg">
             <p className="text-sm text-muted">Last updated: January 2025</p>
 
             <h2 className="mt-8 text-3xl font-bold text-primary">1. Information We Collect</h2>

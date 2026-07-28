@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { validateCsrfToken } from "@/lib/csrf";
+import { passwordSchema } from "@/lib/validation";
 import { rateLimit, getRateLimitKey, getClientIp } from "@/lib/rate-limit";
 import { logger } from "@/lib/logger";
 import bcrypt from "bcryptjs";
@@ -24,12 +25,25 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const contentLength = Number(req.headers.get("content-length") || 0);
+    if (contentLength > 65536) {
+      return NextResponse.json({ error: "Payload too large" }, { status: 413 });
+    }
+
     const body = await req.json();
     const { token, password } = body;
 
     if (!token || !password) {
       return NextResponse.json(
         { error: "Token and password are required" },
+        { status: 400 }
+      );
+    }
+
+    const passwordCheck = passwordSchema.safeParse(password);
+    if (!passwordCheck.success) {
+      return NextResponse.json(
+        { error: "Password does not meet security requirements" },
         { status: 400 }
       );
     }

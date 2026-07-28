@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="section-padding flex flex-col items-center justify-center text-center min-h-[70vh] bg-gradient-to-br from-gray-50 via-white to-primary/5">
+    <section className="section-padding flex flex-col items-center justify-center text-center min-h-[70vh] bg-gradient-to-br from-[#FAF9F6] via-[#f1f4f9] to-primary/5">
       <div className="flex h-28 w-28 items-center justify-center rounded-full bg-primary/10 mb-8">
         <svg
           className="h-14 w-14 text-primary"

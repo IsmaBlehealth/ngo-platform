@@ -21,19 +21,19 @@ const serverEnvSchema = z.object({
   GOOGLE_CLIENT_SECRET: z.string().optional(),
 });
 
+const REQUIRED_VARS = ["DATABASE_URL", "NEXTAUTH_SECRET", "NEXTAUTH_URL"] as const;
+
 function resolveEnv(): z.infer<typeof serverEnvSchema> {
-  const defaults: Record<string, string> = {
-    DATABASE_URL: "postgresql://placeholder:placeholder@localhost/db",
-    NEXTAUTH_SECRET: "build-placeholder",
-    NEXTAUTH_URL: "http://localhost:3000",
-    NEXT_PUBLIC_URL: "http://localhost:3000",
-    NEXT_PUBLIC_APP_NAME: "Global Approach To Development",
-    PAYMENT_PROVIDER: "stripe",
-  };
+  for (const key of REQUIRED_VARS) {
+    if (!process.env[key]) {
+      console.error(`Missing required environment variable: ${key}`);
+      process.exit(1);
+    }
+  }
 
   const merged: Record<string, string | undefined> = {};
-  for (const key of Object.keys(defaults)) {
-    merged[key] = process.env[key] || defaults[key];
+  for (const key of [...REQUIRED_VARS, "NEXT_PUBLIC_URL", "NEXT_PUBLIC_APP_NAME", "PAYMENT_PROVIDER", "DIRECT_URL"]) {
+    merged[key] = process.env[key] || undefined;
   }
 
   const optionalKeys = [

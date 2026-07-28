@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs";
 
 export async function POST(req: NextRequest) {
   const csrfToken = req.headers.get("x-csrf-token");
-  if (!csrfToken || !validateCsrfToken(csrfToken)) {
+  if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
     return NextResponse.json({ error: "Invalid CSRF token" }, { status: 403 });
   }
 
@@ -24,6 +24,11 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const contentLength = Number(req.headers.get("content-length") || 0);
+    if (contentLength > 65536) {
+      return NextResponse.json({ error: "Payload too large" }, { status: 413 });
+    }
+
     const body = await req.json();
     const parsed = registerSchema.safeParse(body);
 

@@ -1,5 +1,6 @@
 const requests = new Map<string, { count: number; resetAt: number }>();
 
+const MAX_ENTRIES = 10_000;
 const CLEANUP_INTERVAL = 60_000;
 let lastCleanup = Date.now();
 
@@ -16,6 +17,7 @@ export interface RateLimitResult {
   allowed: boolean;
   remaining: number;
   resetAt: number;
+  retryAfter: number;
 }
 
 export function rateLimit(
@@ -25,16 +27,33 @@ export function rateLimit(
 ): RateLimitResult {
   cleanup();
 
+  if (requests.size > MAX_ENTRIES) {
+    const now = Date.now();
+    for (const [k, v] of requests) {
+      if (v.resetAt < now) requests.delete(k);
+    }
+    if (requests.size > MAX_ENTRIES) {
+      let cleared = 0;
+      for (const k of requests.keys()) {
+        requests.delete(k);
+        cleared++;
+        if (cleared >= 1000) break;
+      }
+    }
+  }
+
   const now = Date.now();
   const entry = requests.get(key);
 
   if (!entry || entry.resetAt < now) {
-    requests.set(key, { count: 1, resetAt: now + windowMs });
-    return { allowed: true, remaining: limit - 1, resetAt: now + windowMs };
+    const resetAt = now + windowMs;
+    requests.set(key, { count: 1, resetAt });
+    return { allowed: true, remaining: limit - 1, resetAt, retryAfter: 0 };
   }
 
   if (entry.count >= limit) {
-    return { allowed: false, remaining: 0, resetAt: entry.resetAt };
+    const retryAfter = Math.ceil((entry.resetAt - now) / 1000);
+    return { allowed: false, remaining: 0, resetAt: entry.resetAt, retryAfter };
   }
 
   entry.count++;
@@ -42,14 +61,24 @@ export function rateLimit(
     allowed: true,
     remaining: limit - entry.count,
     resetAt: entry.resetAt,
+    retryAfter: 0,
   };
+}
+
+function hashString(str: string): string {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash + char) | 0;
+  }
+  return Math.abs(hash).toString(36);
 }
 
 function getIpFromRequest(request: Request): string {
   const xff = request.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0].trim();
-  const real = request.headers.get("x-real-ip");
-  if (real) return real;
+  if (xff && !xff.includes(",")) return xff.trim();
+  const sessionId = getSessionCookieId(request);
+  if (sessionId) return hashString(sessionId);
   return "127.0.0.1";
 }
 

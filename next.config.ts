@@ -6,6 +6,8 @@ import type { NextConfig } from "next";
 const ContentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.paypal.com https://www.sandbox.paypal.com",
+  "worker-src 'self'",
+  "child-src 'self'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' blob: data: https://w15230.proweaversite15.com https://images.unsplash.com https://www.paypal.com",
   "font-src 'self'",
@@ -41,6 +43,18 @@ const securityHeaders = [
   {
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+  {
+    key: "X-XSS-Protection",
+    value: "0",
+  },
+  {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
+  },
+  {
+    key: "Cross-Origin-Resource-Policy",
+    value: "same-origin",
   },
 ];
 

@@ -46,7 +46,7 @@ export default async function EducationPage() {
       </section>
 
       {/* ─── SCHOOL PROJECT: COTE D'IVOIRE ─── */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-[#FAF9F6]">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <div>
@@ -79,22 +79,22 @@ export default async function EducationPage() {
           </div>
 
           {/* Stats */}
-          <div className="mt-12 rounded-2xl bg-white p-8 shadow-lg">
+          <div className="mt-12 rounded-2xl liquid-glass-surface p-8 shadow-lg">
             <h3 className="text-xl font-bold text-primary">Groupe Scolaire Agbe — Elementary School</h3>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <div className="rounded-xl bg-gray-50 p-6 text-center card-hover">
+              <div className="rounded-xl bg-[#FAF9F6] p-6 text-center card-hover">
                 <div className="stat-number text-3xl font-bold">332</div>
                 <div className="mt-1 text-xs font-medium text-muted uppercase tracking-wider">Students</div>
               </div>
-              <div className="rounded-xl bg-gray-50 p-6 text-center card-hover">
+              <div className="rounded-xl bg-[#FAF9F6] p-6 text-center card-hover">
                 <div className="stat-number text-3xl font-bold">166</div>
                 <div className="mt-1 text-xs font-medium text-muted uppercase tracking-wider">Girls</div>
               </div>
-              <div className="rounded-xl bg-gray-50 p-6 text-center card-hover">
+              <div className="rounded-xl bg-[#FAF9F6] p-6 text-center card-hover">
                 <div className="stat-number text-3xl font-bold">166</div>
                 <div className="mt-1 text-xs font-medium text-muted uppercase tracking-wider">Boys</div>
               </div>
-              <div className="rounded-xl bg-gray-50 p-6 text-center card-hover">
+              <div className="rounded-xl bg-[#FAF9F6] p-6 text-center card-hover">
                 <div className="stat-number text-3xl font-bold">99%</div>
                 <div className="mt-1 text-xs font-medium text-muted uppercase tracking-wider">Passing Rate</div>
               </div>
@@ -102,17 +102,17 @@ export default async function EducationPage() {
           </div>
 
           {/* Secondary School */}
-          <div className="mt-8 rounded-2xl bg-white p-8 shadow-lg">
+          <div className="mt-8 rounded-2xl liquid-glass-surface p-8 shadow-lg">
             <h3 className="text-xl font-bold text-primary">Groupe Scolaire Agbe — Secondary School</h3>
             <p className="mt-4 text-muted leading-relaxed">
               Following the completion of the elementary school, we discovered that students had to travel <strong>54 miles to access secondary education</strong>, encompassing both middle and high school. GAD acknowledged the necessity for these students to pursue their education beyond grade 5 within their own community. Consequently, GAD initiated the construction of a middle and high school in <strong>2016</strong> and completed the project in <strong>2019</strong>. The establishment of this new school sparked enthusiasm among the community members.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:w-1/2">
-              <div className="rounded-xl bg-gray-50 p-6 text-center">
+              <div className="rounded-xl bg-[#FAF9F6] p-6 text-center">
                 <div className="stat-number text-2xl font-bold">2016</div>
                 <div className="mt-1 text-xs font-medium text-muted uppercase tracking-wider">Construction Started</div>
               </div>
-              <div className="rounded-xl bg-gray-50 p-6 text-center">
+              <div className="rounded-xl bg-[#FAF9F6] p-6 text-center">
                 <div className="stat-number text-2xl font-bold">2019</div>
                 <div className="mt-1 text-xs font-medium text-muted uppercase tracking-wider">Completed</div>
               </div>
@@ -161,7 +161,7 @@ export default async function EducationPage() {
           <div className="mt-12">
             <h3 className="text-2xl font-bold text-primary">Programs We Offer</h3>
             <div className="mt-6 grid gap-6 sm:grid-cols-3">
-              <div className="rounded-2xl bg-white p-8 shadow-lg card-hover">
+              <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg card-hover">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                   <span className="text-xl">&#127967;</span>
                 </div>
@@ -170,7 +170,7 @@ export default async function EducationPage() {
                   The club offers a safe environment where students come and interact with each other. They learn, innovate and express themselves. We encourage creativity and critical thinking.
                 </p>
               </div>
-              <div className="rounded-2xl bg-white p-8 shadow-lg card-hover">
+              <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg card-hover">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                   <span className="text-xl">&#128218;</span>
                 </div>
@@ -179,7 +179,7 @@ export default async function EducationPage() {
                   The courses are designed to improve children&apos;s ability to read, write, count using written materials, and sounds. Thus students are able to expand their skills, excel, and process words more clearly.
                 </p>
               </div>
-              <div className="rounded-2xl bg-white p-8 shadow-lg card-hover">
+              <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg card-hover">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
                   <span className="text-xl">&#127912;</span>
                 </div>
@@ -192,7 +192,7 @@ export default async function EducationPage() {
           </div>
 
           {/* Help Needed CTA */}
-          <div className="mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-accent/10 via-accent/5 to-white shadow-lg border border-accent/20">
+          <div className="mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-accent/10 via-accent/5 to-[#FAF9F6] shadow-lg border border-accent/20">
             <div className="p-8 sm:p-10">
               <div className="flex items-start gap-4">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent text-white shadow-lg">
@@ -225,7 +225,7 @@ export default async function EducationPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-block rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-primary transition-all hover:bg-gray-100 hover:shadow-lg"
+            className="mt-8 inline-block rounded-full bg-[#FAF9F6] px-8 py-3.5 text-sm font-semibold text-primary transition-all hover:bg-[#f1f4f9] hover:shadow-lg"
           >
             Contact Us
           </Link>

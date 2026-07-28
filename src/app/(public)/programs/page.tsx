@@ -162,7 +162,7 @@ export default async function ProgramsPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-[#FAF9F6]">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-primary">Support Our Programs</h2>
           <p className="mt-4 text-muted max-w-2xl mx-auto">

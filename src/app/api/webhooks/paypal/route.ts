@@ -12,7 +12,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Rate limited" }, { status: 429 });
   }
 
+  const contentLength = Number(req.headers.get("content-length") || 0);
+  if (contentLength > 1_048_576) {
+    return NextResponse.json({ error: "Payload too large" }, { status: 413 });
+  }
+
   const body = await req.text();
+  if (body.length > 1_048_576) {
+    return NextResponse.json({ error: "Payload too large" }, { status: 413 });
+  }
   const headers: Record<string, string | null> = {
     "paypal-transmission-id": req.headers.get("paypal-transmission-id"),
     "paypal-cert-id": req.headers.get("paypal-cert-id"),
