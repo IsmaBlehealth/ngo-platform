@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -76,7 +77,7 @@ export default function Header() {
                 Sign Out
               </button>
             </>
-          ) : (
+            ) : (
             <Link
               href="/auth/login"
               className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
@@ -84,6 +85,7 @@ export default function Header() {
               Sign In
             </Link>
           )}
+          <LanguageSwitcher />
         </div>
 
         <button
@@ -153,6 +155,9 @@ export default function Header() {
                 Sign In
               </Link>
             )}
+            <div className="mt-2">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}
