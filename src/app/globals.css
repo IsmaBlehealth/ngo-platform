@@ -318,3 +318,9 @@ body { background: var(--color-background); color: var(--color-foreground); }
 .group:hover .img-zoom {
   transform: scale(1.08);
 }
+.text-gradient-gold {
+  background: linear-gradient(to right, #f0c060, #e8a838);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
