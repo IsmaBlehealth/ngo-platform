@@ -37,6 +37,7 @@ export default function DonatePage() {
   const [provider, setProvider] = useState<Provider>("stripe");
   const [loading, setLoading] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   useEffect(() => {
     fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
@@ -45,7 +46,7 @@ export default function DonatePage() {
   const finalAmount = customAmount ? parseInt(customAmount, 10) * 100 : amount * 100;
 
   async function handleDonate() {
-    if (!finalAmount || finalAmount < 100) return;
+    if (!finalAmount || finalAmount < 100 || honeypot) return;
     setLoading(true);
     try {
       const res = await fetch("/api/donations", {
@@ -82,16 +83,16 @@ export default function DonatePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
       />
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=800&fit=crop"
             alt="Make a difference"
             fill
-            className="object-cover"
+            className="object-cover opacity-20"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/90 to-primary/80" />
+          <div className="absolute inset-0 hero-overlay" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-10 text-center">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">Make a Donation</h1>
@@ -108,6 +109,11 @@ export default function DonatePage() {
             {/* Form */}
             <div className="lg:col-span-3">
               <div className="rounded-2xl bg-white p-8 shadow-lg">
+                <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+                  <label htmlFor="donate-website">Leave this empty</label>
+                  <input id="donate-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+                </div>
+
                 {/* Donation Type */}
                 <div className="flex rounded-xl border overflow-hidden mb-6">
                   <button

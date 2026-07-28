@@ -11,10 +11,12 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    if (honeypot) return;
     setLoading(true);
 
     const result = await signIn("credentials", {
@@ -37,6 +39,10 @@ export default function LoginPage() {
       <div className="mx-auto max-w-md">
         <h1 className="text-3xl font-bold text-center">Sign In</h1>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+            <label htmlFor="login-website">Leave this empty</label>
+            <input id="login-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+          </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium">
               Email

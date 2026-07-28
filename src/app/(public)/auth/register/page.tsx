@@ -31,6 +31,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   useEffect(() => {
     fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
@@ -50,6 +51,10 @@ export default function RegisterPage() {
     e.preventDefault();
     setError("");
     setLoading(true);
+    if (honeypot) {
+      setLoading(false);
+      return;
+    }
 
     if (form.password !== confirmPassword) {
       setError("Passwords do not match");
@@ -85,6 +90,10 @@ export default function RegisterPage() {
       <div className="mx-auto max-w-md">
         <h1 className="text-3xl font-bold text-center">Create Account</h1>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+            <label htmlFor="register-website">Leave this empty</label>
+            <input id="register-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+          </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium">

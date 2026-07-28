@@ -9,6 +9,7 @@ export default function ForgotPasswordPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   useEffect(() => {
     fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
@@ -18,6 +19,10 @@ export default function ForgotPasswordPage() {
     e.preventDefault();
     setError("");
     setLoading(true);
+    if (honeypot) {
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch("/api/auth/forgot-password", {
@@ -53,6 +58,10 @@ export default function ForgotPasswordPage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+            <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+              <label htmlFor="forgot-website">Leave this empty</label>
+              <input id="forgot-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+            </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium">
                 Email
