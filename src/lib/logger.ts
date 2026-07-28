@@ -17,6 +17,18 @@ const LOG_LEVELS: Record<LogLevel, number> = {
 
 const minLevel = process.env.NODE_ENV === "production" ? LOG_LEVELS.warn : LOG_LEVELS.info;
 
+const SENSITIVE_KEYS = ["password", "passwordhash", "token", "secret", "authorization", "cookie", "csrf"];
+
+function sanitizeContext(context: Record<string, unknown>): Record<string, unknown> {
+  const sanitized = { ...context };
+  for (const key of Object.keys(sanitized)) {
+    if (SENSITIVE_KEYS.some((s) => key.toLowerCase().includes(s))) {
+      sanitized[key] = "[REDACTED]";
+    }
+  }
+  return sanitized;
+}
+
 function shouldLog(level: LogLevel): boolean {
   return LOG_LEVELS[level] >= minLevel;
 }
@@ -34,7 +46,7 @@ function formatEntry(entry: LogEntry): string {
   parts.push(entry.message);
 
   if (entry.context) {
-    parts.push(JSON.stringify(entry.context));
+    parts.push(JSON.stringify(sanitizeContext(entry.context)));
   }
 
   return parts.join(" ");

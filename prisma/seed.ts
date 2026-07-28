@@ -55,25 +55,6 @@ async function main() {
     console.log(`  ✓ Project: ${project.name}`);
   }
 
-  // ─── Impact Stories ──────────────────────────────────────
-  for (const story of seedData.impactStories) {
-    await prisma.impactStory.deleteMany({
-      where: { title: story.title },
-    });
-    await prisma.impactStory.create({
-      data: {
-        title: story.title,
-        subtitle: story.subtitle,
-        description: story.description,
-        ctaText: story.ctaText,
-        image: story.image,
-        sortOrder: story.sortOrder,
-        isActive: story.isActive,
-      },
-    });
-    console.log(`  ✓ Impact Story: ${story.title}`);
-  }
-
   // ─── Admin User ──────────────────────────────────────────
   const adminEmail = "admin@gad.org";
   const existing = await prisma.user.findUnique({ where: { email: adminEmail } });

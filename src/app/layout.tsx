@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Providers from "@/components/Providers";
 import "./globals.css";
 
@@ -66,7 +68,10 @@ export default function RootLayout({
         <Providers>        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:p-2">
           Skip to main content
         </a>
-        {children}</Providers>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+        </Providers>
       </body>
     </html>
   );
