@@ -124,6 +124,15 @@ export default function DashboardSidebar({
             <p className="text-sm font-medium text-foreground truncate">{userName}</p>
             <p className="text-xs text-muted truncate">{userEmail}</p>
           </div>
+          <Link
+            href="/dashboard/profile"
+            className="rounded-lg p-1.5 text-muted transition-colors hover:bg-gray-100 hover:text-foreground"
+            title="Profile"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </Link>
           <button
             onClick={() => signOut()}
             className="rounded-lg p-1.5 text-muted transition-colors hover:bg-gray-100 hover:text-foreground"

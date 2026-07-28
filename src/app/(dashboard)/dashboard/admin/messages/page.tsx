@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { sanitize } from "@/lib/sanitize";
 import { redirect } from "next/navigation";
+import MessageActions from "./MessageActions";
 
 export const metadata = {
   title: "Contact Messages",
@@ -87,6 +88,7 @@ export default async function AdminMessagesPage() {
                         <p className="text-sm text-muted">{msg.email}</p>
                       </div>
                       <div className="flex items-center gap-2">
+                        <MessageActions id={msg.id} isRead={msg.isRead} />
                         {!msg.isRead && (
                           <span className="h-2.5 w-2.5 rounded-full bg-accent" title="Unread" />
                         )}

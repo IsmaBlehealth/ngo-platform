@@ -40,12 +40,7 @@ export function generateOrganizationSchema() {
       email: "info@gapdev.org",
       contactType: "customer service",
     },
-    sameAs: [
-      "https://www.facebook.com/",
-      "https://twitter.com/",
-      "https://www.instagram.com/",
-      "https://www.linkedin.com/",
-    ],
+    sameAs: [],
   };
 }
 

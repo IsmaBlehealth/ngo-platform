@@ -5,6 +5,8 @@ import Image from "next/image";
 
 const amounts = [25, 50, 100, 250, 500];
 
+const DONATE_URL = "https://ngo-platform-399q.vercel.app/donate";
+
 const donateSchema = {
   "@context": "https://schema.org",
   "@type": "DonateAction",
@@ -14,7 +16,7 @@ const donateSchema = {
   recipient: {
     "@type": "NGO",
     name: "Global Approach To Development",
-    url: typeof window !== "undefined" ? window.location.origin : "",
+    url: DONATE_URL,
   },
 };
 

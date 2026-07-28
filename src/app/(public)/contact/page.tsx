@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const CONTACT_URL = "https://ngo-platform-399q.vercel.app/contact";
+
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact Global Approach To Development",
   description:
     "Get in touch with Global Approach To Development. Reach us by phone, email, or visit our office in Ontario, CA.",
-  url: typeof window !== "undefined" ? window.location.origin + "/contact" : "",
+  url: CONTACT_URL,
   mainEntity: {
     "@type": "Organization",
     name: "Global Approach To Development",

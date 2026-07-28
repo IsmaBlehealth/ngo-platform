@@ -34,6 +34,32 @@ export function BlogPostContent({ slug }: { slug: string }) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.content.slice(0, 160),
+            image: post.image,
+            datePublished: post.publishedAt,
+            author: {
+              "@type": "Organization",
+              name: "Global Approach To Development",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Global Approach To Development",
+              url: "https://ngo-platform-399q.vercel.app",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://ngo-platform-399q.vercel.app/blog/${slug}`,
+            },
+          }),
+        }}
+      />
       {/* Hero */}
       <section className="relative min-h-[40vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">

@@ -222,24 +222,6 @@ model Project {
   @@map("projects")
 }
 
-// ─── IMPACT STORIES ───────────────────────────────────────────
-
-model ImpactStory {
-  id          String  @id @default(uuid())
-  title       String  @db.VarChar(255)
-  subtitle    String  @db.VarChar(255)
-  description String  @db.Text
-  ctaText     String? @db.VarChar(100)
-  image       String?
-  sortOrder   Int     @default(0)
-  isActive    Boolean @default(true)
-  createdAt   DateTime @default(now())
-
-  @@index([isActive])
-  @@index([sortOrder])
-  @@map("impact_stories")
-}
-
 // ─── CONTACT FORM ─────────────────────────────────────────────
 
 model ContactMessage {

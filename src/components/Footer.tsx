@@ -120,6 +120,8 @@ export default function Footer() {
         <div className="mt-8 border-t border-white/10 pt-8 text-center text-xs text-white/40">
           &copy; 2014 - {year} Global Approach To Development. All rights reserved. |{" "}
           <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+          {" | "}
+          <Link href="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>
