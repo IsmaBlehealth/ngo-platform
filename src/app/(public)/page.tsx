@@ -49,15 +49,15 @@ export default function HomePage() {
       {/* ═══ HERO — Overlapping Composition ═══ */}
       <HeroCarousel />
 
-      {/* ═══ STATS BAR — Overlapping hero ═══ */}
-      <section className="relative -mt-16 z-30 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="card-depth rounded-2xl bg-white p-6 sm:p-8">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+      {/* ═══ STATS BAR — Glass morphism, overlapping hero ═══ */}
+      <section className="relative z-30 px-4 md:px-10 max-w-7xl mx-auto -mt-16 md:-mt-24 mb-20">
+        <div className="rounded-xl p-8 md:p-10 backdrop-blur-2xl bg-white/10 border border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-tr before:from-white/5 before:to-transparent before:pointer-events-none">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((s, i) => (
               <ScrollReveal key={s.label} delay={i}>
-                <div className="text-center">
-                  <p className={`stat-number text-3xl font-black sm:text-4xl ${s.color}`}>{s.number}</p>
-                  <p className="mt-1 text-sm font-medium text-muted">{s.label}</p>
+                <div className="flex flex-col items-center justify-center text-center">
+                  <p className={`text-3xl md:text-4xl font-black text-accent mb-2 drop-shadow-sm`}>{s.number}</p>
+                  <p className="text-sm font-medium text-white/60 uppercase tracking-wider">{s.label}</p>
                 </div>
               </ScrollReveal>
             ))}

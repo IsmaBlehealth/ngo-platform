@@ -38,7 +38,7 @@ export default function HeroCarousel() {
 
   return (
     <section
-      className="relative h-[100vh] min-h-[600px] overflow-hidden bg-primary-dark"
+      className="relative w-full h-screen overflow-hidden flex items-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -64,126 +64,117 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      {/* Gradient — dark on left for text, transparent right to show photo */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/85 via-black/50 to-black/10" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+      {/* Overlays — Stitch style */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/85 via-black/50 to-black/10" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-black/10" />
 
-      {/* Text content — left aligned, clean hierarchy */}
-      <div className="relative z-20 flex h-full items-center">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 w-full">
-          <div className="max-w-2xl">
-            {/* Micro label — pill badge */}
-            <div
-              key={`label-${current}`}
-              className="mb-5 animate-fade-up"
-            >
-              <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-lg">
-                <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
-                {slide.microLabel}
-              </span>
-            </div>
-
-            {/* Main title — huge, tight, white with strong shadow */}
-            <h1
-              key={`title-${current}`}
-              className="animate-fade-up text-5xl font-black leading-[1.05] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
-              style={{
-                animationDelay: '0.1s',
-                textShadow: '0 2px 10px rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4), 0 0 60px rgba(0,0,0,0.2)',
-              }}
-            >
-              {slide.title}
-            </h1>
-
-            {/* Subtitle — clear, readable */}
-            <p
-              key={`sub-${current}`}
-              className="mt-6 max-w-lg text-base leading-relaxed text-white/95 sm:text-lg animate-fade-up"
-              style={{
-                animationDelay: '0.2s',
-                textShadow: '0 1px 6px rgba(0,0,0,0.5)',
-              }}
-            >
-              {slide.subtitle}
-            </p>
-
-            {/* CTA buttons */}
-            <div
-              className="mt-10 flex flex-wrap gap-4 animate-fade-up"
-              style={{ animationDelay: '0.3s' }}
-            >
-              <Link
-                href="/donate"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-8 py-4 text-sm font-bold text-white shadow-xl transition-all hover:bg-accent-light hover:shadow-2xl hover:-translate-y-0.5"
-              >
-                Donate Now
-                <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/60"
-              >
-                Learn More
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Dots indicator — centered bottom */}
-      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
-        <div className="flex items-center gap-2.5 rounded-full bg-black/40 backdrop-blur-md px-4 py-2.5">
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-500 ${
-                i === current
-                  ? 'w-8 bg-accent'
-                  : 'w-2 bg-white/50 hover:bg-white/80'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Arrow navigation — desktop only */}
+      {/* Arrow navigation — Stitch style */}
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/40 backdrop-blur-md p-3 text-white/90 transition-all hover:bg-black/60 hover:text-white md:block"
+        className="hidden md:flex absolute top-1/2 left-6 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-full items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all cursor-pointer shadow-lg"
       >
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/40 backdrop-blur-md p-3 text-white/90 transition-all hover:bg-black/60 hover:text-white md:block"
+        className="hidden md:flex absolute top-1/2 right-6 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-full items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all cursor-pointer shadow-lg"
       >
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
-      {/* Slide counter */}
-      <div className="absolute bottom-8 right-8 z-20 hidden sm:block">
-        <span className="rounded-full bg-black/40 backdrop-blur-md px-3 py-1.5 text-xs font-bold text-white/80 tabular-nums">
-          {String(current + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
-        </span>
+      {/* Text content — Stitch style */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-10 mt-16">
+        <div className="max-w-[680px]">
+          {/* Micro label — pill badge */}
+          <div key={`label-${current}`} className="animate-fade-up mb-6">
+            <span className="inline-flex items-center gap-2 bg-accent text-white px-3 py-1.5 rounded-full">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              <span className="text-xs font-bold tracking-widest uppercase">{slide.microLabel}</span>
+            </span>
+          </div>
+
+          {/* Main title — huge, Montserrat-style heavy */}
+          <h1
+            key={`title-${current}`}
+            className="animate-fade-up text-4xl md:text-7xl lg:text-[72px] font-black text-white leading-[1.1] tracking-tight mb-6"
+            style={{
+              animationDelay: '0.1s',
+              textShadow: '0 4px 24px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)',
+            }}
+          >
+            {slide.title}
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            key={`sub-${current}`}
+            className="animate-fade-up text-lg text-white/95 mb-10 max-w-xl leading-relaxed"
+            style={{ animationDelay: '0.2s' }}
+          >
+            {slide.subtitle}
+          </p>
+
+          {/* CTA buttons — Stitch style with glow */}
+          <div className="animate-fade-up flex flex-wrap items-center gap-4" style={{ animationDelay: '0.3s' }}>
+            <Link
+              href="/donate"
+              className="group flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(232,168,56,0.3)] hover:shadow-[0_0_30px_rgba(232,168,56,0.5)] hover:-translate-y-1 transition-all"
+            >
+              Donate Now
+              <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link
+              href="/about"
+              className="flex items-center justify-center px-8 py-4 rounded-full font-medium text-white border border-white/30 bg-white/10 backdrop-blur-xl hover:bg-white/20 hover:border-white/50 transition-all shadow-lg"
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
       </div>
 
-      {/* Wave divider at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-30">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path
-            d="M0,80 C360,120 720,40 1080,80 C1260,100 1380,90 1440,80 L1440,120 L0,120 Z"
-            fill="white"
-          />
+      {/* Bottom controls — Stitch style */}
+      <div className="absolute bottom-12 left-0 w-full z-20 px-6 md:px-10 pointer-events-none">
+        <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
+          <div className="hidden md:block w-32" />
+
+          {/* Dot indicators — Stitch style */}
+          <div className="pointer-events-auto flex items-center gap-2 bg-white/5 backdrop-blur-3xl px-4 py-2 rounded-full border border-white/10 shadow-lg">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  i === current
+                    ? 'w-8 bg-accent'
+                    : 'w-2 bg-white/30 hover:bg-white/60'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Slide counter — Stitch style */}
+          <div className="hidden md:flex pointer-events-auto items-center justify-center bg-white/5 backdrop-blur-3xl px-4 py-2 rounded-full border border-white/10 w-32 shadow-lg">
+            <span className="text-sm text-white/90 font-medium tracking-wider tabular-nums">
+              {String(current + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Wave divider — Stitch organic SVG */}
+      <div className="absolute bottom-0 left-0 w-full z-30 overflow-hidden leading-none pointer-events-none">
+        <svg className="w-full h-12 md:h-24 fill-white" preserveAspectRatio="none" viewBox="0 0 1200 120">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,111.47,192.5,91.8,235.6,77.92,279.7,64.18,321.39,56.44Z" />
         </svg>
       </div>
     </section>
