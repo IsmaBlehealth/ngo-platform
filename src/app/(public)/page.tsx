@@ -65,39 +65,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ PROGRAMS — BENTO GRID ═══ */}
-      <section className="bg-white pt-20 pb-24">
+      {/* ═══ PROGRAMS — STITCH BENTO GRID ═══ */}
+      <section className="bg-slate-50 pt-24 pb-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <p className="micro-header text-accent mb-3 text-center">What We Do</p>
-            <h2 className="text-tight text-center text-4xl font-black text-primary sm:text-5xl">
-              Our Programs
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-relaxed text-muted">
-              We work across three core areas to create lasting change in communities worldwide.
-            </p>
+            <div className="text-center mb-16 flex flex-col items-center">
+              <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">What We Do</h2>
+              <h1 className="text-4xl md:text-[84px] font-black leading-[1.1] mb-6 tracking-tight text-gray-900" style={{ fontFamily: 'var(--font-inter)' }}>
+                Our Programs
+              </h1>
+              <p className="text-lg max-w-[640px] text-gray-500 leading-relaxed">
+                We work across three core areas to create lasting change in communities worldwide.
+              </p>
+            </div>
           </ScrollReveal>
 
-          {/* Bento Grid: Large + 2 small */}
-          <div className="mt-16 bento-grid">
-            {/* Main story — 2x2 */}
-            <ScrollReveal className="bento-large">
-              <Link href={programs[0].href} className="group relative block h-full overflow-hidden rounded-2xl">
-                <Image
-                  src={programs[0].image}
-                  alt={programs[0].title}
-                  fill
-                  className="object-cover img-zoom-slow"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-transparent" />
-                <div className="relative flex h-full flex-col justify-end p-8 sm:p-10">
-                  <span className="micro-header text-accent mb-2">{programs[0].statLabel}</span>
-                  <p className="stat-number mb-2 text-5xl font-black">{programs[0].stat}</p>
-                  <h3 className="text-2xl font-bold text-white sm:text-3xl">{programs[0].title}</h3>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/70">{programs[0].desc}</p>
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-accent">
+          {/* Bento Grid — Stitch style */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
+            {/* Primary Card — 2x2 */}
+            <ScrollReveal className="md:col-span-2 md:row-span-2">
+              <Link href={programs[0].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] md:col-span-2 md:row-span-2 bento-hover block cursor-pointer border-gray-200/60 bg-white/90 h-full">
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <Image
+                    src={programs[0].image}
+                    alt={programs[0].title}
+                    fill
+                    className="object-cover img-zoom opacity-60"
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+                <div className="absolute inset-0 p-8 flex flex-col justify-end text-white z-10">
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-2">{programs[0].statLabel}</span>
+                  <span className="text-3xl md:text-4xl font-black text-accent mb-4">{programs[0].stat}</span>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight text-white">{programs[0].title}</h3>
+                  <p className="text-sm mb-6 max-w-md text-white/70">{programs[0].desc}</p>
+                  <div className="flex items-center text-sm font-semibold text-accent">
                     Learn More
-                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
@@ -105,23 +110,26 @@ export default function HomePage() {
               </Link>
             </ScrollReveal>
 
-            {/* Small card 1 */}
-            <ScrollReveal className="bento-tall" delay={1}>
-              <Link href={programs[1].href} className="group relative block h-full overflow-hidden rounded-2xl">
-                <Image
-                  src={programs[1].image}
-                  alt={programs[1].title}
-                  fill
-                  className="object-cover img-zoom-slow"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/30 to-transparent" />
-                <div className="relative flex h-full flex-col justify-end p-6">
-                  <span className="micro-header text-accent mb-2">{programs[1].statLabel}</span>
-                  <p className="stat-number mb-2 text-4xl font-black">{programs[1].stat}</p>
-                  <h3 className="text-xl font-bold text-white">{programs[1].title}</h3>
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-accent">
+            {/* Small card 1 — Education */}
+            <ScrollReveal delay={1}>
+              <Link href={programs[1].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] bento-hover block cursor-pointer border-gray-200/60 bg-white/90 h-full">
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <Image
+                    src={programs[1].image}
+                    alt={programs[1].title}
+                    fill
+                    className="object-cover img-zoom opacity-60"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-white z-10">
+                  <span className="text-2xl font-black text-accent mb-1 font-bold">{programs[1].stat}</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-3">{programs[1].statLabel}</span>
+                  <h3 className="text-lg font-bold mb-4 tracking-tight text-white">{programs[1].title}</h3>
+                  <div className="flex items-center text-sm font-semibold text-white">
                     Explore
-                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
@@ -129,23 +137,26 @@ export default function HomePage() {
               </Link>
             </ScrollReveal>
 
-            {/* Small card 2 */}
-            <ScrollReveal className="bento-tall" delay={2}>
-              <Link href={programs[2].href} className="group relative block h-full overflow-hidden rounded-2xl">
-                <Image
-                  src={programs[2].image}
-                  alt={programs[2].title}
-                  fill
-                  className="object-cover img-zoom-slow"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/30 to-transparent" />
-                <div className="relative flex h-full flex-col justify-end p-6">
-                  <span className="micro-header text-accent mb-2">{programs[2].statLabel}</span>
-                  <p className="stat-number mb-2 text-4xl font-black">{programs[2].stat}</p>
-                  <h3 className="text-xl font-bold text-white">{programs[2].title}</h3>
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-accent">
+            {/* Small card 2 — Healthcare */}
+            <ScrollReveal delay={2}>
+              <Link href={programs[2].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] bento-hover block cursor-pointer border-gray-200/60 bg-white/90 h-full">
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <Image
+                    src={programs[2].image}
+                    alt={programs[2].title}
+                    fill
+                    className="object-cover img-zoom opacity-60"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-white z-10">
+                  <span className="text-2xl font-black text-accent mb-1 font-bold">{programs[2].stat}</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-3">{programs[2].statLabel}</span>
+                  <h3 className="text-lg font-bold mb-4 tracking-tight text-white">{programs[2].title}</h3>
+                  <div className="flex items-center text-sm font-semibold text-white">
                     Explore
-                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
