@@ -4,6 +4,7 @@ import { emailSchema } from "@/lib/validation";
 import { rateLimit, getRateLimitKey, getClientIp, RATE_LIMITS } from "@/lib/rate-limit";
 import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
+import { sendEmail, passwordResetEmail } from "@/lib/email";
 import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
@@ -58,6 +59,13 @@ export async function POST(req: NextRequest) {
           userId: user.id,
           expires: new Date(Date.now() + 60 * 60 * 1000),
         },
+      });
+
+      const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+      const emailContent = passwordResetEmail(`${appUrl}/auth/reset-password?token=${rawToken}`);
+      await sendEmail({
+        to: email,
+        ...emailContent,
       });
 
       logger.info("Password reset token generated", { userId: user.id, email });

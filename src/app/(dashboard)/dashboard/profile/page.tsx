@@ -10,6 +10,12 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [changingPassword, setChangingPassword] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState("");
+
   useEffect(() => {
     if (session?.user) {
       setFirstName(session.user.name?.split(" ")[0] || "");
@@ -37,6 +43,35 @@ export default function ProfilePage() {
       setMessage("An error occurred");
     }
     setSaving(false);
+  }
+
+  async function handlePasswordChange(e: React.FormEvent) {
+    e.preventDefault();
+    if (newPassword !== confirmPassword) {
+      setPasswordMessage("Passwords do not match");
+      return;
+    }
+    setChangingPassword(true);
+    setPasswordMessage("");
+    try {
+      const res = await fetch("/api/user/password", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPassword, newPassword }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setPasswordMessage("Password changed successfully");
+        setCurrentPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+      } else {
+        setPasswordMessage(data.error || "Failed to change password");
+      }
+    } catch {
+      setPasswordMessage("An error occurred");
+    }
+    setChangingPassword(false);
   }
 
   return (
@@ -103,6 +138,50 @@ export default function ProfilePage() {
           className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors disabled:opacity-50"
         >
           {saving ? "Saving..." : "Save Changes"}
+        </button>
+      </form>
+
+      <form onSubmit={handlePasswordChange} className="liquid-glass-surface rounded-2xl p-8 shadow-lg space-y-6">
+        <h2 className="text-xl font-bold text-foreground">Change Password</h2>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-2">Current Password</label>
+          <input
+            type="password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+            className="w-full px-4 py-3 rounded-xl border border-primary/10 bg-[#FAF9F6] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-2">New Password</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            className="w-full px-4 py-3 rounded-xl border border-primary/10 bg-[#FAF9F6] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+          />
+          <p className="text-xs text-muted mt-1">Min 12 characters, uppercase, lowercase, number, special character</p>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-2">Confirm New Password</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full px-4 py-3 rounded-xl border border-primary/10 bg-[#FAF9F6] focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+          />
+        </div>
+        {passwordMessage && (
+          <p className={`text-sm ${passwordMessage.includes("success") ? "text-green-600" : "text-red-600"}`}>
+            {passwordMessage}
+          </p>
+        )}
+        <button
+          type="submit"
+          disabled={changingPassword}
+          className="px-6 py-3 bg-accent text-white rounded-xl font-medium hover:bg-accent-dark transition-colors disabled:opacity-50"
+        >
+          {changingPassword ? "Changing..." : "Change Password"}
         </button>
       </form>
     </div>

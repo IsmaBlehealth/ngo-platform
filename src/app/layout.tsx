@@ -18,13 +18,17 @@ export const metadata: Metadata = {
     "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa.",
   keywords: ["NGO", "nonprofit", "clean water", "education", "healthcare", "Africa"],
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || "http://localhost:3000"),
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Global Approach To Development",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Global Approach To Development — Progress Through Equal Opportunity",
@@ -36,7 +40,7 @@ export const metadata: Metadata = {
     title: "Global Approach To Development",
     description:
       "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
   },
   robots: {
     index: true,
