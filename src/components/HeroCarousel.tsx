@@ -64,52 +64,67 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      {/* Gradient overlays for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/60 to-transparent z-10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/70 to-transparent z-10" />
+      {/* Gradient — dark on left for text, transparent right to show photo */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/85 via-black/50 to-black/10" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
 
-      {/* Text content */}
+      {/* Text content — left aligned, clean hierarchy */}
       <div className="relative z-20 flex h-full items-center">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="micro-header text-accent mb-4 animate-fade-up">
-              {slide.microLabel}
-            </p>
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 w-full">
+          <div className="max-w-2xl">
+            {/* Micro label — pill badge */}
+            <div
+              key={`label-${current}`}
+              className="mb-5 animate-fade-up"
+            >
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-lg">
+                <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+                {slide.microLabel}
+              </span>
+            </div>
+
+            {/* Main title — huge, tight, white with strong shadow */}
             <h1
               key={`title-${current}`}
-              className="text-tight text-5xl font-black leading-tight text-white sm:text-7xl lg:text-8xl animate-fade-up"
-              style={{ animationDelay: '0.1s' }}
+              className="animate-fade-up text-5xl font-black leading-[1.05] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+              style={{
+                animationDelay: '0.1s',
+                textShadow: '0 2px 10px rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4), 0 0 60px rgba(0,0,0,0.2)',
+              }}
             >
               {slide.title}
             </h1>
+
+            {/* Subtitle — clear, readable */}
             <p
               key={`sub-${current}`}
-              className="mt-6 max-w-xl text-lg leading-relaxed text-white/70 animate-fade-up"
-              style={{ animationDelay: '0.2s' }}
+              className="mt-6 max-w-lg text-base leading-relaxed text-white/95 sm:text-lg animate-fade-up"
+              style={{
+                animationDelay: '0.2s',
+                textShadow: '0 1px 6px rgba(0,0,0,0.5)',
+              }}
             >
               {slide.subtitle}
             </p>
+
+            {/* CTA buttons */}
             <div
               className="mt-10 flex flex-wrap gap-4 animate-fade-up"
               style={{ animationDelay: '0.3s' }}
             >
-              <Link href="/donate" className="btn-primary">
+              <Link
+                href="/donate"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-8 py-4 text-sm font-bold text-white shadow-xl transition-all hover:bg-accent-light hover:shadow-2xl hover:-translate-y-0.5"
+              >
                 Donate Now
-                <svg
-                  className="btn-arrow h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
+                <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link href="/about" className="btn-secondary !border-white/30 !text-white hover:!bg-white/10">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/60"
+              >
                 Learn More
               </Link>
             </div>
@@ -117,9 +132,9 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      {/* Dots indicator */}
+      {/* Dots indicator — centered bottom */}
       <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5 rounded-full bg-black/40 backdrop-blur-md px-4 py-2.5">
           {heroSlides.map((_, i) => (
             <button
               key={i}
@@ -128,7 +143,7 @@ export default function HeroCarousel() {
               className={`h-2 rounded-full transition-all duration-500 ${
                 i === current
                   ? 'w-8 bg-accent'
-                  : 'w-2 bg-white/40 hover:bg-white/60'
+                  : 'w-2 bg-white/50 hover:bg-white/80'
               }`}
             />
           ))}
@@ -139,21 +154,28 @@ export default function HeroCarousel() {
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full glass p-3 text-white/80 transition-all hover:bg-white/20 hover:text-white md:block"
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/40 backdrop-blur-md p-3 text-white/90 transition-all hover:bg-black/60 hover:text-white md:block"
       >
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full glass p-3 text-white/80 transition-all hover:bg-white/20 hover:text-white md:block"
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/40 backdrop-blur-md p-3 text-white/90 transition-all hover:bg-black/60 hover:text-white md:block"
       >
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </button>
+
+      {/* Slide counter */}
+      <div className="absolute bottom-8 right-8 z-20 hidden sm:block">
+        <span className="rounded-full bg-black/40 backdrop-blur-md px-3 py-1.5 text-xs font-bold text-white/80 tabular-nums">
+          {String(current + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
+        </span>
+      </div>
 
       {/* Wave divider at bottom */}
       <div className="absolute bottom-0 left-0 right-0 z-30">
