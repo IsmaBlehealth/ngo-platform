@@ -25,16 +25,19 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-primary">GAD</span>
-          <span className="hidden text-sm font-medium text-muted sm:inline">
-            Global Approach To Development
-          </span>
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white font-bold text-sm">
+            GAD
+          </div>
+          <div className="hidden sm:block">
+            <span className="text-sm font-bold text-primary leading-tight block">Global Approach To</span>
+            <span className="text-sm font-bold text-primary leading-tight block">Development</span>
+          </div>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -42,7 +45,7 @@ export default function Header() {
               aria-current={isActive(link.href) ? "page" : undefined}
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 isActive(link.href)
-                  ? "bg-primary/5 text-primary"
+                  ? "bg-primary/10 text-primary"
                   : "text-foreground/60 hover:bg-gray-50 hover:text-foreground"
               }`}
             >
@@ -52,7 +55,7 @@ export default function Header() {
           <div className="ml-2 h-6 w-px bg-gray-200" />
           <Link
             href="/donate"
-            className="ml-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-light"
+            className="ml-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-accent-light hover:shadow-lg hover:scale-105"
           >
             Donate
           </Link>
@@ -85,7 +88,7 @@ export default function Header() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="flex items-center rounded-lg p-2 md:hidden"
+          className="flex items-center rounded-lg p-2 lg:hidden"
           aria-label="Toggle menu"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,7 +102,7 @@ export default function Header() {
       </nav>
 
       {open && (
-        <div className="border-t md:hidden">
+        <div className="border-t lg:hidden">
           <div className="space-y-1 px-4 pb-4 pt-2">
             {navLinks.map((link) => (
               <Link
@@ -107,9 +110,9 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 aria-current={isActive(link.href) ? "page" : undefined}
-                className={`block rounded-lg px-3 py-2 text-sm font-medium ${
+                className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
                   isActive(link.href)
-                    ? "bg-primary/5 text-primary"
+                    ? "bg-primary/10 text-primary"
                     : "text-foreground/60 hover:bg-gray-50"
                 }`}
               >
@@ -119,9 +122,9 @@ export default function Header() {
             <Link
               href="/donate"
               onClick={() => setOpen(false)}
-              className="mt-2 block rounded-full bg-accent px-5 py-2 text-center text-sm font-semibold text-white"
+              className="mt-2 block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-white shadow-md"
             >
-              Donate
+              Donate Now
             </Link>
             <div className="my-2 border-t" />
             {session ? (
@@ -129,14 +132,14 @@ export default function Header() {
                 <Link
                   href="/dashboard"
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 hover:bg-gray-50"
+                  className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-gray-50"
                 >
                   Dashboard
                 </Link>
                 <span className="block px-3 py-2 text-sm text-muted">{session.user?.name}</span>
                 <button
                   onClick={() => { signOut(); setOpen(false); }}
-                  className="block w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-foreground/60 hover:bg-gray-50"
+                  className="block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium text-foreground/60 hover:bg-gray-50"
                 >
                   Sign Out
                 </button>
@@ -145,7 +148,7 @@ export default function Header() {
               <Link
                 href="/auth/login"
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 hover:bg-gray-50"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-gray-50"
               >
                 Sign In
               </Link>
