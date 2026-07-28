@@ -7,153 +7,262 @@ export const metadata: Metadata = {
   description: "See the real impact of Global Approach To Development on communities in West Africa.",
 };
 
-const impactSections = [
-  {
-    title: "Classrooms Full of Hope",
-    subtitle: "Fueling the future, one desk at a time",
-    description: "With your support, hundreds of students now have access to a safe, engaging learning environment. From the youngest pupils to eager teens, your donations help provide the notebooks, pens, and classroom space they need to thrive.",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=700&fit=crop",
-    imageAlt: "African school children studying in classrooms",
-    stat: "332+",
-    statLabel: "Students Supported",
-    ctaText: "Help more kids learn",
-    ctaHref: "/donate",
-  },
-  {
-    title: "Team Spirit and Safe Play",
-    subtitle: "Building confidence through sport",
-    description: "Every week, these young players come together to train, play, and support one another — building teamwork, discipline, and confidence. Their enthusiasm is unstoppable. With your support, we can provide them with the resources to grow even further.",
-    image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&h=700&fit=crop",
-    imageAlt: "Children playing sports and building teamwork",
-    stat: "150+",
-    statLabel: "Young Athletes",
-    ctaText: "Support community sports",
-    ctaHref: "/donate",
-  },
-  {
-    title: "Tools That Transform Learning",
-    subtitle: "Creating spaces that inspire learning",
-    description: "Students now have lockers to store their materials and a new projector that brings interactive lessons to life. These improvements help create a more organized, engaging, and modern learning environment. A game changer in rural areas.",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=700&fit=crop",
-    imageAlt: "Classroom supplies and modern learning technology",
-    stat: "99%",
-    statLabel: "Passing Rate",
-    ctaText: "Support Classroom Upgrades",
-    ctaHref: "/donate",
-  },
+const stats = [
+  { number: 100000, label: "Lives Impacted", suffix: "+" },
+  { number: 50000, label: "Clean Water Access", suffix: "+" },
+  { number: 332, label: "Students Enrolled", suffix: "" },
+  { number: 99, label: "Passing Rate", suffix: "%" },
+  { number: 3, label: "Countries Served", suffix: "" },
+  { number: 15000, label: "Patients Treated", suffix: "+" },
 ];
 
-const stats = [
-  { number: "332+", label: "Students Educated" },
-  { number: "99%", label: "Passing Rate" },
-  { number: "3", label: "Villages Served" },
-  { number: "10+", label: "Years of Impact" },
+const impactStories = [
+  {
+    icon: "water_drop",
+    category: "Water & Sanitation",
+    title: "Clean Water Transformation",
+    description: "By installing solar-powered boreholes and community water points, we've drastically reduced waterborne diseases and freed up hours previously spent walking for water, allowing children to attend school.",
+    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1200&h=700&fit=crop",
+    imageAlt: "Clean water project in West Africa",
+    stat: "75%",
+    statLabel: "Disease Reduction",
+  },
+  {
+    icon: "school",
+    category: "Education",
+    title: "Education Excellence",
+    description: "Providing resources, teacher training, and safe learning environments has resulted in unprecedented academic success in our partner communities.",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=700&fit=crop",
+    imageAlt: "Students in classrooms in Côte d'Ivoire",
+    stat: "99%",
+    statLabel: "Passing Rate",
+  },
+  {
+    icon: "health_and_safety",
+    category: "Healthcare",
+    title: "Healthcare Access",
+    description: "Our community clinics provide essential primary care, maternal health services, and preventative medicine, building healthier, more resilient populations.",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=700&fit=crop",
+    imageAlt: "Healthcare clinic serving communities",
+    stat: "15K+",
+    statLabel: "Patients Treated",
+  },
 ];
 
 export default function ImpactPage() {
   return (
     <>
-      <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden wave-divider">
-        <div className="absolute inset-0">
+      {/* Hero — full-screen cinematic */}
+      <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&h=800&fit=crop"
+            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&h=1080&fit=crop"
             alt="Community impact across West Africa"
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 hero-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/80 via-primary/60 to-background" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 z-10">
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our Impact</span>
-          <h1 className="mt-2 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Real Results. Real Change.
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent">
+            Real Results
+          </span>
+          <h1 className="text-5xl md:text-7xl font-black text-white drop-shadow-2xl font-[family-name:var(--font-montserrat)]">
+            Our Impact
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/80">
-            Every dollar donated goes directly to our programs. See how your generosity is transforming communities across West Africa.
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+            Measurable, lasting change in communities around the world through targeted, data-driven development initiatives.
           </p>
         </div>
-      </section>
+      </header>
 
-      <section className="section-padding bg-white">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {/* Stats Grid — liquid-glass cards */}
+      <section className="py-24 bg-primary-dark relative z-20">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-[family-name:var(--font-montserrat)]">
+              By The Numbers
+            </h2>
+            <div className="w-24 h-1 gold-bg-gradient mx-auto rounded-full" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-4xl font-bold stat-number sm:text-5xl">{stat.number}</p>
-                <p className="mt-2 text-sm font-medium text-muted sm:text-base">{stat.label}</p>
+              <div
+                key={stat.label}
+                className="liquid-glass p-8 rounded-xl heavy-shadow hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div className="text-4xl md:text-5xl font-black gold-gradient mb-2 font-[family-name:var(--font-montserrat)]">
+                  {stat.number >= 1000
+                    ? `${(stat.number / 1000).toFixed(stat.number >= 10000 ? 0 : 0)}K`
+                    : stat.number}
+                  {stat.suffix}
+                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-white/60">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {impactSections.map((section, i) => (
-        <section
-          key={section.title}
-          className={`section-padding ${i % 2 === 1 ? "bg-gray-50" : "bg-white"}`}
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className={`grid grid-cols-1 gap-12 lg:grid-cols-2 items-center ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}>
-              <div className={`relative ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src={section.image}
-                    alt={section.imageAlt}
-                    width={1200}
-                    height={700}
-                    className="object-cover"
-                  />
+      {/* Impact Stories — alternating with diagonal separators */}
+      {/* Story 1 */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <Image
+                src={impactStories[0].image}
+                alt={impactStories[0].imageAlt}
+                width={1200}
+                height={700}
+                className="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl heavy-shadow"
+              />
+              <div className="absolute -bottom-6 -right-6 liquid-glass-light p-6 rounded-xl heavy-shadow hidden md:block">
+                <div className="text-4xl font-black gold-gradient font-[family-name:var(--font-montserrat)]">
+                  {impactStories[0].stat}
                 </div>
-                <div className="absolute -bottom-6 -right-6 rounded-2xl bg-white p-6 shadow-xl sm:-bottom-8 sm:-right-8">
-                  <p className="text-3xl font-bold stat-number">{section.stat}</p>
-                  <p className="text-sm font-medium text-muted">{section.statLabel}</p>
+                <div className="text-xs font-bold uppercase tracking-wider text-primary mt-1">
+                  {impactStories[0].statLabel}
                 </div>
               </div>
-              <div className={`${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                <span className="text-sm font-semibold uppercase tracking-wider text-accent">Impact Story</span>
-                <h2 className="mt-2 text-3xl font-bold text-primary sm:text-4xl">{section.title}</h2>
-                <p className="mt-2 text-lg font-medium text-accent">{section.subtitle}</p>
-                <p className="mt-6 text-muted leading-relaxed">{section.description}</p>
-                <div className="mt-8">
-                  <Link
-                    href={section.ctaHref}
-                    className="rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg"
-                  >
-                    {section.ctaText}
-                  </Link>
+            </div>
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className="flex items-center gap-3 text-accent">
+                <span className="text-2xl">💧</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em]">
+                  {impactStories[0].category}
+                </span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-primary font-[family-name:var(--font-montserrat)]">
+                {impactStories[0].title}
+              </h3>
+              <p className="text-lg text-muted leading-relaxed">
+                {impactStories[0].description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Diagonal Separator */}
+      <div className="w-full h-24 bg-gray-50 separator-clip-diagonal-down" />
+
+      {/* Story 2 */}
+      <section className="py-24 bg-gray-50 relative overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 text-accent">
+                <span className="text-2xl">📚</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em]">
+                  {impactStories[1].category}
+                </span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-primary font-[family-name:var(--font-montserrat)]">
+                {impactStories[1].title}
+              </h3>
+              <p className="text-lg text-muted leading-relaxed">
+                {impactStories[1].description}
+              </p>
+            </div>
+            <div className="relative">
+              <Image
+                src={impactStories[1].image}
+                alt={impactStories[1].imageAlt}
+                width={1200}
+                height={700}
+                className="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl heavy-shadow"
+              />
+              <div className="absolute -bottom-6 -left-6 liquid-glass-light p-6 rounded-xl heavy-shadow hidden md:block">
+                <div className="text-4xl font-black gold-gradient font-[family-name:var(--font-montserrat)]">
+                  {impactStories[1].stat}
+                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-primary mt-1">
+                  {impactStories[1].statLabel}
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
-      <section className="relative accent-gradient py-20 text-center text-white overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-3xl px-4">
-          <h2 className="text-3xl font-bold sm:text-4xl">Reach Out to Us Now!</h2>
-          <p className="mt-4 text-lg text-white/90">
-            Join us in making a difference by supporting crucial initiatives that provide education, healthcare, and clean water to underserved communities. Contact us today to learn more.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+      {/* Diagonal Separator */}
+      <div className="w-full h-24 bg-background separator-clip-diagonal-up" />
+
+      {/* Story 3 */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <Image
+                src={impactStories[2].image}
+                alt={impactStories[2].imageAlt}
+                width={1200}
+                height={700}
+                className="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl heavy-shadow"
+              />
+              <div className="absolute -bottom-6 -right-6 liquid-glass-light p-6 rounded-xl heavy-shadow hidden md:block">
+                <div className="text-4xl font-black gold-gradient font-[family-name:var(--font-montserrat)]">
+                  {impactStories[2].stat}
+                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-primary mt-1">
+                  {impactStories[2].statLabel}
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className="flex items-center gap-3 text-accent">
+                <span className="text-2xl">🏥</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em]">
+                  {impactStories[2].category}
+                </span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-primary font-[family-name:var(--font-montserrat)]">
+                {impactStories[2].title}
+              </h3>
+              <p className="text-lg text-muted leading-relaxed">
+                {impactStories[2].description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-32 overflow-hidden bg-primary-dark">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&h=800&fit=crop"
+            alt="Make an impact"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark z-10" />
+        <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4 block">
+            Make an Impact
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-10 font-[family-name:var(--font-montserrat)]">
+            Your Donation Changes Lives
+          </h2>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <Link
-              href="/contact"
-              className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-primary transition-colors hover:bg-gray-100 hover:shadow-lg"
+              href="/donate"
+              className="w-full sm:w-auto gold-bg-gradient text-primary-dark font-bold text-lg px-10 py-4 rounded-full hover:opacity-90 active:scale-95 duration-150 heavy-shadow transition-all text-center"
             >
-              Contact Us
+              Donate $25
             </Link>
             <Link
               href="/donate"
-              className="rounded-full border-2 border-white px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+              className="w-full sm:w-auto bg-transparent border border-white/20 text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-white/5 active:scale-95 duration-150 transition-all text-center"
             >
-              Donate Now
+              Custom Amount
             </Link>
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg className="relative block w-full h-[60px]" viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path fill="rgba(255,255,255,0.15)" d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,80C672,85,768,75,864,64C960,53,1056,43,1152,48C1248,53,1344,75,1392,85.3L1440,96L1440,120L0,120Z" />
-          </svg>
         </div>
       </section>
     </>

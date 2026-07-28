@@ -66,15 +66,15 @@ export default function HomePage() {
       </section>
 
       {/* ═══ PROGRAMS — STITCH BENTO GRID ═══ */}
-      <section className="bg-slate-50 pt-24 pb-28">
+      <section className="bg-[#FAF9F6] pt-24 pb-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16 flex flex-col items-center">
               <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">What We Do</h2>
-              <h1 className="text-4xl md:text-[84px] font-black leading-[1.1] mb-6 tracking-tight text-gray-900" style={{ fontFamily: 'var(--font-inter)' }}>
+              <h1 className="text-4xl md:text-[84px] font-black leading-[1.1] mb-6 tracking-tight text-foreground" style={{ fontFamily: 'var(--font-inter)' }}>
                 Our Programs
               </h1>
-              <p className="text-lg max-w-[640px] text-gray-500 leading-relaxed">
+              <p className="text-lg max-w-[640px] text-muted leading-relaxed">
                 We work across three core areas to create lasting change in communities worldwide.
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
             {/* Primary Card — 2x2 */}
             <ScrollReveal className="md:col-span-2 md:row-span-2">
-              <Link href={programs[0].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] md:col-span-2 md:row-span-2 bento-hover block cursor-pointer border-gray-200/60 bg-white/90 h-full">
+              <Link href={programs[0].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] md:col-span-2 md:row-span-2 bento-hover block cursor-pointer border-primary/10 bg-white/90 h-full">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <Image
                     src={programs[0].image}
@@ -112,7 +112,7 @@ export default function HomePage() {
 
             {/* Small card 1 — Education */}
             <ScrollReveal delay={1}>
-              <Link href={programs[1].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] bento-hover block cursor-pointer border-gray-200/60 bg-white/90 h-full">
+              <Link href={programs[1].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] bento-hover block cursor-pointer border-primary/10 bg-white/90 h-full">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <Image
                     src={programs[1].image}
@@ -139,7 +139,7 @@ export default function HomePage() {
 
             {/* Small card 2 — Healthcare */}
             <ScrollReveal delay={2}>
-              <Link href={programs[2].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] bento-hover block cursor-pointer border-gray-200/60 bg-white/90 h-full">
+              <Link href={programs[2].href} className="group relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.06),0_20px_40px_-8px_rgba(0,0,0,0.08)] bento-hover block cursor-pointer border-primary/10 bg-white/90 h-full">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <Image
                     src={programs[2].image}
@@ -168,14 +168,14 @@ export default function HomePage() {
       </section>
 
       {/* ═══ DIAGONAL SEPARATOR → ABOUT ═══ */}
-      <div className="relative -mt-1 bg-white">
+      <div className="relative -mt-1 bg-[#FAF9F6]">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 0L1440 60L1440 80L0 80Z" fill="#f8fafc"/>
+          <path d="M0 0L1440 60L1440 80L0 80Z" fill="#f1f4f9"/>
         </svg>
       </div>
 
       {/* ═══ ABOUT — Overlapping Card ═══ */}
-      <section className="relative bg-slate-50 pattern-dots pt-24 pb-28">
+      <section className="relative bg-[#f1f4f9] pattern-dots pt-24 pb-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <ScrollReveal>
@@ -228,14 +228,14 @@ export default function HomePage() {
       </section>
 
       {/* ═══ DIAGONAL SEPARATOR → IMPACT ═══ */}
-      <div className="relative -mt-1 bg-slate-50">
+      <div className="relative -mt-1 bg-[#f1f4f9]">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 80L1440 20L1440 80L0 80Z" fill="white"/>
+          <path d="M0 80L1440 20L1440 80L0 80Z" fill="#FAF9F6"/>
         </svg>
       </div>
 
       {/* ═══ IMPACT — Alternating with Floating Stats ═══ */}
-      <section className="bg-white pt-16 pb-24">
+      <section className="bg-[#FAF9F6] pt-16 pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="micro-header text-accent mb-3 text-center">Real Results</p>
@@ -282,7 +282,7 @@ export default function HomePage() {
                         />
                       </div>
                       {/* Floating stat card — overlaps the image */}
-                      <div className="overlap-up absolute -bottom-8 right-6 rounded-xl bg-white p-5 shadow-primary sm:right-8">
+                      <div className="overlap-up absolute -bottom-8 right-6 rounded-xl liquid-glass-light p-5 shadow-primary sm:right-8">
                         <p className="stat-number text-3xl font-black">{item.stat}</p>
                         <p className="text-xs font-bold uppercase tracking-wider text-muted">{item.statLabel}</p>
                       </div>
@@ -307,14 +307,14 @@ export default function HomePage() {
       </section>
 
       {/* ═══ DIAGONAL SEPARATOR → DONATE ═══ */}
-      <div className="relative -mt-1 bg-white">
+      <div className="relative -mt-1 bg-[#FAF9F6]">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 0L1440 60L1440 80L0 80Z" fill="#0f2137"/>
+          <path d="M0 0L1440 60L1440 80L0 80Z" fill="#1B1F23"/>
         </svg>
       </div>
 
       {/* ═══ DONATE CTA — Full bleed with overlay ═══ */}
-      <section className="relative overflow-hidden bg-primary-dark py-24">
+      <section className="relative overflow-hidden bg-foreground py-24">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1920&q=80"
@@ -351,14 +351,14 @@ export default function HomePage() {
       </section>
 
       {/* ═══ DIAGONAL SEPARATOR → CONTACT ═══ */}
-      <div className="relative -mt-1 bg-primary-dark">
+      <div className="relative -mt-1 bg-foreground">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 80L1440 20L1440 80L0 80Z" fill="white"/>
+          <path d="M0 80L1440 20L1440 80L0 80Z" fill="#FAF9F6"/>
         </svg>
       </div>
 
       {/* ═══ CONTACT ═══ */}
-      <section className="bg-white pb-24 pt-16">
+      <section className="bg-[#FAF9F6] pb-24 pt-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="micro-header text-accent mb-3 text-center">Get In Touch</p>
@@ -374,7 +374,7 @@ export default function HomePage() {
               { icon: '✉️', label: 'Email', value: 'info@gapdev.org' },
             ].map((c, i) => (
               <ScrollReveal key={c.label} delay={i}>
-                <div className="card-depth-hover rounded-2xl p-8 text-center">
+                <div className="liquid-glass-surface card-depth-hover rounded-2xl p-8 text-center">
                   <span className="text-4xl">{c.icon}</span>
                   <p className="micro-header text-accent mt-4 mb-2">{c.label}</p>
                   <p className="text-sm font-medium text-muted whitespace-pre-line">{c.value}</p>

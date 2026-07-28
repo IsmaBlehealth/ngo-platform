@@ -25,7 +25,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
+    <header className="sticky top-0 z-50 glass-nav shadow-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white font-bold text-sm">
@@ -46,32 +46,32 @@ export default function Header() {
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 isActive(link.href)
                   ? "bg-primary/10 text-primary"
-                  : "text-foreground/60 hover:bg-gray-50 hover:text-foreground"
+                  : "text-foreground/60 hover:bg-primary/5 hover:text-primary"
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <div className="ml-2 h-6 w-px bg-gray-200" />
+          <div className="ml-2 h-6 w-px bg-primary/10" />
           <Link
             href="/donate"
             className="ml-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-accent-light hover:shadow-lg hover:scale-105"
           >
             Donate
           </Link>
-          <div className="ml-2 h-6 w-px bg-gray-200" />
+          <div className="ml-2 h-6 w-px bg-primary/10" />
           {session ? (
             <>
               <Link
                 href="/dashboard"
-                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-gray-50 hover:text-foreground"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
               >
                 Dashboard
               </Link>
               <span className="px-2 text-sm text-muted">{session.user?.name}</span>
               <button
                 onClick={() => signOut()}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-gray-50 hover:text-foreground"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
               >
                 Sign Out
               </button>
@@ -79,7 +79,7 @@ export default function Header() {
           ) : (
             <Link
               href="/auth/login"
-              className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-gray-50 hover:text-foreground"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
             >
               Sign In
             </Link>
@@ -102,7 +102,7 @@ export default function Header() {
       </nav>
 
       {open && (
-        <div className="border-t lg:hidden">
+        <div className="border-t border-primary/10 lg:hidden">
           <div className="space-y-1 px-4 pb-4 pt-2">
             {navLinks.map((link) => (
               <Link
@@ -113,7 +113,7 @@ export default function Header() {
                 className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
                   isActive(link.href)
                     ? "bg-primary/10 text-primary"
-                    : "text-foreground/60 hover:bg-gray-50"
+                    : "text-foreground/60 hover:bg-primary/5"
                 }`}
               >
                 {link.label}
@@ -126,20 +126,20 @@ export default function Header() {
             >
               Donate Now
             </Link>
-            <div className="my-2 border-t" />
+            <div className="my-2 border-t border-primary/10" />
             {session ? (
               <>
                 <Link
                   href="/dashboard"
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-gray-50"
+                  className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-primary/5"
                 >
                   Dashboard
                 </Link>
                 <span className="block px-3 py-2 text-sm text-muted">{session.user?.name}</span>
                 <button
                   onClick={() => { signOut(); setOpen(false); }}
-                  className="block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium text-foreground/60 hover:bg-gray-50"
+                  className="block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium text-foreground/60 hover:bg-primary/5"
                 >
                   Sign Out
                 </button>
@@ -148,7 +148,7 @@ export default function Header() {
               <Link
                 href="/auth/login"
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-gray-50"
+                className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-primary/5"
               >
                 Sign In
               </Link>
