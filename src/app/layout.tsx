@@ -22,6 +22,32 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Global Approach To Development",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Global Approach To Development — Progress Through Equal Opportunity",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Global Approach To Development",
+    description:
+      "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

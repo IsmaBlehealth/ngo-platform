@@ -5,6 +5,19 @@ import Image from "next/image";
 
 const amounts = [25, 50, 100, 250, 500];
 
+const donateSchema = {
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  name: "Donate to Global Approach To Development",
+  description:
+    "Support clean water, education, and healthcare programs in West Africa. 100% of donations go directly to programs.",
+  recipient: {
+    "@type": "NGO",
+    name: "Global Approach To Development",
+    url: typeof window !== "undefined" ? window.location.origin : "",
+  },
+};
+
 const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -64,6 +77,10 @@ export default function DonatePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+      />
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">

@@ -3,6 +3,33 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Global Approach To Development",
+  description:
+    "Get in touch with Global Approach To Development. Reach us by phone, email, or visit our office in Ontario, CA.",
+  url: typeof window !== "undefined" ? window.location.origin + "/contact" : "",
+  mainEntity: {
+    "@type": "Organization",
+    name: "Global Approach To Development",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+1-909-728-8111",
+      email: "info@gapdev.org",
+      contactType: "customer service",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "3200 E Guasti Rd., Suite 100",
+        addressLocality: "Ontario",
+        addressRegion: "CA",
+        postalCode: "91761",
+        addressCountry: "US",
+      },
+    },
+  },
+};
+
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -58,6 +85,10 @@ export default function ContactPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">

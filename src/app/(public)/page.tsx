@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
+import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo";
 
 export const metadata = {
   title: "Home",
@@ -61,8 +62,14 @@ export default async function HomePage() {
     // Use fallback data if DB is unavailable
   }
 
+  const schemas = [generateOrganizationSchema(), generateWebsiteSchema()];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">

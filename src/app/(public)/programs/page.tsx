@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { generateProgramSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Programs",
@@ -78,8 +79,21 @@ export default async function ProgramsPage() {
     // Use fallback data if DB is unavailable
   }
 
+  const programSchemas = programs.map((p) =>
+    generateProgramSchema({
+      slug: p.id,
+      title: p.title,
+      description: p.description,
+      url: `${process.env.NEXT_PUBLIC_URL || "http://localhost:3000"}/programs#${p.id}`,
+    })
+  );
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(programSchemas) }}
+      />
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { generateOrganizationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -8,8 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const schema = generateOrganizationSchema();
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
