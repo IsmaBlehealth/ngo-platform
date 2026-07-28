@@ -1,340 +1,433 @@
-import Link from "next/link";
-import Image from "next/image";
-import { prisma } from "@/lib/prisma";
-import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo";
+import Link from 'next/link';
+import Image from 'next/image';
+import ScrollReveal from '@/components/ScrollReveal';
+import FloatingDonateBar from '@/components/FloatingDonateBar';
 
-export const metadata = {
-  title: "Home",
-  description:
-    "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa. Global Approach To Development — Progress Through Equal Opportunity.",
-};
-
-const fallbackPrograms = [
+const programs = [
   {
-    slug: "clean-water",
-    title: "Clean Water Initiatives",
-    shortDescription: "We work to provide access to clean and safe drinking water in underserved communities.",
-    icon: "💧",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=600&h=400&fit=crop",
+    title: 'Clean Water Initiative',
+    desc: 'Building sustainable water systems in communities across Africa and Latin America, providing access to clean drinking water for thousands.',
+    icon: '💧',
+    image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&q=80',
+    stat: '50K+',
+    statLabel: 'Lives Changed',
+    href: '/programs#water',
   },
   {
-    slug: "education",
-    title: "Education & Scholarships",
-    shortDescription: "Education is a powerful tool for change. We offer scholarships and educational support to children and young adults.",
-    icon: "📚",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&h=400&fit=crop",
+    title: 'Education & Scholarships',
+    desc: 'Empowering the next generation through education programs, school construction, and scholarship opportunities in Côte d\'Ivoire and Mali.',
+    icon: '📚',
+    image: 'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80',
+    stat: '332',
+    statLabel: 'Students Enrolled',
+    href: '/programs/education',
   },
   {
-    slug: "healthcare",
-    title: "Healthcare & Medical Aid",
-    shortDescription: "We provide essential healthcare services to communities in need, including medical camps and maternal and child health.",
-    icon: "🏥",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
+    title: 'Healthcare Programs',
+    desc: 'Delivering essential healthcare services to underserved communities through mobile clinics and community health workers.',
+    icon: '🏥',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
+    stat: '15K+',
+    statLabel: 'Patients Treated',
+    href: '/programs#health',
   },
 ];
 
 const stats = [
-  { number: "332+", label: "Students Educated", icon: "🎓" },
-  { number: "99%", label: "Passing Rate", icon: "📊" },
-  { number: "3", label: "Villages Served", icon: "🏘️" },
-  { number: "10+", label: "Years of Impact", icon: "🌍" },
+  { number: '2014', label: 'Founded', color: 'text-primary' },
+  { number: '100K+', label: 'Lives Impacted', color: 'text-accent' },
+  { number: '3', label: 'Countries', color: 'text-success' },
+  { number: '99%', label: 'Passing Rate', color: 'text-primary' },
 ];
 
-export default async function HomePage() {
-  let programs = fallbackPrograms;
-
-  try {
-    const dbPrograms = await prisma.program.findMany({
-      where: { isActive: true },
-      orderBy: { sortOrder: "asc" },
-    });
-
-    if (dbPrograms.length > 0) {
-      programs = dbPrograms.map((p, i) => ({
-        slug: p.slug,
-        title: p.title,
-        shortDescription: p.shortDescription,
-        icon: p.icon || "📋",
-        image: fallbackPrograms[i]?.image || fallbackPrograms[0].image,
-      }));
-    }
-  } catch {
-    // Use fallback data if DB is unavailable
-  }
-
-  const schemas = [generateOrganizationSchema(), generateWebsiteSchema()];
-
+export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-      />
-      {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center hero-gradient overflow-hidden">
+      <FloatingDonateBar />
+
+      {/* ═══ HERO — Overlapping Composition ═══ */}
+      <section className="relative min-h-[100vh] overflow-hidden bg-primary-dark">
+        {/* Background image with parallax feel */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1920&h=1080&fit=crop"
-            alt="Children in West Africa"
-            fill
-            className="object-cover opacity-30"
-            priority
-          />
-          <div className="absolute inset-0 hero-overlay" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 z-10">
-          <div className="max-w-3xl">
-            <span className="inline-block rounded-full bg-accent/20 px-4 py-1.5 text-sm font-semibold text-accent mb-6">
-              Progress Through Equal Opportunity
-            </span>
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-tight">
-              Every Child Deserves a <span className="text-accent">Chance to Thrive</span>
-            </h1>
-            <p className="mt-6 text-lg text-white/80 max-w-xl leading-relaxed">
-              We believe in creating pathways to education, health, and empowerment, ensuring that underserved communities can thrive and contribute globally.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/donate"
-                className="rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/25"
-              >
-                Donate Now
-              </Link>
-              <Link
-                href="/programs"
-                className="rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
-              >
-                Our Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-        {/* Wave divider */}
-        <div className="absolute bottom-0 left-0 w-full">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,80C672,85,768,75,864,64C960,53,1056,43,1152,48C1248,53,1344,75,1392,85.3L1440,96L1440,120L0,120Z" fill="white"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="relative -mt-1 bg-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 -mt-8 relative z-10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl bg-white p-6 shadow-xl shadow-primary/5 text-center card-hover">
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-3xl font-bold text-primary">{stat.number}</div>
-                <div className="mt-1 text-sm text-muted">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Programs Section */}
-      <section className="section-padding pt-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <span className="text-sm font-semibold uppercase tracking-wider text-accent">What We Do</span>
-            <h2 className="mt-2 text-3xl font-bold text-primary sm:text-4xl">Our Programs</h2>
-            <p className="mt-4 text-muted max-w-2xl mx-auto">
-              Three pillars driving lasting change in communities across West Africa.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {programs.map((program) => (
-              <Link
-                key={program.slug}
-                href={`/programs#${program.slug}`}
-                className="group rounded-2xl overflow-hidden bg-white shadow-lg shadow-primary/5 card-hover"
-              >
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={program.image}
-                    alt={program.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <span className="absolute bottom-4 left-4 text-4xl">{program.icon}</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
-                    {program.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted leading-relaxed">{program.shortDescription}</p>
-                  <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                    Learn More →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Preview with Image */}
-      <section className="section-padding bg-gray-50">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&h=600&fit=crop"
-                  alt="Community empowerment in West Africa"
-                  width={800}
-                  height={600}
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 rounded-2xl bg-accent p-6 text-white shadow-xl hidden lg:block">
-                <div className="text-2xl font-bold">10+</div>
-                <div className="text-sm text-white/80">Years of Impact</div>
-              </div>
-            </div>
-            <div>
-              <span className="text-sm font-semibold uppercase tracking-wider text-accent">
-                About Us
-              </span>
-              <h2 className="mt-2 text-3xl font-bold text-primary sm:text-4xl">
-                Empowering Communities Across West Africa
-              </h2>
-              <p className="mt-6 text-muted leading-relaxed">
-                Global Approach To Development is a 501(c)(3) non-profit organization founded in 2014 to improve the lives of underserved, low-income, and minority populations. We understand that through empowerment and the elimination of poverty, health disparities, and inequality, individuals can reach a state of optimal well-being.
-              </p>
-              <p className="mt-4 text-muted leading-relaxed">
-                Our mission is to eliminate poverty, health disparities, gender inequality, and improve the overall health of underserved populations. We operate in Cote d&apos;Ivoire and Mali, bringing clean water, education, and healthcare to communities in need.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/about"
-                  className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
-                >
-                  About Us
-                </Link>
-                <Link
-                  href="/programs"
-                  className="rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
-                >
-                  Our Programs
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Impact Numbers */}
-      <section className="relative section-padding hero-gradient overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=1080&fit=crop"
-            alt="Impact background"
+            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1920&q=80"
+            alt="Children smiling"
             fill
             className="object-cover"
+            priority
           />
+          {/* Gradient mask: transparent → dark */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/80 to-transparent" />
         </div>
-        <div className="relative mx-auto max-w-7xl text-center z-10">
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our Impact</span>
-          <h2 className="mt-2 text-3xl font-bold text-white sm:text-4xl">Making a Real Difference</h2>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-5xl font-bold text-accent">{stat.number}</div>
-                <div className="mt-2 text-white/70">{stat.label}</div>
+
+        <div className="relative z-10 flex min-h-[100vh] items-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <ScrollReveal>
+                <p className="micro-header text-accent mb-4">
+                  Global Approach To Development
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={1}>
+                <h1 className="text-tight text-5xl font-black leading-tight text-white sm:text-7xl lg:text-8xl">
+                  Every Child
+                  <br />
+                  <span className="stat-number">Deserves a Future</span>
+                </h1>
+              </ScrollReveal>
+              <ScrollReveal delay={2}>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+                  Building sustainable futures through clean water, education, and healthcare
+                  in communities across Africa and Latin America.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={3}>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link href="/donate" className="btn-primary">
+                    Donate Now
+                    <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  <Link href="/about" className="btn-secondary !border-white/30 !text-white hover:!bg-white/10">
+                    Learn More
+                  </Link>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+
+        {/* Wave divider at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-20">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <path d="M0,80 C360,120 720,40 1080,80 C1260,100 1380,90 1440,80 L1440,120 L0,120 Z" fill="white"/>
+          </svg>
+        </div>
+
+        {/* Overlapping stats bar — floats over hero */}
+        <div className="overlap-up relative z-30 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="card-depth rounded-2xl bg-white p-6 sm:p-8">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+              {stats.map((s, i) => (
+                <ScrollReveal key={s.label} delay={i}>
+                  <div className="text-center">
+                    <p className={`stat-number text-3xl font-black sm:text-4xl ${s.color}`}>{s.number}</p>
+                    <p className="mt-1 text-sm font-medium text-muted">{s.label}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PROGRAMS — BENTO GRID ═══ */}
+      <section className="bg-white pt-20 pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <p className="micro-header text-accent mb-3 text-center">What We Do</p>
+            <h2 className="text-tight text-center text-4xl font-black text-primary sm:text-5xl">
+              Our Programs
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-relaxed text-muted">
+              We work across three core areas to create lasting change in communities worldwide.
+            </p>
+          </ScrollReveal>
+
+          {/* Bento Grid: Large + 2 small */}
+          <div className="mt-16 bento-grid">
+            {/* Main story — 2x2 */}
+            <ScrollReveal className="bento-large">
+              <Link href={programs[0].href} className="group relative block h-full overflow-hidden rounded-2xl">
+                <Image
+                  src={programs[0].image}
+                  alt={programs[0].title}
+                  fill
+                  className="object-cover img-zoom-slow"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-transparent" />
+                <div className="relative flex h-full flex-col justify-end p-8 sm:p-10">
+                  <span className="micro-header text-accent mb-2">{programs[0].statLabel}</span>
+                  <p className="stat-number mb-2 text-5xl font-black">{programs[0].stat}</p>
+                  <h3 className="text-2xl font-bold text-white sm:text-3xl">{programs[0].title}</h3>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/70">{programs[0].desc}</p>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-accent">
+                    Learn More
+                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            </ScrollReveal>
+
+            {/* Small card 1 */}
+            <ScrollReveal className="bento-tall" delay={1}>
+              <Link href={programs[1].href} className="group relative block h-full overflow-hidden rounded-2xl">
+                <Image
+                  src={programs[1].image}
+                  alt={programs[1].title}
+                  fill
+                  className="object-cover img-zoom-slow"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/30 to-transparent" />
+                <div className="relative flex h-full flex-col justify-end p-6">
+                  <span className="micro-header text-accent mb-2">{programs[1].statLabel}</span>
+                  <p className="stat-number mb-2 text-4xl font-black">{programs[1].stat}</p>
+                  <h3 className="text-xl font-bold text-white">{programs[1].title}</h3>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-accent">
+                    Explore
+                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            </ScrollReveal>
+
+            {/* Small card 2 */}
+            <ScrollReveal className="bento-tall" delay={2}>
+              <Link href={programs[2].href} className="group relative block h-full overflow-hidden rounded-2xl">
+                <Image
+                  src={programs[2].image}
+                  alt={programs[2].title}
+                  fill
+                  className="object-cover img-zoom-slow"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/30 to-transparent" />
+                <div className="relative flex h-full flex-col justify-end p-6">
+                  <span className="micro-header text-accent mb-2">{programs[2].statLabel}</span>
+                  <p className="stat-number mb-2 text-4xl font-black">{programs[2].stat}</p>
+                  <h3 className="text-xl font-bold text-white">{programs[2].title}</h3>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-accent">
+                    Explore
+                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ DIAGONAL SEPARATOR → ABOUT ═══ */}
+      <div className="relative -mt-1 bg-white">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
+          <path d="M0 0L1440 60L1440 80L0 80Z" fill="#f8fafc"/>
+        </svg>
+      </div>
+
+      {/* ═══ ABOUT — Overlapping Card ═══ */}
+      <section className="relative bg-slate-50 pattern-dots pt-24 pb-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <ScrollReveal>
+              <div>
+                <p className="micro-header text-accent mb-3">Who We Are</p>
+                <h2 className="text-tight text-4xl font-black text-primary sm:text-5xl">
+                  Empowering Communities
+                  <br />
+                  <span className="stat-number">Since 2014</span>
+                </h2>
+                <p className="mt-6 text-relaxed text-muted leading-relaxed">
+                  Global Approach To Development is a 501(c)(3) non-profit organization founded by
+                  Dr. Keuleya Ruth Ble MD MPH. We work to provide sustainable solutions in clean water,
+                  education, and healthcare for communities across Africa and Latin America.
+                </p>
+                <p className="mt-4 text-relaxed text-muted leading-relaxed">
+                  With a 99% passing rate in our schools and programs reaching thousands of
+                  families, we are committed to creating lasting change.
+                </p>
+                <Link href="/about" className="btn-primary mt-8">
+                  Our Story
+                  <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
               </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={2}>
+              <div className="relative">
+                {/* Floating badge */}
+                <div className="absolute -top-6 -right-6 z-10 animate-float rounded-2xl bg-accent px-6 py-4 text-center shadow-glow">
+                  <p className="stat-number text-3xl font-black">10+</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-white">Years</p>
+                </div>
+                {/* Image card with depth */}
+                <div className="card-depth overflow-hidden rounded-2xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80"
+                    alt="Community gathering"
+                    width={600}
+                    height={400}
+                    className="h-[400px] w-full object-cover"
+                  />
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ DIAGONAL SEPARATOR → IMPACT ═══ */}
+      <div className="relative -mt-1 bg-slate-50">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
+          <path d="M0 80L1440 20L1440 80L0 80Z" fill="white"/>
+        </svg>
+      </div>
+
+      {/* ═══ IMPACT — Alternating with Floating Stats ═══ */}
+      <section className="bg-white pt-16 pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <p className="micro-header text-accent mb-3 text-center">Real Results</p>
+            <h2 className="text-tight text-center text-4xl font-black text-primary sm:text-5xl">
+              Our Impact
+            </h2>
+          </ScrollReveal>
+
+          <div className="mt-20 space-y-24">
+            {[
+              {
+                title: 'Clean Water Transformation',
+                text: 'Over 50,000 lives transformed through sustainable water systems. Our initiative provides access to clean drinking water, reducing waterborne diseases by 75% in communities we serve.',
+                image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&q=80',
+                stat: '75%',
+                statLabel: 'Disease Reduction',
+              },
+              {
+                title: 'Education Excellence',
+                text: 'With a 99% passing rate in our schools across Côte d\'Ivoire and Mali, we are proving that quality education can reach even the most remote communities. 332 students currently enrolled.',
+                image: 'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80',
+                stat: '99%',
+                statLabel: 'Passing Rate',
+              },
+              {
+                title: 'Healthcare Access',
+                text: 'Mobile health clinics bringing essential medical care to communities without access to hospitals. Over 15,000 patients treated across three countries.',
+                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
+                stat: '15K+',
+                statLabel: 'Patients Treated',
+              },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title}>
+                <div className={`grid items-center gap-12 lg:grid-cols-2 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                  <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
+                    <div className="relative">
+                      <div className="card-depth overflow-hidden rounded-2xl">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          width={600}
+                          height={400}
+                          className="h-[350px] w-full object-cover img-zoom"
+                        />
+                      </div>
+                      {/* Floating stat card — overlaps the image */}
+                      <div className="overlap-up absolute -bottom-8 right-6 rounded-xl bg-white p-5 shadow-primary sm:right-8">
+                        <p className="stat-number text-3xl font-black">{item.stat}</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-muted">{item.statLabel}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
+                    <p className="micro-header text-accent mb-3">Impact Report</p>
+                    <h3 className="text-tight text-3xl font-black text-primary sm:text-4xl">{item.title}</h3>
+                    <p className="mt-4 text-relaxed text-muted leading-relaxed">{item.text}</p>
+                    <Link href="/impact" className="btn-secondary mt-8">
+                      View Impact
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Donate CTA */}
-      <section className="section-padding">
-        <div className="mx-auto max-w-5xl">
-          <div className="relative rounded-3xl overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&h=600&fit=crop"
-              alt="Volunteers helping communities"
-              width={1200}
-              height={600}
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 flex items-center">
-              <div className="px-8 sm:px-12 max-w-lg">
-                <h2 className="text-3xl font-bold text-white sm:text-4xl">Donate Today</h2>
-                <p className="mt-4 text-white/80">
-                  Your generosity can make a world of difference. Every donation helps us deliver clean water, education, healthcare, and economic opportunities to those who need it most.
-                </p>
-                <Link
-                  href="/donate"
-                  className="mt-8 inline-block rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg"
-                >
-                  Donate Now
-                </Link>
-              </div>
+      {/* ═══ DIAGONAL SEPARATOR → DONATE ═══ */}
+      <div className="relative -mt-1 bg-white">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
+          <path d="M0 0L1440 60L1440 80L0 80Z" fill="#0f2137"/>
+        </svg>
+      </div>
+
+      {/* ═══ DONATE CTA — Full bleed with overlay ═══ */}
+      <section className="relative overflow-hidden bg-primary-dark py-24">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1920&q=80"
+            alt="Happy community"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <p className="micro-header text-accent mb-4">Make a Difference</p>
+            <h2 className="text-tight text-4xl font-black text-white sm:text-6xl">
+              Your Donation
+              <br />
+              <span className="stat-number">Changes Lives</span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
+              100% of your donation goes directly to our programs. No administrative fees.
+              Every dollar makes a real impact.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link href="/donate" className="btn-primary !bg-accent !text-white">
+                Donate $25
+                <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link href="/donate" className="btn-secondary !border-white/30 !text-white hover:!bg-white/10">
+                Custom Amount
+              </Link>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="section-padding bg-gray-50">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-accent">Our Mission</span>
-          <h2 className="mt-2 text-3xl font-bold text-primary sm:text-4xl">Committed to Global Change</h2>
-          <p className="mt-6 text-muted leading-relaxed max-w-3xl mx-auto">
-            Our mission is to eliminate poverty, health disparities, gender inequality, and improve the overall health of underserved populations. That&apos;s no different from the desire of other human beings around the world. We have a common problem, not only in underserved countries but also in developed countries.
-          </p>
-          <Link
-            href="/about"
-            className="mt-8 inline-block rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
-          >
-            Learn More About Us
-          </Link>
-        </div>
-      </section>
+      {/* ═══ DIAGONAL SEPARATOR → CONTACT ═══ */}
+      <div className="relative -mt-1 bg-primary-dark">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
+          <path d="M0 80L1440 20L1440 80L0 80Z" fill="white"/>
+        </svg>
+      </div>
 
-      {/* Contact Preview */}
-      <section className="section-padding">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <div className="rounded-2xl bg-gray-50 p-8 text-center card-hover">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 font-bold">Call Us</h3>
-              <p className="mt-2 text-sm text-muted">(909) 728-8111</p>
-            </div>
-            <div className="rounded-2xl bg-gray-50 p-8 text-center card-hover">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 font-bold">Email Us</h3>
-              <p className="mt-2 text-sm text-muted">info@gapdev.org</p>
-            </div>
-            <div className="rounded-2xl bg-gray-50 p-8 text-center card-hover">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 font-bold">Find Us</h3>
-              <p className="mt-2 text-sm text-muted">Ontario, CA</p>
-            </div>
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/contact"
-              className="inline-block rounded-full border border-primary px-8 py-3.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
-            >
-              Get in Touch
-            </Link>
+      {/* ═══ CONTACT ═══ */}
+      <section className="bg-white pb-24 pt-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <p className="micro-header text-accent mb-3 text-center">Get In Touch</p>
+            <h2 className="text-tight text-center text-4xl font-black text-primary sm:text-5xl">
+              Contact Us
+            </h2>
+          </ScrollReveal>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {[
+              { icon: '📍', label: 'Address', value: '3200 E Guasti Rd., Suite 100\nOntario, CA 91761' },
+              { icon: '📞', label: 'Phone', value: '909-728-8111' },
+              { icon: '✉️', label: 'Email', value: 'info@gapdev.org' },
+            ].map((c, i) => (
+              <ScrollReveal key={c.label} delay={i}>
+                <div className="card-depth-hover rounded-2xl p-8 text-center">
+                  <span className="text-4xl">{c.icon}</span>
+                  <p className="micro-header text-accent mt-4 mb-2">{c.label}</p>
+                  <p className="text-sm font-medium text-muted whitespace-pre-line">{c.value}</p>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
