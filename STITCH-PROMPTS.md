@@ -1,166 +1,333 @@
 # Stitch Prompts — Global Approach To Development
 
-Copy these prompts into stitch.withgoogle.com (use Experimental Mode for best results).
+> **How to use**: Open stitch.withgoogle.com → Experimental Mode → Paste each prompt → Refine with follow-ups → Export HTML/CSS → Send results to me for implementation.
+
+> **Design system reference**: The DESIGN.md file in this repo contains all colors, typography, and component patterns. Reference it when pasting into Stitch.
 
 ---
 
-## Prompt 1: Homepage Hero + Stats Bar
+## PROMPT 1: HOMEPAGE HERO CAROUSEL
 
 ```
-Create a hero section for a nonprofit NGO website called "Global Approach To Development". 
+Design a full-screen hero carousel for a nonprofit NGO website called "Global Approach To Development" (GAD). This is the most important section of the entire site — it must feel cinematic, hopeful, and world-class.
 
-Design: Full viewport height hero with a background photo of African children in a classroom. Dark gradient overlay on the left side (black/85 to transparent, left to right) for text legibility. 
+LAYOUT:
+- Full viewport height (100vh), overflow hidden
+- Background: Real photo of African children in a classroom (warm, authentic, documentary style)
+- The photo should have a slow Ken Burns zoom effect (scale 1.0 to 1.08 over 8 seconds)
 
-Content layout (left-aligned):
-- Small gold pill badge at top: "GLOBAL APPROACH TO DEVELOPMENT" with a small pulsing dot
-- Huge white title (900 weight, tight line-height): "Every Child Deserves a Future" 
-- Subtitle below in white/95 opacity: "Building sustainable futures through education, clean water, and healthcare in communities across Africa."
-- Two CTA buttons: "Donate Now" (gold rounded-full with arrow icon) and "Learn More" (white border, transparent background)
-- Bottom center: 7 dot indicators in a dark pill container, first dot gold and wider
-- Bottom right: slide counter "01 / 07" in dark pill
+GRADIENT OVERLAY (critical for text readability):
+- Left-to-right: black/85 → black/50 → black/10 (text sits on the dark left side, photo shows through on the right)
+- Bottom-to-top: black/60 → transparent → black/10
+- This creates a cinematic "spotlight" effect where the left third is dark enough for white text
 
-Below the hero, a white stats bar that overlaps the hero by 3rem with 4 stats in a row: "2014 Founded", "100K+ Lives Impacted", "3 Countries", "99% Passing Rate". Each stat has a gradient gold number and gray label.
+TEXT CONTENT (left-aligned, max-width 680px):
+1. MICRO LABEL (top): Small rounded-full pill badge in gold (#e8a838) with a tiny white pulsing dot. Text: "GLOBAL APPROACH TO DEVELOPMENT" in uppercase, letter-spacing 0.2em, font-size 12px, font-weight 700.
 
-Style: Modern agency aesthetic, clean typography, warm gold accent (#e8a838), deep navy primary (#1e3a5f). The hero should feel cinematic and hopeful.
+2. MAIN TITLE: "Every Child Deserves a Future" in white, font-size 80px on desktop (5.5rem), font-weight 900, line-height 1.05. Apply text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4). This must be HUGE and commanding.
+
+3. SUBTITLE: "Building sustainable futures through education, clean water, and healthcare in communities across Africa." in white/95 opacity, font-size 18px, line-height 1.7, max-width 520px. Apply text-shadow: 0 1px 6px rgba(0,0,0,0.5).
+
+4. CTA BUTTONS (horizontal row):
+   - Primary: "Donate Now" — rounded-full, gold background (#e8a838), white text, 14px bold, padding 16px 32px, shadow-xl. Include a small arrow icon (→) that slides right 4px on hover.
+   - Secondary: "Learn More" — rounded-full, 2px white/40 border, white/10 background with backdrop-blur, white text, same padding.
+
+CONTROLS:
+- Bottom center: Dot indicators in a dark pill container (bg-black/40, backdrop-blur-md, rounded-full). 7 dots total, each 8px wide. Active dot is gold (#e8a838) and 32px wide. Inactive dots are white/50.
+- Bottom right: Slide counter "01 / 07" in dark pill, font-size 12px, font-weight 700, white/80.
+- Desktop arrows: Left/right chevron buttons, circular (bg-black/40, backdrop-blur-md), positioned at vertical center, hidden on mobile.
+
+BOTTOM EDGE: White wave SVG divider connecting hero to the next section.
+
+BELOW HERO: A white stats bar that overlaps the hero by -3rem (negative margin). Contains 4 stats in a row: "2014 Founded", "100K+ Lives Impacted", "3 Countries", "99% Passing Rate". Each stat has a gradient gold number (font-size 36px, font-weight 900) and gray label.
+
+MOOD: Cinematic, hopeful, premium NGO. Think Save The Children meets Apple aesthetic. The photo should feel authentic, not stock.
+
+COLORS: Primary navy #1e3a5f, accent gold #e8a838, backgrounds #0f2137 (dark) and #ffffff (light).
 ```
 
----
-
-## Prompt 2: Programs Bento Grid
-
+**Follow-up prompts for this screen:**
 ```
-Create a bento grid section for a nonprofit website showing 3 programs.
-
-Layout:
-- Section title with gold micro-header "WHAT WE DO" above a huge navy title "Our Programs"
-- 3-column asymmetric bento grid:
-  - LEFT (2x2 large card): "Clean Water Initiative" — background photo of water project, gradient overlay from bottom, stat "50K+" in gold, label "Lives Changed", "Learn More" arrow link
-  - TOP RIGHT (1x1 card): "Education & Scholarships" — photo of children in school, stat "332" in gold, label "Students Enrolled"  
-  - BOTTOM RIGHT (1x1 card): "Healthcare Programs" — photo of mobile clinic, stat "15K+" in gold, label "Patients Treated"
-
-Style: Cards have rounded-2xl corners, double-layer shadows (short intense + long diffuse), images zoom slowly on hover. Gradient overlays go from transparent at top to dark at bottom for text legibility. Gold accent color (#e8a838), navy backgrounds (#0f2137).
-```
-
----
-
-## Prompt 3: About Page with Founder
-
-```
-Create an About page for a nonprofit NGO called "Global Approach To Development".
-
-Sections:
-
-1. HERO: Full viewport with background photo of community gathering. Dark gradient overlay. Left-aligned content:
-   - Gold pill badge: "WHO WE ARE"
-   - Title: "Empowering Communities Since 2014" (huge white text, "Since 2014" in gold gradient)
-   - Subtitle about the organization's mission
-
-2. FOUNDER SECTION: Two-column layout
-   - Left: Photo of Dr. Keuleya Ruth Ble in a rounded card with floating gold badge showing "10+ Years"
-   - Right: "Our Founder" section with name, credentials (MD, MPH), and bio about founding the organization in 2014
-
-3. WHERE WE WORK: Three image cards showing:
-   - Côte d'Ivoire: School with 332 students, 99% passing rate
-   - Mali: 3 villages in Sikasso region
-   - Ontario CA: Headquarters
-
-Style: Clean nonprofit aesthetic, diagonal SVG separators between sections, pattern dots background on light sections, warm gold accent, deep navy primary. Professional but approachable tone.
+- "Make the title even larger, at least 90px on desktop"
+- "Add a subtle glass effect to the dot indicator container"
+- "Make the donate button glow slightly with the gold accent color"
+- "Add a faint grid pattern texture to the dark gradient overlay"
 ```
 
 ---
 
-## Prompt 4: Donate Page with Payment Options
+## PROMPT 2: PROGRAMS BENTO GRID
 
 ```
-Create a donation page for a nonprofit NGO called "Global Approach To Development".
+Design a programs section for a nonprofit website showing 3 core programs in an asymmetric bento grid layout.
 
-Layout:
-- HERO: Background photo with dark gradient. Gold micro-header "MAKE A DIFFERENCE". Title "Your Donation Changes Lives" in huge white text. Subtitle: "100% of your donation goes directly to our programs."
+SECTION HEADER:
+- Gold micro-header: "WHAT WE DO" (uppercase, tracking 0.2em, font-size 12px)
+- Huge navy title: "Our Programs" (font-size 48px, font-weight 900, line-height 1.1)
+- Gray subtitle: "We work across three core areas to create lasting change in communities worldwide." (font-size 16px, muted gray, centered, max-width 640px)
 
-- DONATION FORM (centered, clean white card):
-  - Amount selector: Quick buttons for $25, $50, $100, $250, $500 + custom amount input
-  - "Your Impact" sidebar showing what each amount provides:
-    - $25 = School supplies for one student
-    - $50 = Clean water for a family for one year
-    - $100 = Medical supplies for a mobile clinic visit
-    - $250 = Scholarship for one student for a semester
-  
-  - Payment method selector: Card (Stripe) and PayPal tabs
-  - For Card: Card number, expiry, CVC fields
-  - For PayPal: PayPal button
-  - "Donate" CTA button (gold, full width)
+BENTO GRID (3 columns, asymmetric):
+- LEFT (spans 2 columns, 2 rows — the LARGEST card): "Clean Water Initiative"
+  - Full-bleed photo of a water project in Africa
+  - Gradient overlay from bottom (transparent → dark)
+  - Bottom-left content: Gold micro-header "LIVES CHANGED", huge gold stat "50K+" (font-size 48px), title "Clean Water Initiative" (font-size 24px, white, bold), description (2 lines, white/70)
+  - "Learn More →" link in gold with arrow that slides right on hover
+  - Card has rounded-2xl corners, double-layer shadow
 
-- IMPACT SECTION below: 3 cards showing recent impact with photos and stats
+- TOP RIGHT (1 column, 1 row): "Education & Scholarships"
+  - Photo of children in classroom
+  - Same gradient treatment
+  - Gold stat "332", label "Students Enrolled", title "Education & Scholarships"
+  - "Explore →" link
 
-Style: Trust-building design, warm gold accent (#e8a838), clean white background, rounded cards with subtle shadows. The form should feel safe and professional. Include small lock icon next to payment for security feeling.
-```
+- BOTTOM RIGHT (1 column, 1 row): "Healthcare Programs"
+  - Photo of mobile health clinic
+  - Gold stat "15K+", label "Patients Treated", title "Healthcare Programs"
+  - "Explore →" link
 
----
+INTERACTION:
+- On hover: Image zooms to 1.08x slowly (8s transition), card lifts up 6px with spring easing
+- Cards have a very subtle 1px border at rgba(0,0,0,0.04)
+- Shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 20px 40px -8px rgba(0,0,0,0.08)
 
-## Prompt 5: Impact Page with Stats
-
-```
-Create an Impact page for a nonprofit NGO called "Global Approach To Development".
-
-Layout:
-- HERO: Background photo with dark gradient. Gold micro-header "REAL RESULTS". Title "Our Impact" in huge white text.
-
-- STATS COUNTER SECTION: Large numbers in a row with gradient gold text:
-  - 100,000+ Lives Impacted
-  - 50,000+ Clean Water Access
-  - 332 Students Enrolled
-  - 99% Passing Rate
-  - 3 Countries Served
-  - 15,000+ Patients Treated
-
-- IMPACT STORIES: Alternating left/right layout (3 stories):
-  1. Clean Water Transformation — photo left, text right with floating stat card "75% Disease Reduction"
-  2. Education Excellence — text left, photo right with floating stat card "99% Passing Rate"  
-  3. Healthcare Access — photo left, text right with floating stat card "15K+ Patients Treated"
-
-- CTA SECTION: Dark navy background with overlay photo. Title "Your Donation Changes Lives". Two buttons: "Donate $25" (gold) and "Custom Amount" (white border).
-
-Style: Data-driven, professional, warm gold accent, diagonal SVG separators between sections. Each impact story should have a floating stat card that overlaps the image by 2rem.
+STYLE: Asymmetric, organic feel — NOT a boring 3-column equal grid. The main card should dominate. Think editorial magazine layout meets modern web design.
 ```
 
 ---
 
-## Prompt 6: Contact Page
+## PROMPT 3: ABOUT PAGE — FOUNDER + WHERE WE WORK
 
 ```
-Create a Contact page for a nonprofit NGO called "Global Approach To Development".
+Design an About page for "Global Approach To Development" that tells the story of the organization and its founder.
 
-Layout:
-- HERO: Background photo with dark gradient. Gold micro-header "GET IN TOUCH". Title "Contact Us" in huge white text.
+HERO SECTION:
+- Full viewport with background photo of a community gathering in West Africa
+- Dark gradient overlay (same cinematic style as homepage)
+- Gold micro-header: "WHO WE ARE"
+- Title: "Empowering Communities" (huge white, 64px) with line break, then "Since 2014" in gradient gold text
+- Subtitle about the mission
 
-- INFO CARDS (3-column row):
-  - Address card: Icon, "3200 E Guasti Rd., Suite 100, Ontario, CA 91761"
-  - Phone card: Icon, "909-728-8111"  
-  - Email card: Icon, "info@gapdev.org"
+FOUNDER SECTION (two columns):
+- LEFT COLUMN: 
+  - Photo of Dr. Keuleya Ruth Ble in a rounded-2xl card with overflow hidden
+  - Floating gold badge overlapping the top-right corner: "10+" in huge text, "Years" below, with a float animation (moves up and down 10px over 6s)
+  - The card has a double-layer shadow
 
-- CONTACT FORM (white card, 2-column on desktop):
-  - Left: Name, Email, Subject, Phone (optional)
-  - Right: Message textarea
-  - Submit button: "Send Message" (gold, full width)
+- RIGHT COLUMN:
+  - Gold micro-header: "OUR FOUNDER"
+  - Name: "Dr. Keuleya Ruth Ble" in navy, 36px, font-weight 800
+  - Credentials: "MD, MPH" in gold
+  - Bio paragraphs about founding GAD in 2014, commitment to sustainable solutions
+  - A quote in italics: "Every child deserves access to clean water, education, and healthcare."
+  - "Learn More About Us →" button
 
-- MAP SECTION: Embedded Google Maps showing Ontario, California location
+WHERE WE WORK SECTION:
+- Section title: "Where We Work" in navy
+- Three image cards in a row:
+  1. Côte d'Ivoire: Photo of school, overlay text "332 Students", "99% Passing Rate"
+  2. Mali: Photo of village, overlay text "3 Villages", "Sikasso Region"  
+  3. Ontario CA: Photo of office/building, overlay text "Headquarters", "Global Operations"
+- Each card has gradient overlay, rounded-2xl, hover zoom effect
 
-Style: Clean, professional, warm gold accent (#e8a838), rounded cards with double-layer shadows, pattern dots background on light sections. The form should feel welcoming and easy to use.
+SEPARATORS: Diagonal SVG cuts between sections (alternating direction). One section has a light gray (#f8fafc) background with subtle dot pattern.
 ```
 
 ---
 
-## How to Use These Prompts
+## PROMPT 4: DONATE PAGE — PAYMENT FORM
 
-1. Go to stitch.withgoogle.com
-2. Sign in with your Google account
-3. Use **Experimental Mode** (Gemini 2.5 Pro) for best quality
-4. Copy each prompt and paste it into the canvas
-5. Wait for generation (~45 seconds per screen)
-6. Refine with follow-up prompts like:
-   - "Make the title larger"
-   - "Change the accent color to a warmer gold"
-   - "Add a wave divider at the bottom"
-   - "Make the cards have more shadow depth"
-7. When satisfied, export as HTML/CSS or paste to Figma
-8. Send me the results and I'll implement them in the codebase
+```
+Design a donation page for "Global Approach To Development" that maximizes conversions and trust.
+
+HERO:
+- Background photo of smiling children with dark gradient overlay
+- Gold micro-header: "MAKE A DIFFERENCE"
+- Title: "Your Donation" (64px white) + line break + "Changes Lives" in gradient gold
+- Subtitle: "100% of your donation goes directly to our programs. No administrative fees."
+
+DONATION FORM (centered white card, max-width 800px, rounded-2xl, double-layer shadow):
+
+AMOUNT SELECTOR:
+- Row of 5 quick-select buttons: $25, $50, $100, $250, $500
+- Each button: rounded-full, 2px border (gray when inactive, gold when active), white background
+- Active state: gold background, white text, shadow-glow
+- Below: "Or enter custom amount" with dollar sign input field
+- Selected amount shows a large gold number above the form
+
+YOUR IMPACT SIDEBAR (right side on desktop, below on mobile):
+- Title: "Your Impact" in navy
+- Impact cards showing what each amount provides:
+  - $25 = "School supplies for one student for a full year" + small icon
+  - $50 = "Clean water access for a family for one year" + small icon
+  - $100 = "Medical supplies for a mobile clinic visit" + small icon
+  - $250 = "Full scholarship for one student for a semester" + small icon
+- Each card has a small gold accent and clean icon
+
+PAYMENT METHOD:
+- Two tabs: "💳 Card" and "PayPal" 
+- Card tab shows: Card number, Expiry date, CVC, Name on card
+- PayPal tab shows: PayPal button with PayPal blue (#0070ba)
+- Small lock icon + "Secure payment" text near the submit button
+
+SUBMIT:
+- Full-width gold button: "Donate $100" (amount updates dynamically)
+- Below: "🔒 Encrypted & Secure" in small gray text
+
+TRUST SIGNALS:
+- Below form: "501(c)(3) Nonprofit | EIN: 47-2155496"
+- "Tax-deductible donation" note
+- Small logos of payment providers
+
+STYLE: Clean, trustworthy, conversion-optimized. The form should feel safe and professional. Use warm gold (#e8a838) for CTAs, clean white card on light gray (#f8fafc) background.
+```
+
+---
+
+## PROMPT 5: IMPACT PAGE — DATA VISUALIZATION
+
+```
+Design an Impact page for "Global Approach To Development" that showcases real results with powerful data visualization.
+
+HERO:
+- Full viewport with background photo of community impact
+- Dark gradient overlay
+- Gold micro-header: "REAL RESULTS"
+- Title: "Our Impact" in huge white text (64px)
+
+IMPACT NUMBERS (full-width section, dark navy background):
+- 6 large stats in a 3x2 grid:
+  - 100,000+ "Lives Impacted"
+  - 50,000+ "Clean Water Access"
+  - 332 "Students Enrolled"
+  - 99% "Passing Rate"
+  - 3 "Countries Served"
+  - 15,000+ "Patients Treated"
+- Each stat: gradient gold number (font-size 48px, font-weight 900), white label below
+- Numbers should count up with animation when scrolling into view
+
+IMPACT STORIES (3 alternating sections):
+1. "Clean Water Transformation"
+   - LEFT: Photo in rounded-2xl card with depth shadow
+   - RIGHT: Micro-header "IMPACT REPORT", title, description about 50K lives transformed
+   - FLOATING STAT CARD: Overlaps the image bottom-right by 2rem: "75%" in gold, "Disease Reduction" label, white card with shadow
+
+2. "Education Excellence" (reversed layout — text left, image right)
+   - Same floating stat card: "99%" "Passing Rate"
+
+3. "Healthcare Access" (image left, text right)
+   - Floating stat card: "15K+" "Patients Treated"
+
+SEPARATORS: Diagonal SVG cuts between each story section, alternating direction.
+
+CTA SECTION:
+- Dark navy background with subtle background photo (20% opacity)
+- Gold micro-header: "MAKE AN IMPACT"
+- Title: "Your Donation Changes Lives" (56px white)
+- Subtitle about 100% going to programs
+- Two buttons: "Donate $25" (gold) + "Custom Amount" (white border)
+- Below: 3 trust badges (501c3, Tax Deductible, Secure)
+
+STYLE: Data-driven, professional, emotional. The floating stat cards that overlap images are the signature design element — they create depth and draw attention to key metrics.
+```
+
+---
+
+## PROMPT 6: CONTACT PAGE
+
+```
+Design a Contact page for "Global Approach To Development" that feels warm and accessible.
+
+HERO:
+- Full viewport with background photo of a community meeting
+- Dark gradient overlay
+- Gold micro-header: "GET IN TOUCH"
+- Title: "Contact Us" in huge white text (64px)
+
+INFO CARDS (3-column row, centered):
+Three white cards with double-layer shadow, rounded-2xl:
+1. ADDRESS card: Location pin icon (gold), "Our Office", "3200 E Guasti Rd., Suite 100, Ontario, CA 91761"
+2. PHONE card: Phone icon (gold), "Call Us", "909-728-8111"
+3. EMAIL card: Mail icon (gold), "Email Us", "info@gapdev.org"
+
+Each card: centered text, icon at top (48px, gold accent), label in uppercase tracking, value in medium weight. Hover effect: card lifts 6px.
+
+CONTACT FORM (white card, 2-column on desktop):
+- LEFT COLUMN:
+  - Full name input
+  - Email input
+  - Phone input (optional, with "(Optional)" label)
+  - Subject dropdown: General Inquiry, Volunteer, Partnership, Other
+
+- RIGHT COLUMN:
+  - Message textarea (tall, min-height 200px)
+  - "Send Message" button: full-width, gold background, white text, rounded-full, arrow icon
+
+FORM STYLE:
+- Inputs: rounded-xl, 1px gray border, focus ring in gold
+- Labels: uppercase tracking, small, gray
+- Placeholder text in light gray
+- The form card has subtle pattern-dots background
+
+MAP SECTION:
+- Full-width embedded Google Maps showing Ontario, California
+- Overlapping the map: A small white card with the full address and a "Get Directions →" link
+
+SEPARATORS: Diagonal SVG cut above the map section.
+
+FOOTER: Standard 4-column footer with social media icons (Facebook, X/Twitter, Instagram, LinkedIn), contact info bar, copyright.
+
+STYLE: Warm, accessible, professional. The info cards should feel inviting. The form should be easy to fill out. Pattern dots background adds subtle texture without distraction.
+```
+
+---
+
+## BONUS PROMPT: DESIGN SYSTEM EXTRACTION
+
+```
+Extract a design system from this website: https://ngo-platform-399q.vercel.app
+
+Capture: color palette, typography scale, component patterns (buttons, cards, badges), spacing system, shadow system, animation patterns. Export as DESIGN.md format.
+```
+
+---
+
+## REFINEMENT PROMPTS (Use After Initial Generation)
+
+### Typography
+```
+- "Make all titles font-weight 900 (black) with line-height 1.05"
+- "Add text-shadow to all white text on dark backgrounds: 0 2px 10px rgba(0,0,0,0.6)"
+- "Use Inter font family throughout"
+- "Make micro-headers uppercase with letter-spacing 0.2em"
+```
+
+### Colors
+```
+- "Primary navy: #1e3a5f, Primary dark: #0f2137"
+- "Accent gold: #e8a838, Accent light: #f0c060"
+- "All CTA buttons should be the gold accent color"
+- "Use gradient gold text for stat numbers"
+```
+
+### Shadows & Depth
+```
+- "Add double-layer shadows to all cards: short intense + long diffuse"
+- "Cards should lift up 6px on hover with spring easing"
+- "Add subtle 1px border at rgba(0,0,0,0.04) to all cards"
+```
+
+### Layout
+```
+- "Use asymmetric bento grid, not equal columns"
+- "Make the hero full viewport height (100vh)"
+- "Add diagonal SVG separators between sections"
+- "Overlap the stats bar on top of the hero by 3rem"
+```
+
+### Animations
+```
+- "Add Ken Burns zoom effect to hero images"
+- "Scroll reveal: elements fade up 40px when scrolling into view"
+- "Button arrows should slide right 4px on hover"
+- "Floating badges should have a gentle up-down animation"
+```
