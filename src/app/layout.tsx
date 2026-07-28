@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Providers from "@/components/Providers";
+import { LocaleProvider } from "@/lib/locale-context";
 import "./globals.css";
 
 const inter = Inter({
@@ -65,12 +66,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col font-sans antialiased">
-        <Providers>        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:p-2">
-          Skip to main content
-        </a>
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        <Providers>
+          <LocaleProvider>
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:p-2">
+              Skip to main content
+            </a>
+            {children}
+            <Analytics />
+            <SpeedInsights />
+          </LocaleProvider>
         </Providers>
       </body>
     </html>

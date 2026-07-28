@@ -5,20 +5,23 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useLocale } from "@/lib/locale-context";
+import { t } from "@/lib/i18n";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/programs", label: "Programs" },
-  { href: "/impact", label: "Impact" },
-  { href: "/about", label: "About Us" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/", key: "nav.home" as const },
+  { href: "/programs", key: "nav.programs" as const },
+  { href: "/impact", key: "nav.impact" as const },
+  { href: "/about", key: "nav.about" as const },
+  { href: "/blog", key: "nav.blog" as const },
+  { href: "/contact", key: "nav.contact" as const },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { data: session } = useSession();
+  const { locale } = useLocale();
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
@@ -50,7 +53,7 @@ export default function Header() {
                   : "text-foreground/60 hover:bg-primary/5 hover:text-primary"
               }`}
             >
-              {link.label}
+              {t(locale, link.key)}
             </Link>
           ))}
           <div className="ml-2 h-6 w-px bg-primary/10" />
@@ -58,7 +61,7 @@ export default function Header() {
             href="/donate"
             className="ml-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-accent-light hover:shadow-lg hover:scale-105"
           >
-            Donate
+            {t(locale, "nav.donate")}
           </Link>
           <div className="ml-2 h-6 w-px bg-primary/10" />
           {session ? (
@@ -67,14 +70,14 @@ export default function Header() {
                 href="/dashboard"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
               >
-                Dashboard
+                {t(locale, "nav.dashboard")}
               </Link>
               <span className="px-2 text-sm text-muted">{session.user?.name}</span>
               <button
                 onClick={() => signOut()}
                 className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
               >
-                Sign Out
+                {t(locale, "nav.signout")}
               </button>
             </>
             ) : (
@@ -82,7 +85,7 @@ export default function Header() {
               href="/auth/login"
               className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/60 transition-colors hover:bg-primary/5 hover:text-primary"
             >
-              Sign In
+              {t(locale, "nav.signin")}
             </Link>
           )}
           <LanguageSwitcher />
@@ -118,7 +121,7 @@ export default function Header() {
                     : "text-foreground/60 hover:bg-primary/5"
                 }`}
               >
-                {link.label}
+                {t(locale, link.key)}
               </Link>
             ))}
             <Link
@@ -126,7 +129,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-white shadow-md"
             >
-              Donate Now
+              {t(locale, "nav.donate")}
             </Link>
             <div className="my-2 border-t border-primary/10" />
             {session ? (
@@ -136,14 +139,14 @@ export default function Header() {
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-primary/5"
                 >
-                  Dashboard
+                  {t(locale, "nav.dashboard")}
                 </Link>
                 <span className="block px-3 py-2 text-sm text-muted">{session.user?.name}</span>
                 <button
                   onClick={() => { signOut(); setOpen(false); }}
                   className="block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium text-foreground/60 hover:bg-primary/5"
                 >
-                  Sign Out
+                  {t(locale, "nav.signout")}
                 </button>
               </>
             ) : (
@@ -152,7 +155,7 @@ export default function Header() {
                 onClick={() => setOpen(false)}
                 className="block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/60 hover:bg-primary/5"
               >
-                Sign In
+                {t(locale, "nav.signin")}
               </Link>
             )}
             <div className="mt-2">

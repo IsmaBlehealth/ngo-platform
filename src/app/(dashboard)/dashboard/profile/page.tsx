@@ -1,10 +1,11 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();
+  const [initialized, setInitialized] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [saving, setSaving] = useState(false);
@@ -16,14 +17,11 @@ export default function ProfilePage() {
   const [changingPassword, setChangingPassword] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState("");
 
-  useEffect(() => {
-    if (session?.user) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setFirstName(session.user.name?.split(" ")[0] || "");
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
-    }
-  }, [session]);
+  if (session?.user && !initialized) {
+    setFirstName(session.user.name?.split(" ")[0] || "");
+    setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
+    setInitialized(true);
+  }
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();

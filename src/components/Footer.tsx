@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import NewsletterForm from "./NewsletterForm";
+import { useLocale } from "@/lib/locale-context";
+import { t } from "@/lib/i18n";
 
 export default function Footer() {
+  const { locale } = useLocale();
   const year = new Date().getFullYear();
 
   return (
@@ -12,8 +17,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className="text-xl font-bold">Global Approach To Development</h3>
             <p className="mt-4 max-w-md text-sm text-white/60 leading-relaxed">
-              Building sustainable futures through clean water, quality education,
-              and accessible healthcare in West Africa.
+              {t(locale, "footer.mission.desc")}
             </p>
             <div className="mt-4 text-xs text-white/50">
               501(c)(3) Nonprofit Organization | EIN: 47-2155496
@@ -33,28 +37,28 @@ export default function Footer() {
               </a>
             </div>
             <div className="mt-8">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">Stay Updated</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80 mb-4">{t(locale, "footer.stayUpdated")}</h4>
               <NewsletterForm />
             </div>
           </div>
 
           {/* Programs */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">Programs</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">{t(locale, "footer.programs")}</h4>
             <ul className="mt-4 space-y-3 text-sm text-white/50">
               <li>
                 <Link href="/programs#clean-water" className="transition-colors hover:text-accent">
-                  Clean Water Initiatives
+                  {t(locale, "footer.program.water")}
                 </Link>
               </li>
               <li>
                 <Link href="/programs#education" className="transition-colors hover:text-accent">
-                  Education &amp; Scholarships
+                  {t(locale, "footer.program.education")}
                 </Link>
               </li>
               <li>
                 <Link href="/programs#healthcare" className="transition-colors hover:text-accent">
-                  Healthcare &amp; Medical Aid
+                  {t(locale, "footer.program.health")}
                 </Link>
               </li>
             </ul>
@@ -62,36 +66,36 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">Quick Links</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">{t(locale, "footer.quickLinks")}</h4>
             <ul className="mt-4 space-y-3 text-sm text-white/50">
               <li>
                 <Link href="/" className="transition-colors hover:text-accent">
-                  Home
+                  {t(locale, "nav.home")}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="transition-colors hover:text-accent">
-                  About Us
+                  {t(locale, "nav.about")}
                 </Link>
               </li>
               <li>
                 <Link href="/impact" className="transition-colors hover:text-accent">
-                  Impact
+                  {t(locale, "nav.impact")}
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="transition-colors hover:text-accent">
-                  Blog
+                  {t(locale, "nav.blog")}
                 </Link>
               </li>
               <li>
                 <Link href="/donate" className="transition-colors hover:text-accent">
-                  Donate
+                  {t(locale, "nav.donate")}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="transition-colors hover:text-accent">
-                  Contact Us
+                  {t(locale, "nav.contact")}
                 </Link>
               </li>
             </ul>
@@ -117,16 +121,16 @@ export default function Footer() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            3200 E Guasti Rd., Suite 100, Ontario, CA 91761
+            {t(locale, "about.address")}
           </div>
         </div>
 
         {/* Copyright */}
         <div className="mt-8 border-t border-white/10 pt-8 text-center text-xs text-white/40">
-          &copy; 2014 - {year} Global Approach To Development. All rights reserved. |{" "}
-          <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+          {t(locale, "footer.copyright").replace("{year}", String(year))} |{" "}
+          <Link href="/privacy" className="hover:text-accent transition-colors">{t(locale, "footer.privacy")}</Link>
           {" | "}
-          <Link href="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
+          <Link href="/terms" className="hover:text-accent transition-colors">{t(locale, "footer.terms")}</Link>
         </div>
       </div>
     </footer>
