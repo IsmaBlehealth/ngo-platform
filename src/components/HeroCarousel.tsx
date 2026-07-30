@@ -72,14 +72,25 @@ export default function HeroCarousel() {
             style={{
               animation: i === current ? "kenBurns 8s ease-out forwards" : "none",
               transformOrigin: "center center",
+              filter: "saturate(1.05) contrast(1.02) brightness(0.92)",
             }}
           />
         </div>
       ))}
 
-      {/* Gradient overlays for text legibility */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/75 via-black/35 to-black/5" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+      {/* Gradient overlays for text legibility — stronger on left where text sits */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
+
+      {/* Liquid glass text backdrop — subtle blur panel behind content area */}
+      <div
+        className="absolute left-0 top-0 h-full w-full md:w-[60%] z-10 pointer-events-none"
+        style={{
+          background: "linear-gradient(90deg, rgba(0,42,21,0.45) 0%, rgba(0,42,21,0.2) 60%, transparent 100%)",
+          backdropFilter: "blur(2px)",
+          WebkitBackdropFilter: "blur(2px)",
+        }}
+      />
 
       {/* Navigation arrows — liquid glass */}
       <button
@@ -122,10 +133,11 @@ export default function HeroCarousel() {
             <span
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase"
               style={{
-                background: "rgba(255,255,255,0.04)",
+                background: "rgba(0,42,21,0.4)",
                 backdropFilter: "blur(40px)",
                 WebkitBackdropFilter: "blur(40px)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                textShadow: "0 1px 8px rgba(0,0,0,0.8)",
               }}
             >
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
@@ -138,7 +150,7 @@ export default function HeroCarousel() {
             className="animate-fade-up text-4xl md:text-7xl lg:text-[72px] font-black text-white leading-[1.1] tracking-tight mb-6"
             style={{
               animationDelay: "0.1s",
-              textShadow: "0 4px 24px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)",
+              textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7), 0 0 3px rgba(0,0,0,0.5)",
             }}
           >
             {t(locale, slideTitleKey)}
@@ -147,7 +159,10 @@ export default function HeroCarousel() {
           <p
             key={`sub-${current}`}
             className="animate-fade-up text-lg text-white/95 mb-10 max-w-xl leading-relaxed"
-            style={{ animationDelay: "0.2s" }}
+            style={{
+              animationDelay: "0.2s",
+              textShadow: "0 2px 16px rgba(0,0,0,0.85), 0 1px 6px rgba(0,0,0,0.6)",
+            }}
           >
             {t(locale, slideSubtitleKey)}
           </p>
@@ -163,11 +178,12 @@ export default function HeroCarousel() {
               href="/about"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-white transition-all duration-200 hover:scale-105 active:scale-95"
               style={{
-                background: "rgba(255,255,255,0.04)",
+                background: "rgba(0,42,21,0.35)",
                 backdropFilter: "blur(40px)",
                 WebkitBackdropFilter: "blur(40px)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
+                textShadow: "0 1px 8px rgba(0,0,0,0.6)",
               }}
             >
               {t(locale, "hero.learn")}
@@ -184,11 +200,11 @@ export default function HeroCarousel() {
           <div
             className="pointer-events-auto flex items-center gap-2 px-4 py-2 rounded-full"
             style={{
-              background: "rgba(255,255,255,0.03)",
+              background: "rgba(0,42,21,0.4)",
               backdropFilter: "blur(60px)",
               WebkitBackdropFilter: "blur(60px)",
-              border: "1px solid rgba(255,255,255,0.06)",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
             }}
           >
             {heroSlides.map((_, i) => (
@@ -208,14 +224,14 @@ export default function HeroCarousel() {
           <div
             className="hidden md:flex pointer-events-auto items-center justify-center px-4 py-2 rounded-full w-32"
             style={{
-              background: "rgba(255,255,255,0.03)",
+              background: "rgba(0,42,21,0.4)",
               backdropFilter: "blur(60px)",
               WebkitBackdropFilter: "blur(60px)",
-              border: "1px solid rgba(255,255,255,0.06)",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
             }}
           >
-            <span className="text-sm text-white/90 font-medium tracking-wider tabular-nums">
+            <span className="text-sm text-white font-medium tracking-wider tabular-nums drop-shadow-lg">
               {String(current + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
             </span>
           </div>
