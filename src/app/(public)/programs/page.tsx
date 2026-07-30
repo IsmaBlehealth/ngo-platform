@@ -14,9 +14,9 @@ const fallbackPrograms = [
   {
     id: "clean-water",
     title: "Clean Water",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1200&h=600&fit=crop",
+    image: "/images/old-site/programs/clean-water.jpg",
     description:
-      "Access to clean, safe drinking water is a fundamental human right. Yet millions in West Africa still lack this basic necessity. Our Clean Water program builds wells, water purification systems, and sustainable water infrastructure in communities across Cote d'Ivoire and Mali.",
+      "Access to clean water is a fundamental right that many communities still lack. Our Clean Water Initiatives focus on delivering sustainable water solutions to underserved regions, ensuring safe and reliable water sources. By addressing waterborne diseases and improving sanitation, we help communities thrive and reduce health risks.",
     highlights: [
       "Community well construction",
       "Water purification systems",
@@ -28,9 +28,9 @@ const fallbackPrograms = [
   {
     id: "education",
     title: "Education & Scholarships",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=600&fit=crop",
+    image: "/images/old-site/programs/education.jpg",
     description:
-      "Education is the most powerful tool for breaking the cycle of poverty. We operate schools and provide scholarships to children who would otherwise not have access to quality education. Our schools in Cote d'Ivoire currently serve over 332 students with a remarkable 99% passing rate.",
+      "Education is the key to breaking cycles of poverty, and we are committed to making it accessible to all. Through our Education & Scholarships program, we provide financial support and educational resources to underprivileged students, enabling them to pursue higher learning.",
     highlights: [
       "School operation in Cote d'Ivoire",
       "Scholarship programs for underserved children",
@@ -42,9 +42,9 @@ const fallbackPrograms = [
   {
     id: "healthcare",
     title: "Healthcare",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=600&fit=crop",
+    image: "/images/old-site/programs/healthcare.jpg",
     description:
-      "Healthcare access saves lives. We deliver medical care, health education, and preventive services to communities that lack basic healthcare infrastructure. Our healthcare programs serve three villages in Mali, bringing essential services to those who need them most.",
+      "Good health is the foundation of a strong community, and our Healthcare & Medical Aid programs aim to provide vital medical services to underserved populations. We bring essential healthcare, including preventative care, treatments, and emergency aid, directly to those in need.",
     highlights: [
       "Medical clinics in rural villages",
       "Health education and prevention programs",
@@ -98,7 +98,7 @@ export default async function ProgramsPage() {
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=800&fit=crop"
+            src="/images/old-site/intro-images/scrolling-2.jpg"
             alt="Our programs"
             fill
             className="object-cover opacity-20"
@@ -107,9 +107,9 @@ export default async function ProgramsPage() {
           <div className="absolute inset-0 hero-overlay" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-10">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl">Our Programs</h1>
+          <h1 className="text-4xl font-bold text-white sm:text-5xl">Programs</h1>
           <p className="mt-4 max-w-2xl text-lg text-white/80">
-            Three pillars driving lasting change in communities across West Africa.
+            Our initiatives focus on education, healthcare, and clean water access.
           </p>
         </div>
       </section>
@@ -166,7 +166,7 @@ export default async function ProgramsPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-primary">Support Our Programs</h2>
           <p className="mt-4 text-muted max-w-2xl mx-auto">
-            Your donation directly funds clean water, education, and healthcare programs in West Africa.
+            Join us in making a difference by supporting crucial initiatives that provide education, healthcare, and clean water to underserved communities. Contact us today to learn more.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link

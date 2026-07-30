@@ -23,7 +23,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/80 via-primary-dark/60 to-primary-dark/90 z-10" />
           <Image
-            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&q=80"
+            src="/images/old-site/intro-images/scrolling-7.jpg"
             alt="Community gathering"
             fill
             className="object-cover"
@@ -38,7 +38,7 @@ export default function AboutPage() {
             <span className="text-gradient-gold">Since 2014</span>
           </h1>
           <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Global Approach To Development is dedicated to sustainable, high-impact humanitarian action across West Africa and beyond.
+            We are dedicated to fostering prosperity, universal health, and equality worldwide.
           </p>
         </div>
       </header>
@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="relative group">
             <div className="relative rounded-2xl overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1),0_10px_30px_-10px_rgba(0,6,19,0.5)] aspect-[0.67] bg-primary-dark">
               <Image
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=900&fit=crop"
+                src="/images/old-site/about/btm1-img1.png"
                 alt="Dr. Keuleya Ruth Ble"
                 fill
                 className="object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
@@ -103,7 +103,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl overflow-hidden group relative" style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1), 0 10px 30px -10px rgba(0,6,19,0.5)' }}>
               <div className="aspect-[1.34] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80"
+                  src="/images/old-site/programs/education.jpg"
                   alt="Cote d'Ivoire school"
                   width={400}
                   height={300}
@@ -129,7 +129,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl overflow-hidden group relative" style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1), 0 10px 30px -10px rgba(0,6,19,0.5)' }}>
               <div className="aspect-[1.34] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=800&q=80"
+                  src="/images/old-site/intro-images/scrolling-4.jpg"
                   alt="Mali village"
                   width={400}
                   height={300}
@@ -155,7 +155,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl overflow-hidden group relative" style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1), 0 10px 30px -10px rgba(0,6,19,0.5)' }}>
               <div className="aspect-[1.34] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80"
+                  src="/images/old-site/intro-images/scrolling-10.jpg"
                   alt="Ontario California"
                   width={400}
                   height={300}

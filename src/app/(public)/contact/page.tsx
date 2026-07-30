@@ -114,7 +114,7 @@ export default function ContactPage() {
       <header className="relative w-full h-[85vh] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&h=1080&fit=crop"
+            src="/images/old-site/intro-images/scrolling-1.jpg"
             alt="Contact us"
             fill
             className="object-cover ken-burns"
@@ -129,6 +129,9 @@ export default function ContactPage() {
           <h1 className="text-5xl md:text-7xl font-black text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] font-[family-name:var(--font-montserrat)]">
             Contact Us
           </h1>
+          <p className="mt-4 text-lg text-white/80">
+            We would love to hear from you…why not get in touch?
+          </p>
         </div>
       </header>
 
@@ -175,10 +178,10 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-black text-primary font-[family-name:var(--font-montserrat)] mb-2">
-                    Send a Message
+                    Send Us a Message
                   </h2>
                   <p className="text-muted">
-                    We&apos;d love to hear from you. Fill out the form and we&apos;ll be in touch soon.
+                    Complete the form below, and we&apos;ll be in touch promptly. We promise to respond within 24 hours.
                   </p>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-5">

@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <section className="relative min-h-[40vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&h=800&fit=crop"
+            src="/images/old-site/intro-images/scrolling-1.jpg"
             alt="Privacy"
             fill
             className="object-cover opacity-20"

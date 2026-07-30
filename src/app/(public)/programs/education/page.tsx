@@ -20,7 +20,7 @@ export default async function EducationPage() {
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1920&h=800&fit=crop"
+            src="/images/old-site/programs/education.jpg"
             alt="Education"
             fill
             className="object-cover opacity-20"
@@ -68,7 +68,7 @@ export default async function EducationPage() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl sticky top-20">
                 <Image
-                  src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=600&fit=crop"
+                  src="/images/old-site/intro-images/scrolling-3.jpg"
                   alt="School project in Cote d'Ivoire"
                   width={1200}
                   height={600}
@@ -147,7 +147,7 @@ export default async function EducationPage() {
             <div className="relative order-1 lg:order-2">
               <div className="rounded-2xl overflow-hidden shadow-2xl sticky top-20">
                 <Image
-                  src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=1200&h=600&fit=crop"
+                  src="/images/old-site/intro-images/scrolling-6.jpg"
                   alt="School project in Mali"
                   width={1200}
                   height={600}

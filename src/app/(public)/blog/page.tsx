@@ -5,34 +5,34 @@ const blogPosts = [
   {
     slug: "about-child-trauma",
     title: "About Child Trauma",
-    excerpt: "A traumatic event is a frightening, dangerous, or violent event that poses a threat to a child's life or bodily integrity.",
+    excerpt: "A traumatic event is a frightening, dangerous, or violent event that poses a threat to a child's life or bodily integrity. Witnessing a traumatic event that threatens the life or physical security of a loved one can also be traumatic.",
     category: "Healthcare",
     publishedAt: "2024-09-19",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=500&fit=crop",
+    image: "/images/old-site/intro-images/btm3-4.jpg",
   },
   {
     slug: "global-impact-of-clean-water",
     title: "Global Impact of Clean Water on Health and Development",
-    excerpt: "Clean water initiatives play a crucial role in shaping the health and development of communities around the world.",
+    excerpt: "Clean water initiatives play a crucial role in shaping the health and development of communities around the world. By improving access to safe water, these initiatives help reduce diseases, foster well-being, and enable long-term community...",
     category: "Clean Water",
     publishedAt: "2024-09-19",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&h=500&fit=crop",
+    image: "/images/old-site/intro-images/scrolling-2.jpg",
   },
   {
     slug: "scholarships-for-underprivileged",
     title: "Scholarships for Underprivileged: Breaking Barriers",
-    excerpt: "Scholarships provide a critical lifeline for underprivileged students, allowing them to pursue higher education despite financial hardships.",
+    excerpt: "Scholarships provide a critical lifeline for underprivileged students, allowing them to pursue higher education despite financial hardships. These programs not only offer financial support but also create opportunities for personal and academic...",
     category: "Education",
     publishedAt: "2024-09-19",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=500&fit=crop",
+    image: "/images/old-site/programs/education.jpg",
   },
   {
     slug: "mobile-health-clinics",
     title: "Mobile Health Clinics Bringing Aid to Remote Regions",
-    excerpt: "Mobile health clinics are revolutionizing access to healthcare for populations in remote and underserved regions.",
+    excerpt: "Mobile health clinics are revolutionizing access to healthcare for populations in remote and underserved regions. These clinics bridge the gap between rural communities and essential medical services, offering a lifeline to those who may otherwise...",
     category: "Healthcare",
     publishedAt: "2024-09-19",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop",
+    image: "/images/old-site/intro-images/btm3-3.jpg",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function BlogPage() {
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=1920&h=800&fit=crop"
+            src="/images/old-site/intro-images/scrolling-5.jpg"
             alt="Blog"
             fill
             className="object-cover opacity-20"
@@ -67,7 +67,7 @@ export default function BlogPage() {
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-10">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">Blog</h1>
           <p className="mt-4 max-w-2xl text-lg text-white/80">
-            Stories, insights, and updates from our work around the world.
+            Education, healthcare, and access to clean water are fundamental rights. This blog explores the impact of various initiatives, showcasing how communities are transforming through empowerment and equal opportunity.
           </p>
         </div>
       </section>

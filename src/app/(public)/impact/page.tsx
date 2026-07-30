@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { number: 100000, label: "Lives Impacted", suffix: "+" },
+  { number: 100000, label: "Community Members", suffix: "+" },
   { number: 50000, label: "Clean Water Access", suffix: "+" },
   { number: 332, label: "Students Enrolled", suffix: "" },
   { number: 99, label: "Passing Rate", suffix: "%" },
@@ -19,30 +19,30 @@ const stats = [
 const impactStories = [
   {
     icon: "water_drop",
-    category: "Water & Sanitation",
-    title: "Clean Water Transformation",
-    description: "By installing solar-powered boreholes and community water points, we've drastically reduced waterborne diseases and freed up hours previously spent walking for water, allowing children to attend school.",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1200&h=700&fit=crop",
+    category: "Education",
+    title: "Classrooms Full of Hope",
+    description: "With your support, hundreds of students now have access to a safe, engaging learning environment. From the youngest pupils to eager teens, your donations help provide the notebooks, pens, and classroom space they need to thrive.",
+    image: "/images/old-site/intro-images/scrolling-3.jpg",
     imageAlt: "Clean water project in West Africa",
-    stat: "75%",
-    statLabel: "Disease Reduction",
+    stat: "332",
+    statLabel: "Students",
   },
   {
     icon: "school",
-    category: "Education",
-    title: "Education Excellence",
-    description: "Providing resources, teacher training, and safe learning environments has resulted in unprecedented academic success in our partner communities.",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=700&fit=crop",
+    category: "Sports",
+    title: "Team Spirit and Safe Play",
+    description: "Every week, these young players come together to train, play, and support one another — building teamwork, discipline, and confidence. Their enthusiasm is unstoppable. With your support, we can provide them with the resources to grow even further.",
+    image: "/images/old-site/intro-images/btm3-2.jpg",
     imageAlt: "Students in classrooms in Côte d'Ivoire",
     stat: "99%",
     statLabel: "Passing Rate",
   },
   {
     icon: "health_and_safety",
-    category: "Healthcare",
-    title: "Healthcare Access",
-    description: "Our community clinics provide essential primary care, maternal health services, and preventative medicine, building healthier, more resilient populations.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=700&fit=crop",
+    category: "Education",
+    title: "Tools That Transform Learning",
+    description: "Students now have lockers to store their materials and a new projector that brings interactive lessons to life. These improvements help create a more organized, engaging, and modern learning environment. A game changer in rural areas.",
+    image: "/images/old-site/intro-images/btm3-3.jpg",
     imageAlt: "Healthcare clinic serving communities",
     stat: "15K+",
     statLabel: "Patients Treated",
@@ -56,7 +56,7 @@ export default function ImpactPage() {
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&h=1080&fit=crop"
+            src="/images/old-site/slider/hero-2.jpg"
             alt="Community impact across West Africa"
             fill
             className="object-cover"
@@ -72,7 +72,7 @@ export default function ImpactPage() {
             Our Impact
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-            Measurable, lasting change in communities around the world through targeted, data-driven development initiatives.
+            Education, healthcare, and access to clean water are fundamental rights. See how communities are transforming through empowerment and equal opportunity.
           </p>
         </div>
       </header>
@@ -235,7 +235,7 @@ export default function ImpactPage() {
       <section className="relative py-32 overflow-hidden bg-primary-dark">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image
-            src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&h=800&fit=crop"
+            src="/images/old-site/intro-images/scrolling-9.jpg"
             alt="Make an impact"
             fill
             className="object-cover"

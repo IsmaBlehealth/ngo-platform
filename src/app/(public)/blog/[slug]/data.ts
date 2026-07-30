@@ -11,9 +11,9 @@ export const blogPosts: Record<string, BlogPost> = {
   "about-child-trauma": {
     title: "Child Welfare and Education in West Africa: Why It Matters",
     category: "Healthcare",
-    publishedAt: "2024-03-14",
+    publishedAt: "2024-09-19",
     image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&h=600&fit=crop",
+      "/images/old-site/intro-images/btm3-4.jpg",
     excerpt:
       "In West Africa, millions of children face barriers to education and well-being. Global Approach To Development is changing that through integrated programs in Cote d'Ivoire and Mali.",
     content:
@@ -22,9 +22,9 @@ export const blogPosts: Record<string, BlogPost> = {
   "global-impact-of-clean-water": {
     title: "How Clean Water Is Transforming Communities in Cote d'Ivoire and Mali",
     category: "Clean Water",
-    publishedAt: "2024-07-22",
+    publishedAt: "2024-09-19",
     image:
-      "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=1200&h=600&fit=crop",
+      "/images/old-site/intro-images/scrolling-2.jpg",
     excerpt:
       "Access to clean water changes everything. In Cote d'Ivoire and Mali, GAD's water initiatives are reducing disease, keeping children in school, and strengthening entire communities.",
     content:
@@ -33,9 +33,9 @@ export const blogPosts: Record<string, BlogPost> = {
   "scholarships-for-underprivileged": {
     title: "How GAD's Scholarship Program Is Changing Lives in West Africa",
     category: "Education",
-    publishedAt: "2025-01-10",
+    publishedAt: "2024-09-19",
     image:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=600&fit=crop",
+      "/images/old-site/programs/education.jpg",
     excerpt:
       "With 332 students enrolled and a 99% national passing rate in Cote d'Ivoire, GAD's Education & Scholarships program proves that investment in education transforms communities.",
     content:
@@ -44,9 +44,9 @@ export const blogPosts: Record<string, BlogPost> = {
   "mobile-health-clinics": {
     title: "Healthcare in Rural West Africa: How GAD Brings Medical Services to Where They Are Needed Most",
     category: "Healthcare",
-    publishedAt: "2025-04-05",
+    publishedAt: "2024-09-19",
     image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=600&fit=crop",
+      "/images/old-site/intro-images/btm3-3.jpg",
     excerpt:
       "In rural communities across Mali and Cote d'Ivoire, access to healthcare can mean the difference between life and death. GAD's health programs are bridging that gap.",
     content:

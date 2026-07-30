@@ -88,7 +88,7 @@ export default function DonatePage() {
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&h=800&fit=crop"
+            src="/images/old-site/intro-images/scrolling-9.jpg"
             alt="Make a difference"
             fill
             className="object-cover opacity-20"
