@@ -17,7 +17,8 @@ function getInitialLocale(): Locale {
   if (typeof document === "undefined") return "en";
   const match = document.cookie.match(new RegExp("(^| )locale=([^;]+)"));
   const saved = match ? decodeURIComponent(match[2]) : null;
-  return saved === "fr" ? "fr" : "en";
+  const valid: Locale[] = ["en", "fr", "es", "de", "pt"];
+  return valid.includes(saved as Locale) ? (saved as Locale) : "en";
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {

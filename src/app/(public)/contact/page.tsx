@@ -159,20 +159,24 @@ export default function ContactPage() {
 
       {/* Main Content — overlapping the hero */}
       <main className="relative z-20 -mt-12 md:-mt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24 pb-24">
-        {/* Info Cards Bento */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {infoCards.map((card) => (
+        {/* Info Cards — liquid glass premium */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {infoCards.map((card, idx) => (
             <div
               key={card.title}
-              className="bento-card bg-[#FAF9F6] rounded-xl p-8 flex flex-col items-center text-center"
+              className="liquid-glass-surface rounded-2xl p-8 md:p-10 flex flex-col items-center text-center card-depth-hover group"
+              style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-3xl text-accent">{card.icon}</span>
+              <div className="relative mb-6">
+                <div className="absolute inset-0 bg-accent/10 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center border border-accent/10 group-hover:border-accent/25 group-hover:scale-110 transition-all duration-500">
+                  <span className="material-symbols-outlined text-3xl text-accent drop-shadow-sm">{card.icon}</span>
+                </div>
               </div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted mb-2">
+              <span className="micro-header text-accent mb-3 group-hover:tracking-[0.25em] transition-all duration-300">
                 {card.title}
               </span>
-              <div className="text-foreground font-semibold leading-relaxed">
+              <div className="text-foreground font-semibold leading-relaxed text-lg">
                 {card.lines.map((line, i) => (
                   <span key={i}>
                     {line}
