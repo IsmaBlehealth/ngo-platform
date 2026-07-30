@@ -58,7 +58,7 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
               Empowering Communities
               <br />
-              <span className="text-gradient-gold">Since 2014</span>
+              <span className="text-accent" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>Since 2014</span>
             </h1>
             <p className="text-lg text-white/90 max-w-xl leading-relaxed" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
               We are dedicated to fostering prosperity, universal health, and equality worldwide.

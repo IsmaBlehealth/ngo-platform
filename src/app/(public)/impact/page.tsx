@@ -120,7 +120,7 @@ export default function ImpactPage() {
                     : stat.number}
                   {stat.suffix}
                 </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-white/60">
+                <div className="text-xs font-bold uppercase tracking-wider text-white/80 drop-shadow-sm">
                   {stat.label}
                 </div>
               </div>
