@@ -60,7 +60,7 @@ export default function HeroCarousel() {
         <div
           key={i}
           className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
-          style={{ opacity: i === current ? 1 : 0 }}
+          style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
         >
           <Image
             src={s.src}
@@ -77,9 +77,9 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      {/* Ultra-transparent gradient overlays for text legibility */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/60 via-black/20 to-black/10" />
+      {/* Gradient overlays for text legibility */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/75 via-black/35 to-black/5" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/55 via-transparent to-transparent" />
 
       {/* Navigation arrows — liquid glass */}
       <button
