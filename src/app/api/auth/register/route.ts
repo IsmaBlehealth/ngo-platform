@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     if (!parsed.success) {
     return NextResponse.json(
-      { errors: parsed.error.flatten().fieldErrors },
+      { error: "Please check your submission" },
       { status: 400, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }
     );
     }
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 201, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } });
   } catch (error) {
-    logger.error("Registration error", { error: String(error) });
+    logger.error("Registration error", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json(
       { error: "Failed to create account" },
       { status: 500, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }

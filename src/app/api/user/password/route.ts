@@ -2,10 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { passwordSchema } from "@/lib/validation";
+import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
 import bcrypt from "bcryptjs";
 
 export async function PATCH(req: NextRequest) {
+  const csrfToken = req.headers.get("x-csrf-token");
+  if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 403 });
+  }
+
+  if (!req.headers.get("content-type")?.includes("application/json")) {
+    return NextResponse.json({ error: "Content-Type must be application/json" }, { status: 415 });
+  }
+
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -44,7 +54,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Password change error", { error: String(error) });
+    logger.error("Password change error", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Failed to change password" }, { status: 500 });
   }
 }

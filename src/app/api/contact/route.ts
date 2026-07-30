@@ -23,6 +23,10 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    if (!req.headers.get("content-type")?.includes("application/json")) {
+      return NextResponse.json({ error: "Content-Type must be application/json" }, { status: 415 });
+    }
+
     const contentLength = Number(req.headers.get("content-length") || 0);
     if (contentLength > 65536) {
       return NextResponse.json({ error: "Payload too large" }, { status: 413 });
@@ -30,17 +34,17 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    if (body.website) {
-      return NextResponse.json({ success: true });
-    }
-
     const parsed = contactSchema.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(
-        { errors: parsed.error.flatten().fieldErrors },
+        { error: "Please check your submission" },
         { status: 400, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }
       );
+    }
+
+    if (body.website) {
+      return NextResponse.json({ success: true });
     }
 
     const { name, email, phone, subject, message } = parsed.data;
@@ -59,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } });
   } catch (error) {
-    logger.error("Contact form error", { error: String(error) });
+    logger.error("Contact form error", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json(
       { error: "Failed to submit message" },
       { status: 500, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }

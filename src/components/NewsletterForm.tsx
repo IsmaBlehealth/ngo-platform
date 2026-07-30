@@ -1,19 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [csrfToken, setCsrfToken] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "already" | "error">("idle");
+
+  useEffect(() => {
+    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (honeypot) return;
     setStatus("loading");
     try {
       const res = await fetch("/api/newsletter", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
+        body: JSON.stringify({ email, website: honeypot }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -29,6 +36,10 @@ export default function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+        <label htmlFor="newsletter-website">Leave this empty</label>
+        <input id="newsletter-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+      </div>
       <input
         type="email"
         value={email}

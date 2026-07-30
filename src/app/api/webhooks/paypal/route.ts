@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
     }
     return NextResponse.json({ received: true });
   } catch (error) {
-    logger.error(`Error processing PayPal webhook: ${result.type}`, { error: String(error) });
+    logger.error(`Error processing PayPal webhook: ${result.type}`, { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Webhook handler failed" }, { status: 500 });
   }
 }

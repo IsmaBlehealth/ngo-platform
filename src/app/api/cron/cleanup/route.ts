@@ -47,7 +47,7 @@ export async function GET(req: NextRequest) {
       },
     });
   } catch (error) {
-    logger.error("Cron cleanup failed", { error: String(error) });
+    logger.error("Cron cleanup failed", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Cleanup failed" }, { status: 500 });
   }
 }

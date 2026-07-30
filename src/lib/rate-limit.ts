@@ -75,10 +75,14 @@ function hashString(str: string): string {
 }
 
 function getIpFromRequest(request: Request): string {
-  const xff = request.headers.get("x-forwarded-for");
-  if (xff && !xff.includes(",")) return xff.trim();
   const sessionId = getSessionCookieId(request);
   if (sessionId) return hashString(sessionId);
+  const xff = request.headers.get("x-forwarded-for");
+  if (xff) {
+    const ips = xff.split(",").map((s) => s.trim()).filter(Boolean);
+    const realIp = ips[0];
+    if (realIp && /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(realIp)) return realIp;
+  }
   return "127.0.0.1";
 }
 

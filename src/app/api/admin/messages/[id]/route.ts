@@ -27,7 +27,7 @@ export async function PATCH(
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Failed to update message", { error: String(error) });
+    logger.error("Failed to update message", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
 }
@@ -47,7 +47,7 @@ export async function DELETE(
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Failed to delete message", { error: String(error) });
+    logger.error("Failed to delete message", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
   }
 }

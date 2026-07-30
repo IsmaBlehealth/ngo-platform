@@ -27,6 +27,10 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    if (!req.headers.get("content-type")?.includes("application/json")) {
+      return NextResponse.json({ error: "Content-Type must be application/json" }, { status: 415 });
+    }
+
     const contentLength = Number(req.headers.get("content-length") || 0);
     if (contentLength > 65536) {
       return NextResponse.json({ error: "Payload too large" }, { status: 413 });
@@ -44,7 +48,7 @@ export async function POST(req: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { errors: parsed.error.flatten().fieldErrors },
+        { error: "Invalid donation details" },
         { status: 400, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }
       );
     }
@@ -89,7 +93,7 @@ export async function POST(req: NextRequest) {
       { headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }
     );
   } catch (error) {
-    logger.error("Donation error", { error: String(error) });
+    logger.error("Donation error", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json(
       { error: "Failed to create checkout session" },
       { status: 500, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }

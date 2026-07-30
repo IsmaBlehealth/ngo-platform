@@ -14,6 +14,7 @@ export default async function AdminUsersPage() {
 
   const users = await prisma.user.findMany({
     orderBy: { createdAt: "desc" },
+    select: { id: true, firstName: true, lastName: true, email: true, role: true, createdAt: true },
   });
 
   const roleCounts = users.reduce(

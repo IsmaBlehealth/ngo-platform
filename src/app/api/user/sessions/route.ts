@@ -21,7 +21,7 @@ export async function GET() {
 
     return NextResponse.json({ sessions });
   } catch (error) {
-    logger.error("Failed to fetch sessions", { error: String(error) });
+    logger.error("Failed to fetch sessions", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Failed to fetch sessions" }, { status: 500 });
   }
 }

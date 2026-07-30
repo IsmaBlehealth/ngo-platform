@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
+import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
 
 export async function DELETE(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const csrfToken = req.headers.get("x-csrf-token");
+  if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 403 });
+  }
+
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -28,7 +34,7 @@ export async function DELETE(
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Failed to delete session", { error: String(error) });
+    logger.error("Failed to delete session", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Failed to delete session" }, { status: 500 });
   }
 }

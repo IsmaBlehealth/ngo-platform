@@ -28,7 +28,7 @@ export async function sendEmail({ to, subject, html, text }: SendEmailOptions): 
     logger.info("Email sent", { to, subject });
     return true;
   } catch (error) {
-    logger.error("Failed to send email", { error: String(error), to, subject });
+    logger.error("Failed to send email", { error: error instanceof Error ? error.message : "Unknown", to, subject });
     return false;
   }
 }

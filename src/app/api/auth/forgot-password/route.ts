@@ -44,6 +44,10 @@ export async function POST(req: NextRequest) {
 
     const user = await prisma.user.findUnique({ where: { email } });
 
+    if (!user) {
+      await new Promise((r) => setTimeout(r, 800));
+    }
+
     if (user) {
       await prisma.passwordResetToken.updateMany({
         where: { userId: user.id, used: false },
@@ -75,7 +79,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Forgot password error", { error: String(error) });
+    logger.error("Forgot password error", { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json(
       { error: "Failed to process request" },
       { status: 500 }
