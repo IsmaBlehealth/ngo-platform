@@ -77,13 +77,22 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/85 via-black/50 to-black/10" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+      {/* Ultra-transparent gradient overlays for text legibility */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/60 via-black/20 to-black/10" />
 
+      {/* Navigation arrows — liquid glass */}
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="hidden md:flex absolute top-1/2 left-6 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-full items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all cursor-pointer shadow-lg"
+        className="hidden md:flex absolute top-1/2 left-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+        style={{
+          background: "rgba(255,255,255,0.04)",
+          backdropFilter: "blur(60px)",
+          WebkitBackdropFilter: "blur(60px)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+        }}
       >
         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -92,19 +101,35 @@ export default function HeroCarousel() {
       <button
         onClick={next}
         aria-label="Next slide"
-        className="hidden md:flex absolute top-1/2 right-6 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-full items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all cursor-pointer shadow-lg"
+        className="hidden md:flex absolute top-1/2 right-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+        style={{
+          background: "rgba(255,255,255,0.04)",
+          backdropFilter: "blur(60px)",
+          WebkitBackdropFilter: "blur(60px)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+        }}
       >
         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
+      {/* Content */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-10 mt-16">
         <div className="max-w-[680px]">
           <div key={`label-${current}`} className="animate-fade-up mb-6">
-            <span className="inline-flex items-center gap-2 bg-accent text-white px-3 py-1.5 rounded-full">
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              <span className="text-xs font-bold tracking-widest uppercase">{t(locale, slideLabelKey)}</span>
+            <span
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                backdropFilter: "blur(40px)",
+                WebkitBackdropFilter: "blur(40px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              {t(locale, slideLabelKey)}
             </span>
           </div>
 
@@ -128,18 +153,22 @@ export default function HeroCarousel() {
           </p>
 
           <div className="animate-fade-up flex flex-wrap items-center gap-4" style={{ animationDelay: "0.3s" }}>
-            <Link
-              href="/donate"
-              className="group flex items-center justify-center gap-2 bg-accent text-white px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(232,168,56,0.3)] hover:shadow-[0_0_30px_rgba(232,168,56,0.5)] hover:-translate-y-1 transition-all"
-            >
+            <Link href="/donate" className="btn-primary px-8 py-4">
               {t(locale, "hero.cta")}
-              <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
             <Link
               href="/about"
-              className="flex items-center justify-center px-8 py-4 rounded-full font-medium text-white border border-white/30 bg-white/10 backdrop-blur-xl hover:bg-white/20 hover:border-white/50 transition-all shadow-lg"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-white transition-all duration-200 hover:scale-105 active:scale-95"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                backdropFilter: "blur(40px)",
+                WebkitBackdropFilter: "blur(40px)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+              }}
             >
               {t(locale, "hero.learn")}
             </Link>
@@ -147,11 +176,21 @@ export default function HeroCarousel() {
         </div>
       </div>
 
+      {/* Bottom controls — maximally transparent */}
       <div className="absolute bottom-12 left-0 w-full z-20 px-6 md:px-10 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
           <div className="hidden md:block w-32" />
 
-          <div className="pointer-events-auto flex items-center gap-2 bg-white/5 backdrop-blur-3xl px-4 py-2 rounded-full border border-white/10 shadow-lg">
+          <div
+            className="pointer-events-auto flex items-center gap-2 px-4 py-2 rounded-full"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              backdropFilter: "blur(60px)",
+              WebkitBackdropFilter: "blur(60px)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+            }}
+          >
             {heroSlides.map((_, i) => (
               <button
                 key={i}
@@ -160,13 +199,22 @@ export default function HeroCarousel() {
                 className={`h-2 rounded-full transition-all duration-500 ${
                   i === current
                     ? "w-8 bg-accent"
-                    : "w-2 bg-white/30 hover:bg-white/60"
+                    : "w-2 bg-white/30 hover:bg-white/50"
                 }`}
               />
             ))}
           </div>
 
-          <div className="hidden md:flex pointer-events-auto items-center justify-center bg-white/5 backdrop-blur-3xl px-4 py-2 rounded-full border border-white/10 w-32 shadow-lg">
+          <div
+            className="hidden md:flex pointer-events-auto items-center justify-center px-4 py-2 rounded-full w-32"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              backdropFilter: "blur(60px)",
+              WebkitBackdropFilter: "blur(60px)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+            }}
+          >
             <span className="text-sm text-white/90 font-medium tracking-wider tabular-nums">
               {String(current + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
             </span>
@@ -174,8 +222,9 @@ export default function HeroCarousel() {
         </div>
       </div>
 
+      {/* Wave divider */}
       <div className="absolute bottom-0 left-0 w-full z-30 overflow-hidden leading-none pointer-events-none">
-        <svg className="w-full h-12 md:h-24 fill-white" preserveAspectRatio="none" viewBox="0 0 1200 120">
+        <svg className="w-full h-12 md:h-24 fill-[#faf9f6]" preserveAspectRatio="none" viewBox="0 0 1200 120">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,111.47,192.5,91.8,235.6,77.92,279.7,64.18,321.39,56.44Z" />
         </svg>
       </div>

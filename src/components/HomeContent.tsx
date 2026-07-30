@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import FloatingDonateBar from "@/components/FloatingDonateBar";
+import HeroCarousel from "@/components/HeroCarousel";
 import { useLocale } from "@/lib/locale-context";
 import { t } from "@/lib/i18n";
 
@@ -37,10 +38,11 @@ const programs = [
   },
 ];
 
-const heroStats = [
-  { number: "150+", labelKey: "home.stats.communities", icon: "diversity_3" },
-  { number: "$42M", labelKey: "home.stats.aid", icon: "volunteer_activism" },
-  { number: "8.5M", labelKey: "home.stats.hectares", icon: "eco" },
+const stats = [
+  { number: "2014", labelKey: "home.stats.founded", color: "text-primary" },
+  { number: "100K+", labelKey: "home.stats.impacted", color: "text-accent" },
+  { number: "3", labelKey: "home.stats.countries", color: "text-success" },
+  { number: "99%", labelKey: "home.stats.passingRate", color: "text-primary" },
 ];
 
 const impactItems = [
@@ -80,90 +82,30 @@ export default function HomeContent() {
   return (
     <>
       <FloatingDonateBar />
+      <HeroCarousel />
 
-      {/* Atmospheric Background Blobs */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary-fixed/20 blur-[100px] animate-[blobFloat_15s_ease-in-out_infinite]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-secondary-fixed-dim/20 blur-[120px] animate-[blobFloat_18s_ease-in-out_infinite_reverse]" />
-      </div>
-
-      {/* New Hero Section — Ethereal Glass Design */}
-      <section className="relative z-10 pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[85vh] flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-        <div className="flex-1 space-y-8 z-10">
-          <ScrollReveal>
-            <h1 className="font-black text-4xl md:text-6xl lg:text-[72px] leading-[1.05] tracking-tight text-brand-gradient pb-2">
-              {tr("home.hero.title")}
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={1}>
-            <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-              {tr("home.hero.subtitle")}
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={2}>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link href="/donate" className="btn-primary px-8 py-4">
-                {tr("home.hero.cta.primary")}
-                <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link href="/programs" className="btn-secondary px-8 py-4">
-                {tr("home.hero.cta.secondary")}
-                <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-
-        <div className="flex-1 relative w-full h-[420px] md:h-[500px]">
-          {/* Floating Glass Cards */}
-          <ScrollReveal delay={1}>
-            <div className="absolute top-6 right-6 md:right-12 w-64 md:w-72 liquid-glass rounded-3xl p-6 flex flex-col justify-center transform rotate-3 animate-[float_10s_ease-in-out_infinite] hover:scale-105 transition-transform duration-300">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="material-symbols-outlined text-secondary-container text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>water_drop</span>
-                <span className="text-xs font-bold uppercase tracking-wider text-on-surface">{tr("home.hero.card.water")}</span>
-              </div>
-              <div className="text-3xl font-black text-brand-gradient">{tr("home.hero.card.water.stat")}</div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={2}>
-            <div className="absolute bottom-16 left-0 md:left-6 w-64 md:w-80 glass-max rounded-3xl p-6 flex flex-col justify-center transform -rotate-2 animate-[float_12s_ease-in-out_infinite_reverse] hover:scale-105 transition-transform duration-300">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="material-symbols-outlined text-primary-container text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
-                <span className="text-xs font-bold uppercase tracking-wider text-on-surface">{tr("home.hero.card.education")}</span>
-              </div>
-              <div className="w-full bg-surface-variant h-2 rounded-full mt-1">
-                <div className="bg-brand-gradient h-2 rounded-full w-[85%]" />
-              </div>
-              <div className="text-right text-xs font-semibold text-on-surface-variant mt-2">{tr("home.hero.card.education.label")}</div>
-            </div>
-          </ScrollReveal>
-
-          {/* Central Globe / Decorative Element */}
-          <div className="absolute inset-0 rounded-full bg-glass-light backdrop-blur-sm border border-white/20 shadow-ethereal -z-10 m-auto w-3/4 h-3/4 max-w-[320px] max-h-[320px] flex items-center justify-center">
-            <svg className="w-32 h-32 md:w-40 md:h-40 text-primary/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.23m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-            </svg>
+      <section className="relative z-30 px-4 md:px-10 max-w-7xl mx-auto -mt-16 md:-mt-24 mb-20">
+        <div
+          className="relative overflow-hidden rounded-3xl p-8 md:p-10"
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            backdropFilter: "blur(60px)",
+            WebkitBackdropFilter: "blur(60px)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+          }}
+        >
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/[0.03] to-transparent" />
+          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((s, i) => (
+              <ScrollReveal key={s.labelKey} delay={i}>
+                <div className="flex flex-col items-center justify-center text-center">
+                  <p className={`text-3xl md:text-4xl font-black mb-2 drop-shadow-sm ${s.color}`}>{s.number}</p>
+                  <p className="text-sm font-medium text-white/60 uppercase tracking-wider">{tr(s.labelKey)}</p>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
-        </div>
-      </section>
-
-      {/* Impact Stats — Glass Cards */}
-      <section className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto -mt-8 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {heroStats.map((s, i) => (
-            <ScrollReveal key={s.labelKey} delay={i}>
-              <div className="glass-max rounded-3xl p-8 md:p-10 text-center flex flex-col items-center gap-4 transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.01]">
-                <span className="material-symbols-outlined text-5xl text-primary mb-1">{s.icon}</span>
-                <h3 className="text-4xl md:text-5xl font-black text-brand-gradient">{s.number}</h3>
-                <p className="text-xs font-bold uppercase tracking-wider text-on-surface-variant">{tr(s.labelKey)}</p>
-              </div>
-            </ScrollReveal>
-          ))}
         </div>
       </section>
 
