@@ -11,7 +11,7 @@ import { t } from "@/lib/i18n";
 const programs = [
   {
     icon: "💧",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&q=80",
+    image: "/images/old-site/programs/clean-water.jpg",
     stat: "50K+",
     statLabelKey: "program.statLabel",
     titleKey: "program.title",
@@ -20,7 +20,7 @@ const programs = [
   },
   {
     icon: "📚",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+    image: "/images/old-site/programs/education.jpg",
     stat: "332",
     statLabelKey: "education.statLabel",
     titleKey: "education.title",
@@ -29,7 +29,7 @@ const programs = [
   },
   {
     icon: "🏥",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    image: "/images/old-site/programs/healthcare.jpg",
     stat: "15K+",
     statLabelKey: "health.statLabel",
     titleKey: "health.title",
@@ -49,21 +49,21 @@ const impactItems = [
   {
     titleKey: "home.impact.water.title",
     textKey: "home.impact.water.text",
-    image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&q=80",
+    image: "/images/old-site/intro-images/scrolling-2.jpg",
     stat: "75%",
     statLabelKey: "home.impact.water.statLabel",
   },
   {
     titleKey: "home.impact.education.title",
     textKey: "home.impact.education.text",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+    image: "/images/old-site/intro-images/scrolling-3.jpg",
     stat: "99%",
     statLabelKey: "home.impact.education.statLabel",
   },
   {
     titleKey: "home.impact.health.title",
     textKey: "home.impact.health.text",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    image: "/images/old-site/intro-images/scrolling-6.jpg",
     stat: "15K+",
     statLabelKey: "home.impact.health.statLabel",
   },
@@ -203,13 +203,13 @@ export default function HomeContent() {
                   <p className="text-xs font-bold uppercase tracking-wider text-on-primary">{tr("home.years")}</p>
                 </div>
                 <div className="card-depth overflow-hidden rounded-3xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80"
-                    alt="Community gathering"
-                    width={600}
-                    height={400}
-                    className="h-[400px] w-full object-cover"
-                  />
+<Image
+                     src="/images/old-site/about/main-human.png"
+                     alt="Volunteer holding jar and a clipboard"
+                     width={600}
+                     height={400}
+                     className="h-[400px] w-full object-cover"
+                   />
                 </div>
               </div>
             </ScrollReveal>
@@ -278,7 +278,7 @@ export default function HomeContent() {
       <section className="relative overflow-hidden bg-inverse-surface py-24">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1920&q=80"
+            src="/images/old-site/intro-images/scrolling-9.jpg"
             alt="Happy community"
             fill
             className="object-cover opacity-20"

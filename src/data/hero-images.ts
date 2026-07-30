@@ -8,59 +8,59 @@ export interface HeroSlide {
 
 export const heroSlides: HeroSlide[] = [
   {
-    src: '/images/hero/gad-hero-1.jpg',
-    alt: 'Large group of students in front of the school building at Groupe Scolaire Agbe Lakota',
-    title: 'Every Child Deserves a Future',
+    src: '/images/old-site/slider/hero-1.jpg',
+    alt: 'Group of hands joined together',
+    title: 'Progress Through Equal Opportunity',
     subtitle:
-      'Building sustainable futures through education, clean water, and healthcare in communities across Africa.',
+      'We believe in creating pathways to education, health, and empowerment, ensuring that underserved communities can thrive and contribute globally.',
     microLabel: 'Global Approach To Development',
   },
   {
-    src: '/images/hero/gad-hero-2.jpg',
-    alt: 'Young children seated at shared wooden desks in a classroom, teacher observing',
-    title: 'Learning Starts Here',
+    src: '/images/old-site/slider/hero-2.jpg',
+    alt: 'Group of people smiling',
+    title: 'Progress Through Equal Opportunity',
     subtitle:
-      'Providing quality education to children in underserved communities across Côte d\'Ivoire and Mali.',
+      'We provide essential healthcare services to communities in need, including medical camps and maternal and child health.',
+    microLabel: 'Healthcare & Medical Aid',
+  },
+  {
+    src: '/images/old-site/slider/hero-3.jpg',
+    alt: 'Staff smiling',
+    title: 'Progress Through Equal Opportunity',
+    subtitle:
+      'We work to provide access to clean and safe drinking water in underserved communities.',
+    microLabel: 'Clean Water Initiatives',
+  },
+  {
+    src: '/images/old-site/intro-images/scrolling-1.jpg',
+    alt: 'Community outreach photo',
+    title: 'Progress Through Equal Opportunity',
+    subtitle:
+      'Education is a powerful tool for change. We offer scholarships and educational support to children and young adults.',
     microLabel: 'Education & Scholarships',
   },
   {
-    src: '/images/hero/gad-hero-3.jpg',
-    alt: 'Students holding up small individual whiteboards toward the front of class',
-    title: 'Building Knowledge Together',
+    src: '/images/old-site/intro-images/scrolling-5.jpg',
+    alt: 'Volunteers in the community',
+    title: 'Progress Through Equal Opportunity',
     subtitle:
-      'Interactive learning methods that engage students and build confidence from an early age.',
-    microLabel: 'Interactive Learning',
+      'We believe that every act of generosity can create lasting change. Support our cause today.',
+    microLabel: 'Get Involved Today',
   },
   {
-    src: '/images/hero/gad-hero-4.jpg',
-    alt: 'Children at desks with school backpacks and water bottles, natural light from ventilation blocks',
-    title: 'Resources That Change Lives',
+    src: '/images/old-site/intro-images/scrolling-8.jpg',
+    alt: 'Community gathering',
+    title: 'Progress Through Equal Opportunity',
     subtitle:
-      'School supplies, clean water access, and nutrition programs that keep children in school.',
-    microLabel: 'Clean Water Initiative',
+      'Your generosity can make a world of difference. Every donation helps us deliver clean water, education, and healthcare to those who need it most.',
+    microLabel: 'Donate Now',
   },
   {
-    src: '/images/hero/gad-hero-5.jpg',
-    alt: 'Older students in school uniforms focused on writing an exam',
-    title: 'Academic Excellence',
+    src: '/images/old-site/intro-images/btm3-3.jpg',
+    alt: 'Medical staff assisting kids',
+    title: 'Progress Through Equal Opportunity',
     subtitle:
-      'A 99% passing rate proves that with the right support, every student can succeed.',
-    microLabel: '99% Passing Rate',
-  },
-  {
-    src: '/images/hero/gad-hero-6.jpg',
-    alt: 'Sports team holding sign reading Groupe Scolaire Agbe Lakota',
-    title: 'GROUPE SCOLAIRE AGBÉ LAKOTA',
-    subtitle:
-      'More than a school — a community hub where children learn, play, and grow together.',
-    microLabel: 'Our Schools',
-  },
-  {
-    src: '/images/hero/gad-hero-7.jpg',
-    alt: 'Youth football team in yellow and black uniforms posing with coaches and school officials',
-    title: 'Stronger Through Community',
-    subtitle:
-      'Sports programs that teach teamwork, discipline, and bring entire communities together.',
-    microLabel: 'Community Programs',
+      'Our mission is to eliminate poverty, health disparities, and gender inequality, and improve the overall health of underserved populations.',
+    microLabel: 'Our Mission',
   },
 ];

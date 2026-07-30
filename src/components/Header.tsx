@@ -32,13 +32,11 @@ export default function Header() {
     <header className="fixed top-0 w-full z-50 glass-nav shadow-[0_4px_30px_rgba(0,0,0,0.04)]">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-on-primary font-bold text-sm transition-transform duration-300 group-hover:scale-105">
-            GAD
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-sm font-bold text-primary leading-tight block transition-colors">Global Approach To</span>
-            <span className="text-sm font-bold text-primary leading-tight block transition-colors">Development</span>
-          </div>
+          <img
+            src="/images/old-site/logos/main-logo.png"
+            alt="Global Approach To Development"
+            className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+          />
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
