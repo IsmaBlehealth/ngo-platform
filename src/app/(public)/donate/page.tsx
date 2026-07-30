@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Breadcrumb from "@/components/Breadcrumb";
+import DonationCalculator from "@/components/DonationCalculator";
 
 const amounts = [25, 50, 100, 250, 500];
 
@@ -101,6 +103,14 @@ export default function DonatePage() {
           <p className="mt-4 mx-auto max-w-2xl text-lg text-white/80">
             Every donation helps us build wells, schools, and clinics. 100% of your donation goes directly to our programs.
           </p>
+        </div>
+      </section>
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Donate" }]} />
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <DonationCalculator />
         </div>
       </section>
 

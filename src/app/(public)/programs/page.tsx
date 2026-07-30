@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { generateProgramSchema } from "@/lib/seo";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Programs",
@@ -113,6 +114,8 @@ export default async function ProgramsPage() {
           </p>
         </div>
       </section>
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Programs" }]} />
 
       {/* Programs */}
       <section className="section-padding">

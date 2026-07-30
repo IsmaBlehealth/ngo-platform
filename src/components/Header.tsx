@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -20,6 +20,7 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { data: session } = useSession();
   const { locale } = useLocale();
 
@@ -44,6 +45,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onMouseEnter={() => router.prefetch(link.href)}
               aria-current={isActive(link.href) ? "page" : undefined}
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
                 isActive(link.href)

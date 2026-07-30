@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Impact",
@@ -76,6 +77,8 @@ export default function ImpactPage() {
           </p>
         </div>
       </header>
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Impact" }]} />
 
       {/* Stats Grid — liquid-glass cards */}
       <section className="py-24 bg-primary-dark relative z-20">

@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { generateOrganizationSchema } from "@/lib/seo";
+import Breadcrumb from "@/components/Breadcrumb";
+import Timeline from "@/components/Timeline";
+import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -42,6 +45,8 @@ export default function AboutPage() {
           </p>
         </div>
       </header>
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
 
       {/* ═══ FOUNDER — Stitch two-column with floating badge ═══ */}
       <section className="py-24 px-6 bg-white relative z-10">
@@ -177,6 +182,28 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-6 bg-[#FAF9F6]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold text-primary-dark tracking-widest uppercase mb-4 block">Our Journey</span>
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">Timeline of Impact</h2>
+            <div className="w-16 h-1 bg-accent mx-auto" />
+          </div>
+          <Timeline />
+        </div>
+      </section>
+
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold text-primary-dark tracking-widest uppercase mb-4 block">Common Questions</span>
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">Frequently Asked Questions</h2>
+            <div className="w-16 h-1 bg-accent mx-auto" />
+          </div>
+          <FAQAccordion />
         </div>
       </section>
 

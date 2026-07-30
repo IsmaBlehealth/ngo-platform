@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Providers from "@/components/Providers";
 import { LocaleProvider } from "@/lib/locale-context";
+import BackToTop from "@/components/BackToTop";
+import ReadingProgress from "@/components/ReadingProgress";
 import "./globals.css";
 
 const inter = Inter({
@@ -68,10 +70,15 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans antialiased">
         <Providers>
           <LocaleProvider>
-            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:p-2">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white focus:shadow-lg focus:outline-none"
+            >
               Skip to main content
             </a>
+            <ReadingProgress />
             {children}
+            <BackToTop />
             <Analytics />
             <SpeedInsights />
           </LocaleProvider>

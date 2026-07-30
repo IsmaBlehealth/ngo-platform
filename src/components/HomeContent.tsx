@@ -5,6 +5,8 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import FloatingDonateBar from "@/components/FloatingDonateBar";
 import HeroCarousel from "@/components/HeroCarousel";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import { useLocale } from "@/lib/locale-context";
 import { t } from "@/lib/i18n";
 
@@ -39,10 +41,10 @@ const programs = [
 ];
 
 const stats = [
-  { number: "2014", labelKey: "home.stats.founded", color: "text-primary" },
-  { number: "100K+", labelKey: "home.stats.impacted", color: "text-accent" },
-  { number: "3", labelKey: "home.stats.countries", color: "text-success" },
-  { number: "99%", labelKey: "home.stats.passingRate", color: "text-primary" },
+  { number: "2014", end: 2014, suffix: "", labelKey: "home.stats.founded", color: "text-primary" },
+  { number: "100K+", end: 100, suffix: "K+", labelKey: "home.stats.impacted", color: "text-accent" },
+  { number: "3", end: 3, suffix: "", labelKey: "home.stats.countries", color: "text-success" },
+  { number: "99%", end: 99, suffix: "%", labelKey: "home.stats.passingRate", color: "text-primary" },
 ];
 
 const impactItems = [
@@ -100,7 +102,7 @@ export default function HomeContent() {
             {stats.map((s, i) => (
               <ScrollReveal key={s.labelKey} delay={i}>
                 <div className="flex flex-col items-center justify-center text-center">
-                  <p className={`text-3xl md:text-4xl font-black mb-2 drop-shadow-sm ${s.color}`}>{s.number}</p>
+                  <p className={`text-3xl md:text-4xl font-black mb-2 drop-shadow-sm ${s.color}`}><AnimatedCounter end={s.end} suffix={s.suffix} /></p>
                   <p className="text-sm font-medium text-white/60 uppercase tracking-wider">{tr(s.labelKey)}</p>
                 </div>
               </ScrollReveal>
@@ -266,6 +268,16 @@ export default function HomeContent() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-surface-container py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="micro-header text-accent mb-3">Voices of Impact</p>
+            <h2 className="text-tight text-4xl font-black text-primary sm:text-5xl">What People Say</h2>
+          </div>
+          <TestimonialsCarousel />
         </div>
       </section>
 

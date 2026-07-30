@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const blogPosts = [
   {
@@ -71,6 +72,8 @@ export default function BlogPage() {
           </p>
         </div>
       </section>
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
 
       {/* Featured Post */}
       <section className="section-padding">

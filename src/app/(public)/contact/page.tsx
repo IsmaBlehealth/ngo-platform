@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const CONTACT_URL = "https://ngo-platform-399q.vercel.app/contact";
 
@@ -134,6 +135,8 @@ export default function ContactPage() {
           </p>
         </div>
       </header>
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} />
 
       {/* Main Content — overlapping the hero */}
       <main className="relative z-20 -mt-12 md:-mt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24 pb-24">
