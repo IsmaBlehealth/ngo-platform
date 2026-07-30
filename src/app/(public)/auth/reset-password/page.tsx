@@ -8,6 +8,7 @@ export default function ResetPasswordPage() {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -24,6 +25,8 @@ export default function ResetPasswordPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+
+    if (honeypot) return;
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -44,7 +47,7 @@ export default function ResetPasswordPage() {
           "Content-Type": "application/json",
           "X-CSRF-Token": csrfToken,
         },
-        body: JSON.stringify({ token, password }),
+        body: JSON.stringify({ token, password, website: honeypot }),
       });
 
       if (!res.ok) {
@@ -87,6 +90,10 @@ export default function ResetPasswordPage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+            <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+              <label htmlFor="reset-website">Leave this empty</label>
+              <input id="reset-website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+            </div>
             <div>
               <label htmlFor="password" className="block text-sm font-medium">
                 New Password

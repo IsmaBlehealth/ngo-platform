@@ -10,8 +10,10 @@ interface UserSession {
 export default function SessionsPage() {
   const [sessions, setSessions] = useState<UserSession[]>([]);
   const [loading, setLoading] = useState(true);
+  const [csrfToken, setCsrfToken] = useState("");
 
   useEffect(() => {
+    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
     fetch("/api/user/sessions")
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +24,10 @@ export default function SessionsPage() {
   }, []);
 
   async function revokeSession(id: string) {
-    await fetch(`/api/user/sessions/${id}`, { method: "DELETE" });
+    await fetch(`/api/user/sessions/${id}`, {
+      method: "DELETE",
+      headers: { "X-CSRF-Token": csrfToken },
+    });
     setSessions((prev) => prev.filter((s) => s.id !== id));
   }
 

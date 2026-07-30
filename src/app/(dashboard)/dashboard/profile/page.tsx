@@ -1,11 +1,11 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();
-  const [initialized, setInitialized] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [saving, setSaving] = useState(false);
@@ -17,11 +17,16 @@ export default function ProfilePage() {
   const [changingPassword, setChangingPassword] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState("");
 
-  if (session?.user && !initialized) {
-    setFirstName(session.user.name?.split(" ")[0] || "");
-    setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
-    setInitialized(true);
-  }
+  useEffect(() => {
+    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
+  }, []);
+
+  useEffect(() => {
+    if (session?.user) {
+      setFirstName(session.user.name?.split(" ")[0] || "");
+      setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
+    }
+  }, [session]);
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();
@@ -30,7 +35,7 @@ export default function ProfilePage() {
     try {
       const res = await fetch("/api/user/profile", {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
         body: JSON.stringify({ firstName, lastName }),
       });
       if (res.ok) {
@@ -56,7 +61,7 @@ export default function ProfilePage() {
     try {
       const res = await fetch("/api/user/password", {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
         body: JSON.stringify({ currentPassword, newPassword }),
       });
       const data = await res.json();
