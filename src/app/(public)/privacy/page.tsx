@@ -9,21 +9,30 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[40vh] flex items-center hero-gradient overflow-hidden">
+      {/* Hero — liquid glass */}
+      <section className="relative min-h-[45vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/old-site/intro-images/scrolling-1.jpg"
             alt="Privacy"
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 hero-overlay" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-10">
-          <h1 className="text-4xl font-bold text-white sm:text-5xl">Privacy Policy</h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/80">
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div
+          className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-20">
+          <h1 className="text-4xl font-bold text-white sm:text-5xl" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
+            Privacy Policy
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-white/90" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
             How we collect, use, and protect your personal information.
           </p>
         </div>

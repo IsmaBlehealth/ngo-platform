@@ -21,10 +21,9 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* ═══ HERO — Stitch cinematic style ═══ */}
-      <header className="relative min-h-[70vh] flex items-center justify-center bg-primary-dark overflow-hidden">
+      {/* ═══ HERO — liquid glass cinematic ═══ */}
+      <header className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/80 via-primary-dark/60 to-primary-dark/90 z-10" />
           <Image
             src="/images/old-site/intro-images/scrolling-7.jpg"
             alt="Community gathering"
@@ -33,16 +32,38 @@ export default function AboutPage() {
             priority
           />
         </div>
-        <div className="relative z-20 text-center px-6 max-w-3xl mx-auto mt-20">
-          <span className="text-xs font-bold text-accent tracking-widest uppercase mb-4 block">Who We Are</span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-            Empowering Communities
-            <br />
-            <span className="text-gradient-gold">Since 2014</span>
-          </h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-            We are dedicated to fostering prosperity, universal health, and equality worldwide.
-          </p>
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div
+          className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+          }}
+        />
+        <div className="relative z-20 px-6 max-w-7xl mx-auto w-full mt-20">
+          <div className="max-w-[680px]">
+            <span
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase mb-6"
+              style={{
+                background: "rgba(0,42,21,0.4)",
+                backdropFilter: "blur(40px)",
+                WebkitBackdropFilter: "blur(40px)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                textShadow: "0 1px 8px rgba(0,0,0,0.8)",
+              }}
+            >
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              Who We Are
+            </span>
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
+              Empowering Communities
+              <br />
+              <span className="text-gradient-gold">Since 2014</span>
+            </h1>
+            <p className="text-lg text-white/90 max-w-xl leading-relaxed" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
+              We are dedicated to fostering prosperity, universal health, and equality worldwide.
+            </p>
+          </div>
         </div>
       </header>
 

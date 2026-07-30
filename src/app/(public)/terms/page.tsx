@@ -7,11 +7,23 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#FAF9F6]">
-      <section className="bg-gradient-to-br from-primary via-primary-dark to-foreground py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Terms of Service</h1>
-          <p className="text-white/80 text-lg">Last updated: January 2025</p>
+    <main>
+      <section className="relative min-h-[45vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-foreground" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
+        <div
+          className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-20 w-full">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
+            Terms of Service
+          </h1>
+          <p className="text-white/90 text-lg" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
+            Last updated: January 2025
+          </p>
         </div>
       </section>
 

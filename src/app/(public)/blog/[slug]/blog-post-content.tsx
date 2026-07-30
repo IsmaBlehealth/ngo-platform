@@ -60,33 +60,43 @@ export function BlogPostContent({ slug }: { slug: string }) {
           }),
         }}
       />
-      {/* Hero */}
-      <section className="relative min-h-[40vh] flex items-center hero-gradient overflow-hidden">
+      {/* Hero — liquid glass */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={post.image}
             alt={post.title}
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 hero-overlay" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-10">
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div
+          className="absolute left-0 top-0 h-full w-full md:w-[60%] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-20">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <Link
-              href="/blog"
-              className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
-                pathname === "/blog" ? "ring-2 ring-accent" : ""
-              } ${categoryColors[post.category]?.bg} ${categoryColors[post.category]?.text}`}
+            <span
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase"
+              style={{
+                background: "rgba(0,42,21,0.4)",
+                backdropFilter: "blur(40px)",
+                WebkitBackdropFilter: "blur(40px)",
+                border: "1px solid rgba(255,255,255,0.12)",
+              }}
             >
               {post.category}
-            </Link>
-            <time className="text-sm text-white/60">
+            </span>
+            <time className="text-sm text-white/80" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}>
               {formatDate(post.publishedAt)}
             </time>
           </div>
-          <h1 className="text-4xl font-bold text-white sm:text-5xl max-w-3xl">
+          <h1 className="text-4xl font-bold text-white sm:text-5xl max-w-3xl" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
             {post.title}
           </h1>
         </div>

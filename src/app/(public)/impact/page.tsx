@@ -53,7 +53,7 @@ const impactStories = [
 export default function ImpactPage() {
   return (
     <>
-      {/* Hero — full-screen cinematic */}
+      {/* Hero — liquid glass cinematic */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -63,18 +63,37 @@ export default function ImpactPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/80 via-primary/60 to-background" />
         </div>
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent">
-            Real Results
-          </span>
-          <h1 className="text-5xl md:text-7xl font-black text-white drop-shadow-2xl font-[family-name:var(--font-montserrat)]">
-            Our Impact
-          </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-            Education, healthcare, and access to clean water are fundamental rights. See how communities are transforming through empowerment and equal opportunity.
-          </p>
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div
+          className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+          }}
+        />
+        <div className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full mt-20">
+          <div className="max-w-[680px]">
+            <span
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase mb-6"
+              style={{
+                background: "rgba(0,42,21,0.4)",
+                backdropFilter: "blur(40px)",
+                WebkitBackdropFilter: "blur(40px)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                textShadow: "0 1px 8px rgba(0,0,0,0.8)",
+              }}
+            >
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              Real Results
+            </span>
+            <h1 className="text-5xl md:text-7xl font-black text-white" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
+              Our Impact
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-white/90 max-w-xl" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
+              Education, healthcare, and access to clean water are fundamental rights. See how communities are transforming through empowerment and equal opportunity.
+            </p>
+          </div>
         </div>
       </header>
 
