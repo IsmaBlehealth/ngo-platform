@@ -289,6 +289,209 @@ Extract a design system from this website: https://ngo-platform-399q.vercel.app
 Capture: color palette, typography scale, component patterns (buttons, cards, badges), spacing system, shadow system, animation patterns. Export as DESIGN.md format.
 ```
 
+## PROMPT 7: COMPLETE COLOR PALETTE + LIQUID GLASS SYSTEM
+
+```
+Generate a complete color palette and iPhone-inspired Liquid Glass design system for "Global Approach To Development" (GAD), an NGO website. Replace ALL existing colors with this new system.
+
+## ANCHOR COLORS (fixed, do not change)
+- **Emerald Green (Primary)**: #50C878 — rgb(80, 200, 120). Represents growth, health, nature, sustainability.
+- **Vibrant Orange (Accent)**: #F67833 — rgb(246, 120, 51). Represents energy, warmth, action, urgency.
+
+## LIQUID GLASS PHILOSOPHY (CRITICAL — read carefully)
+The Liquid Glass system must emulate the iPhone's frosted glass aesthetic — maximally transparent, barely visible, ethereal. The glass should feel like a whisper of frost on a window, not a solid surface. It should create depth through extreme transparency and blur, not through opacity or heavy shadows.
+
+Key principles:
+- "Ghost glass" — backgrounds should be rgba(255,255,255,0.02–0.06), NEVER above 0.10
+- "Deep blur" — backdrop-filter: blur(30–60px) to create that iPhone frosted look
+- "Invisible borders" — borders should be rgba(255,255,255,0.04–0.08), barely perceptible
+- "Air shadow" — shadows should be extremely light and wide: blur 40–80px, spread -10px, opacity 0.03–0.06
+- "No solid whites" — never use pure white for backgrounds, always use the off-white #FAF9F6 or the transparent glass
+- "Depth through layers" — multiple stacked glass layers create depth, not opacity
+
+## GENERATE THE FULL PALETTE
+
+### 1. EMERALD PRIMARY FAMILY (from #50C878)
+Generate 8 shades:
+- **Primary-950** (deepest, near-black green — for text on light backgrounds): very dark emerald, almost black
+- **Primary-900**: very dark emerald
+- **Primary-800**: dark emerald
+- **Primary-700**: deep emerald (for solid dark backgrounds like footer)
+- **Primary-600**: rich emerald (for hover states on primary-500)
+- **Primary-500**: #50C878 (ANCHOR — primary brand color, main buttons, links)
+- **Primary-400**: light emerald (for hover/active states on light bg)
+- **Primary-300**: muted light emerald (for subtle borders, backgrounds)
+- **Primary-200**: pale emerald tint (for very subtle backgrounds, stats)
+- **Primary-50**: whisper of emerald (almost white with a hint of green — for section backgrounds)
+
+### 2. ORANGE ACCENT FAMILY (from #F67833)
+Generate 7 shades:
+- **Accent-700**: deep burnt orange (active states, dark hover)
+- **Accent-600**: rich orange (hover states)
+- **Accent-500**: #F67833 (ANCHOR — CTAs, badges, highlights, emphasis)
+- **Accent-400**: bright light orange (hover on dark bg, highlights)
+- **Accent-300**: soft orange (subtle accent backgrounds, pill badges)
+- **Accent-200**: pale orange tint (very subtle backgrounds)
+- **Accent-100**: whisper orange (barely perceptible tint)
+
+### 3. NEUTRAL BACKGROUND FAMILY
+- **Bg-OffWhite**: #FAF9F6 (NOT pure white — this warm off-white replaces all white backgrounds)
+- **Bg-WarmGray**: #F5F4F1 (slightly warmer — for alternating sections)
+- **Bg-CoolGray**: #F1F2F3 (cool subtle gray — for card backgrounds)
+- **Bg-Deep**: derived from Primary-800/900 (for dark sections, footers)
+
+### 4. TEXT & FOREGROUND FAMILY
+- **Text-Primary**: derive from Primary-950 (very dark, for headings)
+- **Text-Body**: derive from Primary-800/700 level (slightly softer than headings)
+- **Text-Muted**: derive from Primary-400/300 level (for secondary text)
+- **Text-OnDark-White**: #FFFFFF (for text on dark sections)
+- **Text-OnDark-Muted**: rgba(255,255,255,0.7) (for secondary text on dark)
+- **Text-OnGlass**: rgba(0,0,0,0.85) or rgba(255,255,255,0.85) depending on layer beneath
+
+### 5. SEMANTIC FAMILY
+- **Success-Green**: #2A9D8F (teal-green, distinct from primary emerald)
+- **Error-Red**: #E76F51 (warm red, complementary to orange palette)
+- **Warning-Amber**: #E9C46A (warm amber)
+- **Info-Blue**: #4A90D9 (clear blue, for info badges)
+
+### 6. GRADIENT DEFINITIONS
+Generate these exact gradients:
+- **Brand Gradient (Primary → Accent)**: "linear-gradient(135deg, #50C878 0%, #F67833 100%)" — for stat numbers, hero micro-badges, section headings
+- **Emerald Gradient**: "linear-gradient(180deg, rgba(80,200,120,0.15) 0%, rgba(80,200,120,0) 100%)" — for card overlays
+- **Orange Glow**: "radial-gradient(ellipse at center, rgba(246,120,51,0.12) 0%, transparent 70%)" — for subtle accent glows behind CTAs
+- **Glass Light**: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.04) 100%)" — for glass surfaces
+- **Glass Dark**: "linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.01) 50%, rgba(0,0,0,0.03) 100%)" — for dark glass surfaces
+- **Hero Overlay**: "linear-gradient(110deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.05) 70%)" — for hero text legibility
+- **Hero Bottom**: "linear-gradient(0deg, rgba(0,0,0,0.50) 0%, transparent 50%, transparent 100%)"
+
+## LIQUID GLASS — COMPLETE SPECIFICATION
+
+### Glass Surface Variants (apply ALL site-wide)
+
+**1. glass-max (most transparent — for hero content overlays, floating badges)**
+```
+Background: rgba(255,255,255,0.03)
+Backdrop Blur: 40px
+Saturate: 140%
+Border: 0.5px solid rgba(255,255,255,0.05)
+Border Radius: 16px
+Shadow: 0 8px 40px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.02)
+```
+
+**2. glass-card (for cards, stat containers, form elements)**
+```
+Background: rgba(255,255,255,0.05)
+Backdrop Blur: 35px
+Saturate: 130%
+Border: 0.5px solid rgba(255,255,255,0.06)
+Border Radius: 20px
+Shadow: 0 4px 24px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)
+```
+
+**3. glass-nav (for navigation bar)**
+```
+Background: rgba(255,255,255,0.04)
+Backdrop Blur: 50px (maximum blur for smooth nav)
+Saturate: 150%
+Border: none (nav should be nearly invisible)
+Shadow: 0 1px 0 rgba(255,255,255,0.03) (bottom light line only)
+```
+
+**4. glass-dark (for cards on dark backgrounds like footer)**
+```
+Background: rgba(0,0,0,0.04)
+Backdrop Blur: 35px
+Saturate: 120%
+Border: 0.5px solid rgba(255,255,255,0.04)
+Border Radius: 20px
+Shadow: 0 4px 24px rgba(0,0,0,0.08)
+```
+
+**5. glass-donate (for the floating donate bar — must stand out more)**
+```
+Background: linear-gradient(135deg, rgba(80,200,120,0.08) 0%, rgba(246,120,51,0.06) 100%)
+Backdrop Blur: 40px
+Border: 0.5px solid rgba(255,255,255,0.08)
+Border Radius: 24px
+Shadow: 0 8px 32px rgba(80,200,120,0.06), 0 1px 4px rgba(0,0,0,0.03)
+```
+
+**6. glass-surface (for page section backgrounds — extremely subtle)**
+```
+Background: rgba(255,255,255,0.02)
+Backdrop Blur: 30px
+Saturate: 120%
+Border: 0.5px solid rgba(255,255,255,0.03)
+```
+
+### GLASS DEPTH LAYERING (how to stack glass elements)
+When multiple glass elements are stacked, each layer should decrease in opacity:
+- Layer 1 (deepest — page background): solid bg or Bg-OffWhite
+- Layer 2 (section background): glass-surface
+- Layer 3 (card): glass-card (or glass-dark depending on context)
+- Layer 4 (overlay/nav/donate bar): glass-max
+
+Each layer adds a whisper of frosted depth without ever looking heavy.
+
+## DESIGN APPLICATION RULES
+
+### Color Application (page by page)
+
+**HOMEPAGE:**
+- Hero: Background photo with Hero Overlay gradient. Glass-max container for the CTA buttons. Stats bar is glass-card with emerald accent numbers.
+- Programs Section: Cards use glass-card. Program titles in Primary-900. Stat numbers use Brand Gradient.
+- Impact Strip: Solid bg using Primary-50. Numbers in Brand Gradient.
+
+**ABOUT PAGE:**
+- Founder card: glass-card with subtle emerald border. Quote in italic with accented left border in #F67833 (Accent-500).
+- "Where We Work" cards: glass-card. Location labels in Accent-500.
+
+**DONATE PAGE:**
+- Amount buttons: glass-card. Active state: Accent-500 solid bg, white text.
+- Impact sidebar: glass-card items with emerald checkmarks.
+- Form inputs: transparent bg with 0.5px rgba(255,255,255,0.08) border, focus ring in Accent-500.
+
+**IMPACT PAGE:**
+- Hero stats: large numbers in Brand Gradient on glass-card.
+- Impact story cards: glass-card with floating stat badges using glass-max and Brand Gradient numbers.
+
+**CONTACT PAGE:**
+- Info cards: glass-card with accent-500 icons.
+- Form: glass-card with emerald focus rings.
+
+### Typography with New Colors
+- All H1/H2 headings: Primary-950 (deep dark)
+- Body text on light: Primary-700
+- Body text on dark bg: rgba(255,255,255,0.85)
+- Micro-headers (uppercase): Accent-500 (#F67833)
+- Stat numbers: Brand Gradient (emerald → orange)
+- Links: Primary-500 (#50C878), hover: Primary-400
+- CTA buttons: Accent-500 (#F67833) background, white text
+- Secondary buttons: Transparent with Accent-500 border and text
+
+### Buttons with New Colors
+- Primary CTA: bg gradient #50C878 → #F67833 (emerald to orange), white text, rounded-full, inner shadow for depth. Hover: reverse gradient.
+- Secondary CTA: glass-card bg, Accent-500 border, Accent-500 text. Hover: slight lift.
+- Tertiary/Text link: Accent-500 text with arrow. Hover: arrow slide.
+
+### Shadows with New Colors
+- Card shadow: 0 4px 24px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)
+- Hover lift: translateY(-3px), shadow expands: 0 12px 40px rgba(0,0,0,0.04)
+- Button shadow: 0 4px 16px rgba(246,120,51,0.15) (orange-tinted for CTAs)
+- Never use hard black shadows — always use rgba(0,0,0,X) with very low opacity
+
+### Animations (maintain existing)
+- Keep all existing Ken Burns, crossfade, scroll reveal, float animations
+- Add: glass cards should have a very subtle shimmer on load (a diagonal sweep of rgba(255,255,255,0.03) across the surface in 3s)
+
+### Photos & Overlays
+- Photos should have a subtle emerald tint overlay (rgba(80,200,120,0.06)) to tie them into the color system
+- Hero overlays remain dark but can have a hint of emerald in the gradient: from-black/75 via-emerald/10 to-transparent
+
+## MOOD SUMMARY
+The final result should feel: fresh, modern, airy, premium — like an Apple-designed nonprofit. The emerald brings life and nature, the orange brings warmth and urgency. The liquid glass makes everything feel light, floaty, and ethereal. Maximum transparency, minimum visual weight. The website should look like it was designed by Apple for a world-class NGO.
+```
+
 ---
 
 ## REFINEMENT PROMPTS (Use After Initial Generation)
