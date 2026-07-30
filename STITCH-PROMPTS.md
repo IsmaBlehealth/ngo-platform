@@ -474,6 +474,218 @@ Each layer adds a whisper of frosted depth without ever looking heavy.
 - Secondary CTA: glass-card bg, Accent-500 border, Accent-500 text. Hover: slight lift.
 - Tertiary/Text link: Accent-500 text with arrow. Hover: arrow slide.
 
+## INTERACTIVE BUTTON SYSTEM — COPY-PASTE READY CODE
+
+Generate a complete set of buttons so the developer can copy the code and implement it directly. The buttons must feel alive, responsive, and premium. Every state change must be visible and satisfying.
+
+### Primary CTA Button ("Donate Now", "Get Involved", "Support Us")
+
+**Purpose:** The main action button. It must feel magnetic and impossible to ignore.
+
+**Default state:**
+```css
+background: linear-gradient(135deg, #50C878 0%, #F67833 100%);
+color: #FFFFFF;
+padding: 16px 32px;
+border-radius: 9999px;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 0.02em;
+text-transform: uppercase;
+border: none;
+position: relative;
+overflow: hidden;
+box-shadow: 
+  0 4px 16px rgba(246, 120, 51, 0.25),
+  inset 0 1px 0 rgba(255, 255, 255, 0.25);
+transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+```
+
+**Hover state (very visible):**
+```css
+transform: translateY(-3px) scale(1.03);
+box-shadow: 
+  0 12px 32px rgba(246, 120, 51, 0.35),
+  0 0 60px rgba(246, 120, 51, 0.15),
+  inset 0 1px 0 rgba(255, 255, 255, 0.35);
+filter: brightness(1.08);
+```
+
+**Active / Pressed state (must feel like a real physical press):**
+```css
+transform: translateY(1px) scale(0.97);
+box-shadow: 
+  0 2px 8px rgba(246, 120, 51, 0.25),
+  inset 0 2px 8px rgba(0, 0, 0, 0.15);
+filter: brightness(0.95);
+transition-duration: 0.08s;
+```
+
+**Shimmer effect on hover (subtle diagonal shine):**
+Add a ::before pseudo-element that is a linear gradient from transparent → rgba(255,255,255,0.3) → transparent at a 110deg angle, width 60%, height 200%, starts at translateX(-150%) and moves to translateX(250%) on hover over 0.8s.
+
+**Arrow icon behavior:**
+- Include a right arrow (→) inside the button
+- Default: arrow at translateX(0)
+- Hover: arrow translates 6px to the right
+- Active: arrow returns to translateX(0)
+
+### Secondary Glass Button ("Learn More", "View Programs")
+
+**Default state:**
+```css
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(20px);
+color: #F67833;
+border: 1px solid rgba(246, 120, 51, 0.35);
+padding: 14px 28px;
+border-radius: 9999px;
+font-size: 14px;
+font-weight: 600;
+box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+```
+
+**Hover state:**
+```css
+background: rgba(246, 120, 51, 0.08);
+border-color: rgba(246, 120, 51, 0.65);
+transform: translateY(-2px) scale(1.02);
+box-shadow: 
+  0 8px 24px rgba(246, 120, 51, 0.12),
+  0 4px 16px rgba(0, 0, 0, 0.05);
+```
+
+**Active / Pressed state:**
+```css
+transform: translateY(1px) scale(0.97);
+background: rgba(246, 120, 51, 0.15);
+border-color: rgba(246, 120, 51, 0.8);
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+transition-duration: 0.08s;
+```
+
+### Tertiary Text Link Button ("Read More →", "See All Stories")
+
+**Default:**
+```css
+color: #F67833;
+font-weight: 600;
+background: transparent;
+border: none;
+padding: 8px 0;
+position: relative;
+```
+
+**Hover:**
+- Arrow slides right 6px
+- Underline draws from left to right (width 0% → 100%)
+- Color shifts to #FF8C5A (Accent-400)
+
+**Active:**
+- Color becomes Accent-600 (#D96A2B)
+- Slight scale(0.98)
+
+### Donation Amount Pills ("$25", "$50", "$100")
+
+**Default:**
+- glass-card background
+- Border: 1px solid rgba(246, 120, 51, 0.2)
+- Text: Primary-900
+
+**Hover:**
+- Border color: rgba(246, 120, 51, 0.6)
+- Background: rgba(246, 120, 51, 0.05)
+- Transform: translateY(-2px)
+
+**Active / Selected:**
+- Background: solid #F67833
+- Text: white
+- Border: transparent
+- Box-shadow: 0 4px 16px rgba(246, 120, 51, 0.3)
+- Scale: 1.02
+
+**Pressed (mouse down on selected):**
+- Scale: 0.96
+- Box-shadow: 0 2px 8px rgba(246, 120, 51, 0.2)
+
+### Ghost Icon Button (close, menu, social)
+
+**Default:**
+```css
+background: rgba(255, 255, 255, 0.04);
+backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 12px;
+color: #FFFFFF;
+transition: all 0.2s ease;
+```
+
+**Hover:**
+```css
+background: rgba(255, 255, 255, 0.1);
+transform: scale(1.08) rotate(2deg);
+border-color: rgba(255, 255, 255, 0.18);
+```
+
+**Active:**
+```css
+transform: scale(0.92);
+background: rgba(255, 255, 255, 0.15);
+transition-duration: 0.08s;
+```
+
+### Loading Button State
+
+When a button is loading (form submit, donation processing):
+- Text fades to opacity 0
+- A spinner appears in the center: circular loader, 20px, border 2px solid rgba(255,255,255,0.3), top border white, animation spin 0.8s linear infinite
+- Button remains clickable shape but cursor becomes not-allowed
+- Optional: button pulse subtle glow
+
+### Disabled Button State
+
+```css
+opacity: 0.5;
+cursor: not-allowed;
+transform: none !important;
+box-shadow: none !important;
+filter: grayscale(0.3);
+```
+
+### Ripple / Touch Feedback
+
+For all solid buttons, add a radial ripple effect on click:
+- Create a span at click coordinates
+- Animate scale from 0 to 4 with opacity 0.4 → 0
+- Duration: 0.5s
+- Color: rgba(255, 255, 255, 0.35)
+
+### Micro-Interactions Summary
+
+Apply these universally to all buttons:
+1. **Cursor:** pointer on enabled
+2. **Focus-visible:** 2px ring in Accent-500 with 2px offset, for accessibility
+3. **Touch devices:** remove hover effects, keep active press feedback
+4. **Reduced motion:** if prefers-reduced-motion, disable scale transforms but keep color transitions
+5. **Transition timing:** use `cubic-bezier(0.34, 1.56, 0.64, 1)` for bouncy, premium feel
+
+### Tailwind CSS Classes Reference (for direct copy)
+
+Generate these utility combinations so they can be copied:
+
+```html
+<!-- Primary CTA -->
+<button class="relative overflow-hidden rounded-full bg-gradient-to-br from-[#50C878] to-[#F67833] px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-[0_4px_16px_rgba(246,120,51,0.25),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-[3px] hover:scale-105 hover:shadow-[0_12px_32px_rgba(246,120,51,0.35),0_0_60px_rgba(246,120,51,0.15),inset_0_1px_0_rgba(255,255,255,0.35)] hover:brightness-110 active:translate-y-[1px] active:scale-[0.97] active:shadow-[0_2px_8px_rgba(246,120,51,0.25),inset_0_2px_8px_rgba(0,0,0,0.15)] active:brightness-95">
+  Donate Now <span class="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+</button>
+
+<!-- Secondary Glass -->
+<button class="rounded-full border border-[#F67833]/35 bg-white/5 px-7 py-3.5 text-sm font-semibold text-[#F67833] shadow-[0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur-xl transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:border-[#F67833]/65 hover:bg-[#F67833]/8 hover:shadow-[0_8px_24px_rgba(246,120,51,0.12)] active:translate-y-[1px] active:scale-[0.97] active:bg-[#F67833]/15">
+  Learn More
+</button>
+```
+
 ### Shadows with New Colors
 - Card shadow: 0 4px 24px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02)
 - Hover lift: translateY(-3px), shadow expands: 0 12px 40px rgba(0,0,0,0.04)

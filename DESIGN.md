@@ -16,27 +16,49 @@ Building sustainable futures through clean water, education, and healthcare in c
 2. **Education & Scholarships** — Schools in Côte d'Ivoire and Mali, 332 students, 99% passing rate
 3. **Healthcare Programs** — Mobile health clinics, 15K+ patients treated
 
-## Color Palette
+## Color Palette (Material Liquid Glass — updated)
 
-### Primary
-- **Primary Dark**: `#0f2137` — Deep navy, used for hero backgrounds, footer, text
-- **Primary**: `#1e3a5f` — Rich navy, headings, buttons
-- **Primary Light**: `#2d5a8e` — Accent blue, links, hover states
+### Primary (Emerald)
+- **Primary**: `#006d36` — Dark emerald, headings, primary buttons, footer
+- **Primary Light**: `#50c878` — Emerald, primary container, icons, highlights
+- **Primary Fixed**: `#83fba5` — Bright mint for glows and accents
+- **Primary Fixed Dim**: `#66dd8b` — Soft mint
+- **On Primary**: `#ffffff` — Text/icons on primary backgrounds
 
-### Accent
-- **Accent**: `#e8a838` — Warm gold, CTAs, badges, highlights
-- **Accent Light**: `#f0c060` — Light gold, hover states
-- **Accent Dark**: `#d4922a` — Deep gold, active states
+### Accent (Vibrant Orange)
+- **Accent**: `#ff7f39` — CTA buttons, badges, highlights
+- **Accent Light**: `#ffb693` — Light orange, hover glows
+- **Accent Dark**: `#a04100` — Deep orange/brown, active states
+- **Secondary Container**: `#ff7f39` — Same as accent
+- **Secondary Fixed**: `#ffdbcc` — Soft peach backgrounds
 
-### Neutral
-- **Background**: `#ffffff` — Clean white
-- **Foreground**: `#1a1a2e` — Near-black text
-- **Muted**: `#6b7280` — Gray for secondary text
-- **Slate 50**: `#f8fafc` — Light gray sections
+### Tertiary
+- **Tertiary**: `#46664d` — Muted forest green
+- **Tertiary Container**: `#97ba9d` — Sage green
+
+### Neutral / Surface
+- **Background**: `#faf9f6` — Warm off-white page background
+- **Surface**: `#faf9f6` — Card/surface backgrounds
+- **Surface Container**: `#efeeeb` — Slightly darker sections
+- **Surface Container High**: `#e9e8e5` — Elevated surfaces
+- **Surface Variant**: `#e3e2e0` — Subtle backgrounds, progress bars
+- **Foreground**: `#1a1c1a` — Near-black text
+- **On Surface**: `#1a1c1a` — Text on light surfaces
+- **On Surface Variant**: `#3e4a3f` — Secondary text
+- **Muted**: `#6e7a6e` — Gray-green for muted text
+- **Outline**: `#6e7a6e` — Borders
+- **Outline Variant**: `#bdcabc` — Subtle borders
+
+### Inverse (Dark surfaces)
+- **Inverse Surface**: `#2f312f` — Dark section backgrounds
+- **Inverse On Surface**: `#f2f1ee` — Text on dark surfaces
+- **Inverse Primary**: `#66dd8b` — Accent on dark surfaces
 
 ### Semantic
-- **Success**: `#059669` — Green for confirmations
-- **Warm**: `#fef3c7` — Light yellow for highlights
+- **Success**: `#2a9d8f` — Teal green for confirmations
+- **Warm**: `#ffdbcc` — Light peach for highlights
+- **Error**: `#ba1a1a` — Red for errors
+- **Error Container**: `#ffdad6` — Light red backgrounds
 
 ## Typography
 
@@ -91,10 +113,12 @@ Building sustainable futures through clean water, education, and healthcare in c
 ## Visual Effects
 
 ### Gradients
-- **Hero Overlay**: `from-black/85 via-black/50 to-black/10` (left to right)
+- **Brand Gradient**: `linear-gradient(135deg, #006d36 0%, #ff7f39 100%)` — stat numbers, hero title, primary CTAs
+- **Hero Overlay**: `linear-gradient(135deg, rgba(0,66,37,0.78) 0%, rgba(0,109,54,0.75) 50%, rgba(0,66,37,0.6) 100%)`
 - **Hero Bottom**: `from-black/60 via-transparent to-black/10`
 - **Section Separator**: Diagonal SVG cuts between sections
 - **Card Gradient**: `from-primary-dark via-primary-dark/40 to-transparent`
+- **Orange Glow**: `radial-gradient(circle, rgba(255,127,57,0.15) 0%, transparent 70%)`
 
 ### Animations
 - **Scroll Reveal**: Fade up 40px with 0.8s cubic-bezier(0.16, 1, 0.3, 1)
@@ -108,10 +132,14 @@ Building sustainable futures through clean water, education, and healthcare in c
 - **Glow**: `0 0 40px rgba(232,168,56,0.15)` (accent glow)
 - **Primary**: `0 10px 40px -10px rgba(30,58,95,0.3)`
 
-### Glass Effect
-- **Background**: `rgba(255,255,255,0.08)` or `rgba(15,33,55,0.85)`
-- **Blur**: 16-20px backdrop-blur
-- **Border**: 1px solid rgba(255,255,255,0.1-0.15)
+### Liquid Glass Effect (iPhone-style)
+- **Philosophy**: Maximum transparency, deep blur, barely-visible borders
+- **liquid-glass**: `rgba(255,255,255,0.04)` background, `blur(60px)`, top/left white borders at 0.12/0.05
+- **glass-max**: `rgba(255,255,255,0.06)` background, `blur(80px)`, top/left white borders at 0.2/0.1
+- **glass-card**: `rgba(255,255,255,0.75)` background, `blur(24px)`, white border at 0.25
+- **glass-nav**: `rgba(250,249,246,0.72)` background, `blur(30px)`, primary border at 0.08
+- **glass-dark**: `rgba(0,66,37,0.75)` background, `blur(30px)`, white border at 0.08
+- **Shadows**: ultra-soft `0 20px 60px rgba(0,0,0,0.04)` and `0 40px 80px rgba(0,0,0,0.03)`
 
 ## Layout Patterns
 

@@ -37,13 +37,13 @@ export default function FloatingDonateBar() {
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
-      <div className="glass-dark border-t border-white/10 px-4 py-3 sm:px-8">
+      <div className="bg-white/5 backdrop-blur-[60px] border-t border-white/10 px-4 py-3 sm:px-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div className="hidden items-center gap-4 sm:flex">
-            <span className="text-xs font-medium uppercase tracking-wider text-white/60">
+            <span className="text-xs font-medium uppercase tracking-wider text-on-surface/60">
               {t(locale, "floating.goal")}
             </span>
-            <div className="relative h-2 w-48 overflow-hidden rounded-full bg-white/10">
+            <div className="relative h-2 w-48 overflow-hidden rounded-full bg-on-surface/10">
               <div
                 className="absolute inset-y-0 left-0 rounded-full bg-accent transition-all duration-300"
                 style={{ width: `${Math.max(scrollProgress, 12)}%` }}
