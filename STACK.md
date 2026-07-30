@@ -1,161 +1,161 @@
 # GAD NGO Platform — Full Stack Reference
 
-> Proyecto: Global Approach To Development — Plataforma web completa
-> Repositorio: https://github.com/IsmaBlehealth/ngo-platform
-> Hosting: Vercel (Hobby, free) — https://ngo-platform-399q.vercel.app
-> Base de datos: Neon (PostgreSQL serverless, free)
-> Estado: Producción
+> **Project:** Global Approach To Development — Full-featured web platform
+> **Repository:** https://github.com/IsmaBlehealth/ngo-platform
+> **Hosting:** Vercel (Hobby, free) — https://ngo-platform-399q.vercel.app
+> **Database:** Neon (PostgreSQL serverless, free)
+> **Status:** Production
 
 ---
 
-## 1. STACK TECNOLÓGICO — COMPLETO
+## 1. TECH STACK — COMPLETE
 
 ### 1.1 Frontend
 
-| Tecnología | Versión | Propósito | Archivo clave |
+| Technology | Version | Purpose | Key file |
 |---|---|---|---|
-| **Next.js** | 16.2.12 | Framework React full-stack (App Router, Turbopack) | `next.config.ts` |
+| **Next.js** | 16.2.12 | Full-stack React framework (App Router, Turbopack) | `next.config.ts` |
 | **React** | 19.2.4 | UI library | `src/components/` |
-| **TypeScript** | 5.x | Tipado estático | `tsconfig.json` |
-| **Tailwind CSS** | 4.x | Utilidades CSS | `src/app/globals.css` |
-| **Material Symbols** | — | Iconos (Google Fonts) | `globals.css:1` |
+| **TypeScript** | 5.x | Static typing | `tsconfig.json` |
+| **Tailwind CSS** | 4.x | CSS utilities | `src/app/globals.css` |
+| **Material Symbols** | — | Icons (Google Fonts) | `globals.css:1` |
 
-### 1.2 Backend / Base de datos
+### 1.2 Backend / Database
 
-| Tecnología | Versión | Propósito |
+| Technology | Version | Purpose |
 |---|---|---|
-| **Prisma** | 7.9.0 | ORM, migraciones, generación de tipos |
-| **@prisma/adapter-pg** | 7.9.0 | Driver PostgreSQL para Prisma |
-| **pg** | 8.22.0 | Cliente PostgreSQL nativo (dependencia del adapter) |
-| **Neon (serverless)** | — | PostgreSQL serverless, replicación, branching |
-| **Prisma Client** | generado | Cliente Prisma tipado en `@/generated/prisma/client` |
+| **Prisma** | 7.9.0 | ORM, migrations, type generation |
+| **@prisma/adapter-pg** | 7.9.0 | PostgreSQL driver for Prisma |
+| **pg** | 8.22.0 | Native PostgreSQL client (adapter dependency) |
+| **Neon (serverless)** | — | Serverless PostgreSQL, replication, branching |
+| **Prisma Client** | generated | Typed Prisma client at `@/generated/prisma/client` |
 
-### 1.3 Autenticación
+### 1.3 Authentication
 
-| Tecnología | Versión | Propósito |
+| Technology | Version | Purpose |
 |---|---|---|
-| **NextAuth.js (Auth.js v5)** | 5.0.0-beta.32 | Autenticación completa (JWT, credentials) |
-| **@auth/prisma-adapter** | 2.11.3 | Persistencia de sesiones/usuarios en Prisma |
-| **bcryptjs** | 3.0.3 | Hash de contraseñas |
+| **NextAuth.js (Auth.js v5)** | 5.0.0-beta.32 | Full authentication (JWT, credentials) |
+| **@auth/prisma-adapter** | 2.11.3 | Session/user persistence via Prisma |
+| **bcryptjs** | 3.0.3 | Password hashing |
 
-### 1.4 Pagos
+### 1.4 Payments
 
-| Tecnología | Versión | Propósito |
+| Technology | Version | Purpose |
 |---|---|---|
-| **Stripe** | 22.3.2 | Checkout + Webhooks (secundario) |
-| **PayPal (Orders API)** | — | Método de pago principal (pendiente credenciales) |
+| **Stripe** | 22.3.2 | Checkout + Webhooks (secondary) |
+| **PayPal (Orders API)** | — | Primary payment method (credentials pending) |
 
-### 1.5 Seguridad
+### 1.5 Security
 
-| Tecnología / Mecanismo | Propósito |
+| Technology / Mechanism | Purpose |
 |---|---|
-| **Zod** | Validación de esquemas (servidor + cliente) |
-| **isomorphic-dompurify** | Sanitización HTML (XSS) |
-| **CSP Headers** | Content-Security-Policy en `next.config.ts` |
+| **Zod** | Schema validation (server + client) |
+| **isomorphic-dompurify** | HTML sanitization (XSS) |
+| **CSP Headers** | Content-Security-Policy in `next.config.ts` |
 | **HSTS** | HTTP Strict Transport Security |
-| **Rate Limiting** | `src/lib/rate-limit.ts` (in-memory, ver nota) |
-| **CSRF Tokens** | `src/lib/csrf.ts` — tokens por sesión |
-| **Honeypot** | Campo oculto anti-spam en formularios |
-| **Logger** | `src/lib/logger.ts` — sanitizado, niveles |
+| **Rate Limiting** | `src/lib/rate-limit.ts` (in-memory, see note) |
+| **CSRF Tokens** | `src/lib/csrf.ts` — session-bound tokens |
+| **Honeypot** | Hidden anti-spam field in forms |
+| **Logger** | `src/lib/logger.ts` — sanitized, leveled |
 
-### 1.6 Observabilidad
+### 1.6 Observability
 
-| Tecnología | Propósito |
+| Technology | Purpose |
 |---|---|
-| **Sentry** | Monitoreo de errores (DSN pendiente en Vercel) |
-| **Vercel Analytics** | Analítica web |
-| **Vercel Speed Insights** | Métricas Core Web Vitals |
+| **Sentry** | Error monitoring (DSN pending in Vercel) |
+| **Vercel Analytics** | Web analytics |
+| **Vercel Speed Insights** | Core Web Vitals metrics |
 
 ### 1.7 Email
 
-| Tecnología | Propósito |
+| Technology | Purpose |
 |---|---|
-| **Resend** | API de envío de correos transaccionales (key pendiente) |
+| **Resend** | Transactional email API (key pending) |
 
 ### 1.8 Testing
 
-| Tecnología | Propósito | Archivos |
+| Technology | Purpose | Files |
 |---|---|---|
 | **Vitest** | Test runner | `vitest.config.ts` |
-| **@testing-library/jest-dom** | Matchers DOM | `src/__tests__/setup.ts` |
+| **@testing-library/jest-dom** | DOM matchers | `src/__tests__/setup.ts` |
 
 ### 1.9 Tooling / Dev
 
-| Herramienta | Propósito |
+| Tool | Purpose |
 |---|---|
 | **pnpm** | Package manager |
 | **ESLint** 9.x | Linter |
-| **Turbopack** | Bundler de desarrollo de Next.js |
-| **Git / GitHub** | Control de versiones |
-| **Vercel CLI** | Deploys automatizados desde GitHub |
-| **rimraf** | Limpieza de build |
-| **dotenv** | Variables de entorno local |
+| **Turbopack** | Next.js dev bundler |
+| **Git / GitHub** | Version control |
+| **Vercel CLI** | Automated deploys from GitHub |
+| **rimraf** | Build cleanup |
+| **dotenv** | Local environment variables |
 
-### 1.10 Internacionalización
+### 1.10 Internationalization
 
-| Archivo | Propósito |
+| File | Purpose |
 |---|---|
-| `src/lib/i18n.ts` | 5 idiomas completos: EN, FR, ES, DE, PT |
-| `src/lib/locale-context.tsx` | Provider con cookie persistente |
-| `src/components/LanguageSwitcher.tsx` | Selector de idioma en UI |
+| `src/lib/i18n.ts` | 5 full languages: EN, FR, ES, DE, PT |
+| `src/lib/locale-context.tsx` | Provider with persistent cookie |
+| `src/components/LanguageSwitcher.tsx` | Language selector in UI |
 
-### 1.11 Sistema de Diseño
+### 1.11 Design System
 
-| Elemento | Archivo | Descripción |
+| Element | File | Description |
 |---|---|---|
-| Paleta Material | `globals.css:4-51` | Esmeralda (#006d36) / Naranja (#ff7f39) |
-| Liquid Glass (6 variantes) | `globals.css:286-355` | Paneles ultra-transparentes con blur |
-| Botones (3 variantes) | `globals.css:173-263` | `.btn-primary`, `.btn-secondary`, `.btn-ghost` |
-| Componentes UX | `src/components/` | Ver sección 3 |
+| Material palette | `globals.css:4-51` | Emerald (#006d36) / Orange (#ff7f39) |
+| Liquid Glass (6 variants) | `globals.css:286-355` | Ultra-transparent panels with blur |
+| Buttons (3 variants) | `globals.css:173-263` | `.btn-primary`, `.btn-secondary`, `.btn-ghost` |
+| UX Components | `src/components/` | See section 3 |
 
 ---
 
-## 2. ARQUITECTURA DEL PROYECTO
+## 2. PROJECT ARCHITECTURE
 
-### 2.1 Estructura de directorios
+### 2.1 Directory structure
 
 ```
 ngo-platform/
 ├── src/
 │   ├── app/
-│   │   ├── (public)/         # Páginas públicas
+│   │   ├── (public)/         # Public pages
 │   │   │   ├── page.tsx      # Home
-│   │   │   ├── about/        # Nosotros
-│   │   │   ├── programs/     # Programas (+ education)
-│   │   │   ├── impact/       # Impacto
+│   │   │   ├── about/        # About
+│   │   │   ├── programs/     # Programs (+ education)
+│   │   │   ├── impact/       # Impact
 │   │   │   ├── blog/         # Blog (+ slugs)
-│   │   │   ├── contact/      # Contacto
-│   │   │   ├── donate/       # Donaciones (+ success)
-│   │   │   ├── privacy/      # Privacidad
-│   │   │   ├── terms/        # Términos
+│   │   │   ├── contact/      # Contact
+│   │   │   ├── donate/       # Donations (+ success)
+│   │   │   ├── privacy/      # Privacy
+│   │   │   ├── terms/        # Terms
 │   │   │   └── auth/         # Login, register, passwords
-│   │   ├── (dashboard)/      # Panel de usuario/admin
+│   │   ├── (dashboard)/      # User/admin dashboard
 │   │   ├── api/              # API routes
-│   │   ├── layout.tsx        # Layout global
-│   │   ├── globals.css       # Estilos globales
+│   │   ├── layout.tsx        # Global layout
+│   │   ├── globals.css       # Global styles
 │   │   ├── error.tsx         # Error boundary
-│   │   ├── not-found.tsx     # Página 404
-│   │   └── sitemap.ts        # Sitemap dinámico
-│   ├── components/           # Componentes React
-│   ├── lib/                  # Utilidades compartidas
-│   │   ├── auth.ts           # Configuración NextAuth
+│   │   ├── not-found.tsx     # 404 page
+│   │   └── sitemap.ts        # Dynamic sitemap
+│   ├── components/           # React components
+│   ├── lib/                  # Shared utilities
+│   │   ├── auth.ts           # NextAuth configuration
 │   │   ├── csrf.ts           # CSRF tokens
-│   │   ├── env.ts            # Validación env vars
-│   │   ├── i18n.ts           # Traducciones
-│   │   ├── logger.ts         # Logger sanitizado
-│   │   ├── prisma.ts         # Cliente Prisma singleton
+│   │   ├── env.ts            # Env vars validation
+│   │   ├── i18n.ts           # Translations
+│   │   ├── logger.ts         # Sanitized logger
+│   │   ├── prisma.ts         # Prisma client singleton
 │   │   ├── rate-limit.ts     # Rate limiter
 │   │   ├── sanitize.ts       # DOMPurify wrapper
-│   │   ├── validation.ts     # Esquemas Zod
+│   │   ├── validation.ts     # Zod schemas
 │   │   ├── email.ts          # Resend client
-│   │   ├── locale-context.tsx# Provider i18n
+│   │   ├── locale-context.tsx# i18n Provider
 │   │   ├── seo.ts            # JSON-LD schemas
 │   │   └── payments/         # Stripe + PayPal
-│   ├── data/                 # Datos estáticos
-│   └── __tests__/            # Tests unitarios
+│   ├── data/                 # Static data
+│   └── __tests__/            # Unit tests
 ├── prisma/
-│   ├── schema.prisma         # Schema DB
-│   └── seed.ts               # Seed datos
+│   ├── schema.prisma         # DB schema
+│   └── seed.ts               # Seed data
 ├── public/images/            # Assets (hero, old-site, etc.)
 └── config files              # next.config, tailwind, postcss, etc.
 ```
@@ -163,29 +163,29 @@ ngo-platform/
 ### 2.2 Data flow
 
 ```
-Usuario → Next.js (Server Components RSC) → Prisma → Neon (PostgreSQL)
+User → Next.js (Server Components RSC) → Prisma → Neon (PostgreSQL)
                 ↓
-          Client Components (interactividad)
+          Client Components (interactivity)
                 ↓
-          API Routes → Validación Zod → CSRF check → Rate limit → Lógica → DB
+          API Routes → Zod validation → CSRF check → Rate limit → Logic → DB
                 ↓
           Stripe/PayPal (redirect) → Webhooks → DB updates
 ```
 
-### 2.3 Autenticación flow
+### 2.3 Authentication flow
 
 ```
 Login → NextAuth credentials → bcrypt verify → JWT (24h)
-  ├── Protege: dashboard/*, api/user/*, api/admin/*
+  ├── Protects: dashboard/*, api/user/*, api/admin/*
   ├── CSRF: token bound to session cookie (rl_session)
-  └── Rate limit: 5 intentos/15min por IP (in-memory)
+  └── Rate limit: 5 attempts/15min per IP (in-memory)
 ```
 
 ---
 
-## 3. COMPONENTES UX
+## 3. UX COMPONENTS
 
-| Componente | Archivo | Ubicación |
+| Component | File | Location |
 |---|---|---|
 | BackToTop | `BackToTop.tsx` | layout.tsx global |
 | ReadingProgress | `ReadingProgress.tsx` | layout.tsx global |
@@ -195,7 +195,7 @@ Login → NextAuth credentials → bcrypt verify → JWT (24h)
 | Timeline | `Timeline.tsx` | about page |
 | TestimonialsCarousel | `TestimonialsCarousel.tsx` | HomeContent |
 | DonationCalculator | `DonationCalculator.tsx` | donate page |
-| LoadingSkeleton | `LoadingSkeleton.tsx` | Varias páginas |
+| LoadingSkeleton | `LoadingSkeleton.tsx` | Various pages |
 | ScrollProgress | `ScrollProgress.tsx` | Blog post detail |
 | HeroCarousel | `HeroCarousel.tsx` | Home |
 | FloatingDonateBar | `FloatingDonateBar.tsx` | layout.tsx |
@@ -204,142 +204,142 @@ Login → NextAuth credentials → bcrypt verify → JWT (24h)
 
 ---
 
-## 4. DEPENDENCIAS NO UTILIZADAS
+## 4. UNUSED DEPENDENCIES
 
-Estas dependencias están en `package.json` pero **no se importan en ningún archivo fuente**. Se mantienen por ahora para referencia futura.
+These packages are in `package.json` but **not imported anywhere in source**. Kept for future reference.
 
-| Dependencia | Tipo | Razón probable | Acción recomendada |
+| Dependency | Type | Likely reason | Recommended action |
 |---|---|---|---|
-| `@neondatabase/serverless` | Normal | Resto de setup anterior de Neon | No removida (puede servir para driver directo) |
-| `@testing-library/react` | Dev | Se planeó pero no se implementaron tests de componentes | No removida (útil futura) |
-| `@types/pg` | Dev | pg se usa transitivamente vía Prisma adapter | No removida |
-| `jsr` | Normal | CLI de JSR registry, agregado experimental | No removida |
-| `otplib` | Normal | Planeado para 2FA/TOTP, no implementado | No removida |
-| `qrcode` | Normal | Planeado para QR de 2FA, no implementado | No removida |
+| `@neondatabase/serverless` | Normal | Leftover from earlier Neon driver setup | Keep (may be useful for direct driver) |
+| `@testing-library/react` | Dev | Planned but component tests not written yet | Keep (useful future) |
+| `@types/pg` | Dev | pg used transitively via Prisma adapter | Keep |
+| `jsr` | Normal | JSR CLI registry, experimental addition | Keep |
+| `otplib` | Normal | Planned for 2FA/TOTP, not implemented | Keep |
+| `qrcode` | Normal | Planned for 2FA QR codes, not implemented | Keep |
 
-**Nota**: `@neondatabase/serverless` se usaba en una versión anterior con el driver directo de Neon. Ahora usamos `@prisma/adapter-pg` que funciona con la URL estándar de PostgreSQL de Neon.
-
----
-
-## 5. POSIBLES TECNOLOGÍAS FUTURAS
-
-Basado en la arquitectura actual y necesidades del proyecto, estas son las tecnologías más probables de implementar:
-
-### 5.1 Alta prioridad (ya planeadas)
-
-| Tecnología | Para qué | Bloqueada por |
-|---|---|---|
-| **PayPal SDK** (`@paypal/paypal-js` / REST API) | Pasarela de pago principal | Dra. Ble (credenciales `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`) |
-| **Resend** (ya instalado) | Emails transaccionales (reset password, bienvenida, donaciones) | `RESEND_API_KEY` en Vercel |
-| **Sentry** (ya instalado) | Monitoreo proactivo de errores | `NEXT_PUBLIC_SENTRY_DSN` en Vercel |
-| **Custom domain** | DNS personalizado para producción | Dra. Ble (compra/configuración de dominio) |
-
-### 5.2 Media prioridad (mejoras de infraestructura)
-
-| Tecnología | Para qué | Notas |
-|---|---|---|
-| **Upstash Redis** (o Vercel KV) | Rate limiting persistente + login lockout en serverless | Reemplazaría el `Map` en memoria de `rate-limit.ts` y `auth.ts` |
-| **Resend Email Templates** | Plantillas HTML profesionales para emails | Mejora sobre texto plano actual |
-| **@radix-ui/react-dialog** + **@radix-ui/react-dropdown-menu** | Diálogos y menús accesibles | Componentes headless sin estilos |
-| **next-intl** o **react-intl** | i18n más robusto con ICU message format | Si la app escala a más idiomas |
-| **next-sitemap** | Sitemap más avanzado con prioridades por sección | Ya tenemos sitemap.ts manual |
-
-### 5.3 Baja prioridad (nice-to-have)
-
-| Tecnología | Para qué |
-|---|---|
-| **Lucide Icons** | Alternativa SVG a Material Symbols (más liviano) |
-| **Framer Motion** | Animaciones más complejas que CSS transitions |
-| **TanStack Query** | Caché de datos del lado cliente |
-| **Zustand** | Estado global cliente (reemplazar contextos) |
-| **React Hook Form** | Manejo avanzado de formularios |
-| **date-fns** | Formateo de fechas multilingüe |
-| **next-themes** | Modo oscuro (requiere paleta adicional) |
-| **PWA (next-pwa / service worker)** | Instalable como app, offline support |
-| **i18n Routing** | Rutas traducidas (`/es/about`, `/de/ueber-uns`) |
-| **Playwright / Cypress** | Tests E2E |
-| **Storybook** | Catálogo de componentes aislados |
-| **Knip** | Detector de código muerto |
-
-### 5.4 Seguridad a futuro
-
-| Tecnología | Para qué |
-|---|---|
-| **TOTP 2FA** (otplib + qrcode ya instalados) | Autenticación de doble factor |
-| **Upstash Redis + Rate Limiting** | Rate limiting persistente (crítico en serverless) |
-| **WebAuthn / Passkeys** | Autenticación sin contraseña |
-| **next-safe-actions** | Server Actions tipadas con seguridad |
+**Note**: `@neondatabase/serverless` was used in an earlier version with the direct Neon driver. Now using `@prisma/adapter-pg` with standard Neon PostgreSQL URL.
 
 ---
 
-## 6. VARIABLES DE ENTORNO
+## 5. FUTURE TECHNOLOGIES
+
+Based on current architecture and project needs, these are the most likely technologies to be implemented:
+
+### 5.1 High priority (already planned)
+
+| Technology | Purpose | Blocked by |
+|---|---|---|
+| **PayPal SDK** (`@paypal/paypal-js` / REST API) | Primary payment gateway | Dra. Ble (credentials `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`) |
+| **Resend** (already installed) | Transactional emails (reset password, welcome, donations) | `RESEND_API_KEY` in Vercel |
+| **Sentry** (already installed) | Proactive error monitoring | `NEXT_PUBLIC_SENTRY_DSN` in Vercel |
+| **Custom domain** | Custom DNS for production | Dra. Ble (domain purchase/configuration) |
+
+### 5.2 Medium priority (infrastructure improvements)
+
+| Technology | Purpose | Notes |
+|---|---|---|
+| **Upstash Redis** (or Vercel KV) | Persistent rate limiting + login lockout in serverless | Would replace in-memory `Map` in `rate-limit.ts` and `auth.ts` |
+| **Resend Email Templates** | Professional HTML email templates | Improvement over current plain text |
+| **@radix-ui/react-dialog** + **@radix-ui/react-dropdown-menu** | Accessible dialogs and menus | Headless unstyled components |
+| **next-intl** or **react-intl** | More robust i18n with ICU message format | If app scales to more languages |
+| **next-sitemap** | Advanced sitemap with per-section priorities | Already have manual sitemap.ts |
+
+### 5.3 Low priority (nice-to-have)
+
+| Technology | Purpose |
+|---|---|
+| **Lucide Icons** | SVG alternative to Material Symbols (lighter) |
+| **Framer Motion** | More complex animations than CSS transitions |
+| **TanStack Query** | Client-side data caching |
+| **Zustand** | Client global state (replace contexts) |
+| **React Hook Form** | Advanced form handling |
+| **date-fns** | Multi-language date formatting |
+| **next-themes** | Dark mode (requires additional palette) |
+| **PWA (next-pwa / service worker)** | Installable app, offline support |
+| **i18n Routing** | Translated routes (`/es/about`, `/de/ueber-uns`) |
+| **Playwright / Cypress** | E2E tests |
+| **Storybook** | Isolated component catalog |
+| **Knip** | Dead code detection |
+
+### 5.4 Future security
+
+| Technology | Purpose |
+|---|---|
+| **TOTP 2FA** (otplib + qrcode already installed) | Two-factor authentication |
+| **Upstash Redis + Rate Limiting** | Persistent rate limiting (critical in serverless) |
+| **WebAuthn / Passkeys** | Passwordless authentication |
+| **next-safe-actions** | Typed secure Server Actions |
+
+---
+
+## 6. ENVIRONMENT VARIABLES
 
 ```env
-# Archivo: .env (NO subir a git — ver .gitignore)
+# File: .env (DO NOT commit to git — see .gitignore)
 
-# Base de datos
+# Database
 DATABASE_URL="postgresql://..."  # Neon PostgreSQL
 
 # Auth
-NEXTAUTH_SECRET="..."            # Generado con openssl rand -base64 32
-NEXTAUTH_URL="http://localhost:3000"  # Cambiar en producción
+NEXTAUTH_SECRET="..."            # Generated with openssl rand -base64 32
+NEXTAUTH_URL="http://localhost:3000"  # Change in production
 
-# Stripe (pendiente)
+# Stripe (pending)
 NEXT_PUBLIC_STRIPE_KEY="pk_test_..."
 STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_..."
 
-# PayPal (pendiente — solicitar a Dra. Ble)
+# PayPal (pending — ask Dra. Ble)
 PAYPAL_CLIENT_ID="..."
 PAYPAL_CLIENT_SECRET="..."
 PAYPAL_WEBHOOK_ID="..."
 
-# Resend (pendiente)
+# Resend (pending)
 RESEND_API_KEY="re_..."
 
-# Sentry (pendiente)
+# Sentry (pending)
 NEXT_PUBLIC_SENTRY_DSN="..."
 
-# Cron (pendiente)
+# Cron (pending)
 CRON_SECRET="..."
 ```
 
 ---
 
-## 7. ESTADO DEL PROYECTO
+## 7. PROJECT STATUS
 
-### 7.1 Implementado ✅
+### 7.1 Implemented ✅
 
-- [x] 9 páginas públicas (Home, About, Programs, Education, Impact, Blog, Contact, Donate, Privacy, Terms)
-- [x] Panel de usuario con dashboard, perfil, donaciones, sesiones
-- [x] Panel admin con usuarios y mensajes
-- [x] Autenticación completa (registro, login, recuperación de contraseña)
-- [x] 5 idiomas (EN, FR, ES, DE, PT)
-- [x] Hero carousel con 7 fotos reales de GAD
-- [x] 28 imágenes del antiguo sitio de GAD descargadas y en uso
-- [x] Sistema Liquid Glass (6 variantes)
-- [x] 10 componentes UX interactivos
-- [x] Donaciones Stripe + PayPal (pending keys)
+- [x] 9 public pages (Home, About, Programs, Education, Impact, Blog, Contact, Donate, Privacy, Terms)
+- [x] User dashboard with profile, donations, sessions
+- [x] Admin panel with users and messages
+- [x] Full authentication (register, login, password recovery)
+- [x] 5 languages (EN, FR, ES, DE, PT)
+- [x] Hero carousel with 7 real GAD photos
+- [x] 28 images from old GAD site downloaded and in use
+- [x] Liquid Glass system (6 variants)
+- [x] 10 interactive UX components
+- [x] Stripe + PayPal donations (pending keys)
 - [x] SEO: JSON-LD, sitemap, Open Graph, Twitter Cards
-- [x] Seguridad: CSP, HSTS, CSRF, rate limiting, honeypot, DOMPurify, Zod
-- [x] Tests unitarios: 32/32 pasando
-- [x] TypeScript: limpio
+- [x] Security: CSP, HSTS, CSRF, rate limiting, honeypot, DOMPurify, Zod
+- [x] Unit tests: 32/32 passing
+- [x] TypeScript: clean
 
-### 7.2 Bloqueado 🚫
+### 7.2 Blocked 🚫
 
-- PayPal: esperando credenciales de Dra. Ble
-- Custom domain: esperando acción de Dra. Ble
-- Sentry DSN: pendiente en Vercel
-- CRON_SECRET: pendiente en Vercel
-- Resend API key: pendiente
+- PayPal: waiting for credentials from Dra. Ble
+- Custom domain: waiting for action from Dra. Ble
+- Sentry DSN: pending in Vercel
+- CRON_SECRET: pending in Vercel
+- Resend API key: pending
 
 ---
 
-## 8. NOTAS TÉCNICAS
+## 8. TECHNICAL NOTES
 
-- **Build local**: `pnpm build` (requiere `prisma generate` previo)
-- **Font**: Inter vía `next/font/google` (no se puede cargar en entornos sin internet)
-- **Turbopack**: Usa `'unsafe-inline'` en CSP por limitación de Turbopack; migrar a nonce cuando sea posible
-- **Rate limiting**: In-memory (`Map`) — no persiste entre deploys en serverless. Migrar a Redis/Upstash para producción seria
-- **JWT**: Sin rotación automática — 24h de validez fija
-- **Reset password**: Token en URL query param — mejora a POST-only en próxima iteración
+- **Local build**: `pnpm build` (requires `prisma generate` first)
+- **Font**: Inter via `next/font/google` (unavailable in offline environments)
+- **Turbopack**: Uses `'unsafe-inline'` in CSP due to Turbopack limitation; migrate to nonce when possible
+- **Rate limiting**: In-memory (`Map`) — does not persist between serverless deploys. Migrate to Redis/Upstash for production
+- **JWT**: No automatic rotation — fixed 24h validity
+- **Reset password**: Token in URL query param — upgrade to POST-only in next iteration

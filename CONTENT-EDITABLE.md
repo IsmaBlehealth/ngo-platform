@@ -1,14 +1,14 @@
-# 📝 HOJA DE CONTENIDO — Edite y devuélvame esto
+# CONTENT EDIT SHEET — Edit and send back
 
-**Instrucciones:** Donde dice `[ ]` ponga el texto nuevo. Si no quiere cambiar algo, déjelo vacío o escriba "igual".
+**Instructions:** Where you see `[ ]` replace with your new text. If you don't want to change something, leave it blank or write "same".
 
 ---
 
-## 🏠 HOMEPAGE
+## HOMEPAGE
 
-### Hero — Slides (HP-01 a HP-14)
+### Hero — Slides (HP-01 to HP-14)
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
 | HP-01 | Every Child Deserves a Future | [ ] |
 | HP-02 | Building sustainable futures through education, clean water, and healthcare in communities across Africa. | [ ] |
@@ -25,171 +25,179 @@
 | HP-13 | Stronger Through Community | [ ] |
 | HP-14 | Sports programs that teach teamwork, discipline, and bring entire communities together. | [ ] |
 
-### Botones del Hero
+### Hero Buttons
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
 | HP-15 | Donate Now | [ ] |
 | HP-16 | Learn More | [ ] |
 
-### Barra de Estadísticas
+### Stats Bar
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
 | HP-17 | 2014 — Founded | [ ] |
 | HP-18 | 100K+ — Lives Impacted | [ ] |
 | HP-19 | 3 — Countries | [ ] |
 | HP-20 | 99% — Passing Rate | [ ] |
 
-### Sección Programas
+### Programs Section
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
 | HP-21 | What We Do | [ ] |
 | HP-22 | Our Programs | [ ] |
 | HP-23 | We work across three core areas to create lasting change in communities worldwide. | [ ] |
-| **HP-24** | **Clean Water Initiative** | **[ ]** |
-| HP-25 | Building sustainable water systems in communities across Africa and Latin America, providing access to clean drinking water for thousands. | [ ] |
+| HP-24 | Clean Water Initiative | [ ] |
+| HP-25 | Building sustainable water systems that transform communities through access to safe, clean drinking water. | [ ] |
 | HP-26 | 50K+ Lives Changed | [ ] |
-| **HP-27** | **Education & Scholarships** | **[ ]** |
-| HP-28 | Empowering the next generation through education programs, school construction, and scholarship opportunities in Côte d'Ivoire and Mali. | [ ] |
+| HP-27 | Education & Scholarships | [ ] |
+| HP-28 | Empowering the next generation through quality education and scholarship programs. | [ ] |
 | HP-29 | 332 Students Enrolled | [ ] |
-| **HP-30** | **Healthcare Programs** | **[ ]** |
-| HP-31 | Delivering essential healthcare services to underserved communities through mobile clinics and community health workers. | [ ] |
+| HP-30 | Healthcare Programs | [ ] |
+| HP-31 | Delivering essential healthcare services to underserved communities through mobile clinics. | [ ] |
 | HP-32 | 15K+ Patients Treated | [ ] |
 
-### Sección About (Quiénes Somos)
+### Who We Are Section
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
 | HP-33 | Who We Are | [ ] |
 | HP-34 | Empowering Communities Since 2014 | [ ] |
-| HP-35 | Global Approach To Development is a 501(c)(3) non-profit organization founded by Dr. Keuleya Ruth Ble MD MPH. We work to provide sustainable solutions in clean water, education, and healthcare for communities across Africa and Latin America. | [ ] |
-| HP-36 | With a 99% passing rate in our schools and programs reaching thousands of families, we are committed to creating lasting change. | [ ] |
-| HP-37 | Our Story | [ ] |
+| HP-35 | Global Approach To Development is a 501(c)(3) nonprofit organization dedicated to building sustainable futures through education, clean water, and healthcare. Founded in 2014 by Dr. Keuleya Ruth Ble, we have grown from a vision into a movement that has transformed thousands of lives across Africa. | [ ] |
+| HP-36 | Our approach is simple: work directly with local communities, listen to their needs, and implement solutions that last. We believe that real change happens when communities own their development. | [ ] |
 
-### Sección Impacto
+### Impact Section
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| HP-38 | Real Results | [ ] |
-| HP-39 | Our Impact | [ ] |
-| HP-40 | Clean Water Transformation | [ ] |
-| HP-41 | Over 50,000 lives transformed through sustainable water systems. Our initiative provides access to clean drinking water, reducing waterborne diseases by 75% in communities we serve. | [ ] |
+| HP-37 | Our Impact | [ ] |
+| HP-38 | Our programs have reached thousands of families across Africa, creating measurable, lasting change. | [ ] |
+| HP-39 | Clean Water Transformation | [ ] |
+| HP-40 | 50K+ Lives Impacted | [ ] |
+| HP-41 | Our water projects have reduced waterborne diseases by 75%... | [ ] |
 | HP-42 | Education Excellence | [ ] |
-| HP-43 | With a 99% passing rate in our schools across Côte d'Ivoire and Mali, we are proving that quality education can reach even the most remote communities. 332 students currently enrolled. | [ ] |
-| HP-44 | Healthcare Access | [ ] |
-| HP-45 | Mobile health clinics bringing essential medical care to communities without access to hospitals. Over 15,000 patients treated across three countries. | [ ] |
+| HP-43 | 332 Students Enrolled | [ ] |
+| HP-44 | Our scholarship programs have achieved a 99% passing rate... | [ ] |
+| HP-45 | Healthcare Access | [ ] |
+| HP-46 | 15K+ Patients Treated | [ ] |
+| HP-47 | Our mobile health clinics bring medical care directly... | [ ] |
 
-### Sección Donar
+### Donation Section
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| HP-46 | Make a Difference | [ ] |
-| HP-47 | Your Donation Changes Lives | [ ] |
-| HP-48 | 100% of your donation goes directly to our programs. No administrative fees. Every dollar makes a real impact. | [ ] |
-| HP-49 | Donate $25 | [ ] |
-| HP-50 | Custom Amount | [ ] |
+| HP-48 | Your Donation Changes Lives | [ ] |
+| HP-49 | 100% of your donation goes directly to our programs. No administrative fees. | [ ] |
 
-### Sección Contacto
+### Contact Section
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| HP-51 | Get In Touch | [ ] |
-| HP-52 | Contact Us | [ ] |
-| HP-53 | 3200 E Guasti Rd., Suite 100, Ontario, CA 91761 | [ ] |
-| HP-54 | 909-728-8111 | [ ] |
-| HP-55 | info@gapdev.org | [ ] |
+| HP-50 | Get In Touch | [ ] |
+| HP-51 | 3200 E Guasti Rd. Suite 100, Ontario, CA 91761 | [ ] |
+| HP-52 | 909-728-8111 | [ ] |
+| HP-53 | info@gapdev.org | [ ] |
 
 ---
 
-## 🧭 NAVEGACIÓN (HEADER)
+## ABOUT PAGE
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| NA-01 | Home | [ ] |
-| NA-02 | Programs | [ ] |
-| NA-03 | Impact | [ ] |
-| NA-04 | About Us | [ ] |
-| NA-05 | Blog | [ ] |
-| NA-06 | Contact Us | [ ] |
-| NA-07 | Donate | [ ] |
-| NA-08 | Sign In | [ ] |
+| AB-01 | Who We Are | [ ] |
+| AB-02 | Empowering Communities Since 2014 | [ ] |
+| AB-03 | Global Approach To Development was founded in 2014 by Dr. Keuleya Ruth Ble... | [ ] |
+| AB-04 | Our mission is to create sustainable futures through education, clean water, and healthcare. | [ ] |
+| AB-05 | Dr. Keuleya Ruth Ble, MD, MPH | [ ] |
+| AB-06 | Every child deserves access to clean water, education, and healthcare. | [ ] |
 
 ---
 
-## 🦶 FOOTER
+## PROGRAMS PAGE
 
-| Código | Texto actual | ✏️ Su texto nuevo |
-|---|---|---|
-| FO-01 | Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa. | [ ] |
-| FO-02 | Programs | [ ] |
-| FO-03 | Quick Links | [ ] |
-| FO-04 | © 2014 - {year} Global Approach To Development. All rights reserved. | [ ] |
-| FO-05 | Privacy Policy | [ ] |
-| FO-06 | Terms of Service | [ ] |
-
----
-
-## ℹ️ ABOUT
-
-| Código | Texto actual | ✏️ Su texto nuevo |
-|---|---|---|
-| AB-01 | About Us | [ ] |
-
----
-
-## 📋 PROGRAMS
-
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
 | PG-01 | Our Programs | [ ] |
-| PG-02 | Clean Water Initiative | [ ] |
-| PG-03 | (descripción completa — abrir /programs) | [ ] |
-| PG-04 | Education & Scholarships | [ ] |
-| PG-05 | (descripción completa — abrir /programs) | [ ] |
-| PG-06 | Healthcare Programs | [ ] |
-| PG-07 | (descripción completa — abrir /programs) | [ ] |
+| PG-02 | We work across three core areas to create lasting change... | [ ] |
+| PG-03 | Clean Water Initiative | [ ] |
+| PG-04 | Full program description for clean water... | [ ] |
+| PG-05 | Education & Scholarships | [ ] |
+| PG-06 | Full program description for education... | [ ] |
+| PG-07 | Healthcare Programs | [ ] |
+| PG-08 | Full program description for healthcare... | [ ] |
 
 ---
 
-## 📚 EDUCATION
+## IMPACT PAGE
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| ED-01 | Education & Scholarships | [ ] |
+| IM-01 | Real Results | [ ] |
+| IM-02 | Our Impact | [ ] |
+| IM-03 | 100,000+ | [ ] |
+| IM-04 | Lives Impacted | [ ] |
+| IM-05 | 50,000+ | [ ] |
+| IM-06 | Clean Water Access | [ ] |
+| IM-07 | 332 | [ ] |
+| IM-08 | Students Enrolled | [ ] |
+| IM-09 | 99% | [ ] |
+| IM-10 | Passing Rate | [ ] |
+| IM-11 | 3 | [ ] |
+| IM-12 | Countries Served | [ ] |
+| IM-13 | 15,000+ | [ ] |
+| IM-14 | Patients Treated | [ ] |
 
 ---
 
-## 📊 IMPACT
+## CONTACT PAGE
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| IM-01 | Our Impact | [ ] |
+| CT-01 | Get In Touch | [ ] |
+| CT-02 | Contact Us | [ ] |
+| CT-03 | Our Office | [ ] |
+| CT-04 | 3200 E Guasti Rd., Suite 100, Ontario, CA 91761 | [ ] |
+| CT-05 | Call Us | [ ] |
+| CT-06 | 909-728-8111 | [ ] |
+| CT-07 | Email Us | [ ] |
+| CT-08 | info@gapdev.org | [ ] |
 
 ---
 
-## ✍️ BLOG
+## DONATE PAGE
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| BL-01 | Blog | [ ] |
-| BL-02 | About Child Trauma | [ ] |
-| BL-03 | Global Impact of Clean Water | [ ] |
-| BL-04 | Scholarships for Underprivileged | [ ] |
-| BL-05 | Mobile Health Clinics | [ ] |
+| DN-01 | Make A Difference | [ ] |
+| DN-02 | Your Donation Changes Lives | [ ] |
+| DN-03 | 100% of your donation goes directly to our programs. | [ ] |
+| DN-04 | One-Time | [ ] |
+| DN-05 | Monthly | [ ] |
 
 ---
 
-## 💳 DONATE
+## BLOG
 
-| Código | Texto actual | ✏️ Su texto nuevo |
+| Code | Current text | ✏️ Your new text |
 |---|---|---|
-| DO-01 | Make a Difference | [ ] |
-| DO-02 | One-Time | [ ] |
-| DO-03 | Monthly | [ ] |
-| DO-04 | Donate Now | [ ] |
+| BL-01 | Our Blog | [ ] |
+| BL-02 | Stories, updates, and insights from our work... | [ ] |
 
 ---
 
-✅ **Cuando termine, envíeme este archivo de vuelta con sus cambios.**
+## PRIVACY PAGE
+
+| Code | Current text | ✏️ Your new text |
+|---|---|---|
+| PR-01 | Privacy Policy | [ ] |
+| PR-02 | Last updated: January 2025 | [ ] |
+
+---
+
+## TERMS PAGE
+
+| Code | Current text | ✏️ Your new text |
+|---|---|---|
+| TM-01 | Terms of Service | [ ] |
+| TM-02 | Last updated: January 2025 | [ ] |

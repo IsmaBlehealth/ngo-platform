@@ -1,38 +1,30 @@
-# 📌 Instrucciones para Dra. Ble — Cómo pedir cambios en la web
+# Instructions for Dra. Ble — How to request website changes
 
-## 1. Abra la guía de contenido
+## 1. Open the content guide
 
 **https://ngo-platform-399q.vercel.app/content-guide**
 
-Ahí ve cada texto de la página con su **Código** (ej: `HP-24`).
+There you'll see every text on the page with its **Code** (e.g. `HP-24`).
 
-## 2. Busque el texto que quiere cambiar
+## 2. Find the text you want to change
 
-Abra también la página web en otra pestaña para ver cómo se ve visualmente.
+Also open the website in another tab to see how it looks visually.
 
-## 3. Escríbame por WhatsApp así:
+## 3. Send me a message like this:
 
 ```
 ID: HP-24
-Nuevo texto: Clean Water & Sanitation Initiative
+New text: Clean Water & Sanitation Initiative
 ```
 
-O si es agregar texto nuevo:
+Or if adding new text:
 
 ```
 ID: HP-36
-Agregar después de: (texto actual)
-Texto nuevo: (lo que quiere poner)
+Insert after: (current text)
+New text: (what you want to put)
 ```
 
-## 4. Yo lo reviso y lo subo
+## 4. I'll review and deploy
 
-Así de simple. Cualquier duda me escribe.
-
----
-
-## English version
-
-1. Open **https://ngo-platform-399q.vercel.app/content-guide**
-2. Find the code (e.g., `HP-24`) for the text you want to change
-3. Send me a message with the code and the new text
+That's it. Any questions, just message me.

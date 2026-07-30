@@ -1,138 +1,138 @@
-# Mapa de contenido / Content Map
+# Content Map
 
-Cada página tiene secciones numeradas. Cuando quiera agregar texto, use el formato de la plantilla al final.
-
----
-
-## Página Principal / Homepage (`/`)
-
-```
-[Hero — Carrusel de 7 fotos]
-  ├── 1. Título principal (cambia con cada foto)
-  ├── 2. Subtítulo (cambia con cada foto)
-  └── 3. Botones: "Donar" / "Más info"
-
-[Barra de Estadísticas]
-  └── 4. 4 indicadores (Fundado 2014, 100K+ vidas, 3 países, 99% aprobación)
-
-[Sección Programas]
-  ├── 5. Título: "What We Do" / "Our Programs"
-  ├── 6. Descripción general
-  ├── 7. Tarjeta grande: Clean Water Initiative
-  ├── 8. Tarjeta: Education & Scholarships
-  └── 9. Tarjeta: Healthcare Programs
-
-[Sección Quiénes Somos]
-  ├── 10. Título: "Empowering Communities Since 2014"
-  └── 11. Párrafos de descripción (2 párrafos)
-
-[Sección Impacto]
-  ├── 12. Título: "Our Impact"
-  ├── 13. Bloque: Clean Water Transformation
-  ├── 14. Bloque: Education Excellence
-  └── 15. Bloque: Healthcare Access
-
-[Sección Donación]
-  ├── 16. Título: "Your Donation Changes Lives"
-  └── 17. Descripción / llamado a la acción
-
-[Sección Contacto]
-  └── 18. 3 tarjetas (Address, Phone, Email)
-```
+Every page has numbered sections. When you want to add or edit text, use the template at the bottom.
 
 ---
 
-## Acerca de / About (`/about`)
+## Homepage (`/`)
 
 ```
-  ├── 19. Título de página
-  ├── 20. Historia / misión (párrafos)
-  ├── 21. Información de la fundadora
-  ├── 22. Valores / enfoque
-  └── 23. Llamado a la acción
+[Hero — 7-photo Carousel]
+  ├── 1. Main title (changes per slide)
+  ├── 2. Subtitle (changes per slide)
+  └── 3. Buttons: "Donate" / "Learn More"
+
+[Stats Bar]
+  └── 4. 4 indicators (Founded 2014, 100K+ lives, 3 countries, 99% passing rate)
+
+[Programs Section]
+  ├── 5. Title: "What We Do" / "Our Programs"
+  ├── 6. General description
+  ├── 7. Large card: Clean Water Initiative
+  ├── 8. Card: Education & Scholarships
+  └── 9. Card: Healthcare Programs
+
+[Who We Are Section]
+  ├── 10. Title: "Empowering Communities Since 2014"
+  └── 11. Description paragraphs (2 paragraphs)
+
+[Impact Section]
+  ├── 12. Title: "Our Impact"
+  ├── 13. Block: Clean Water Transformation
+  ├── 14. Block: Education Excellence
+  └── 15. Block: Healthcare Access
+
+[Donation Section]
+  ├── 16. Title: "Your Donation Changes Lives"
+  └── 17. Description / call to action
+
+[Contact Section]
+  └── 18. 3 cards (Address, Phone, Email)
 ```
 
-## Programas / Programs (`/programs`)
+---
+
+## About (`/about`)
 
 ```
-  ├── 24. Título de página
-  ├── 25. Clean Water — descripción completa
-  ├── 26. Education — descripción completa
-  └── 27. Healthcare — descripción completa
+  ├── 19. Page title
+  ├── 20. Story / mission (paragraphs)
+  ├── 21. Founder information
+  ├── 22. Values / approach
+  └── 23. Call to action
 ```
 
-## Educación / Education (`/programs/education`)
+## Programs (`/programs`)
 
 ```
-  └── 28. Contenido completo del programa educativo
+  ├── 24. Page title
+  ├── 25. Clean Water — full description
+  ├── 26. Education — full description
+  └── 27. Healthcare — full description
 ```
 
-## Impacto / Impact (`/impact`)
+## Education (`/programs/education`)
 
 ```
-  ├── 29. Título
-  ├── 30. Estadísticas detalladas
-  └── 31. Historias / casos de éxito
+  └── 28. Full educational program content
+```
+
+## Impact (`/impact`)
+
+```
+  ├── 29. Title
+  ├── 30. Detailed statistics
+  └── 31. Stories / success cases
 ```
 
 ## Blog (`/blog`)
 
 ```
-  ├── 32. Lista de artículos
-  └── 33. Cada artículo individual (título, contenido)
+  ├── 32. Article list
+  └── 33. Individual articles (title, content)
 ```
 
-## Contacto / Contact (`/contact`)
+## Contact (`/contact`)
 
 ```
-  ├── 34. Formulario de contacto
-  └── 35. Información de contacto
+  ├── 34. Contact form
+  └── 35. Contact information
 ```
 
-## Donar / Donate (`/donate`)
+## Donate (`/donate`)
 
 ```
-  ├── 36. Título y descripción
-  ├── 37. Opciones de donación (one-time / monthly)
-  └── 38. Formulario de pago
-```
-
----
-
-# Plantilla para solicitar contenido nuevo
-
-Copie y pepe esto en el chat, llenando solo lo que necesite:
-
-```
-PÁGINA: [nombre de la página]
-SECCIÓN N°: [número del mapa de arriba]
-POSICIÓN: [antes de / después de / reemplazar / nueva sección]
-
-TEXTO NUEVO:
-[escriba aquí el texto que quiere agregar]
-
-NOTAS:
-[opcional: algún detalle adicional]
-```
-
-**Ejemplo:**
-
-```
-PÁGINA: Homepage
-SECCIÓN N°: 11
-POSICIÓN: después del segundo párrafo
-
-TEXTO NUEVO:
-Nuestro equipo trabaja directamente con líderes comunitarios locales 
-para asegurar que cada proyecto sea sostenible y culturalmente apropiado.
-
-NOTAS:
-Que sea en un párrafo aparte, con un icono de apretón de manos al inicio.
+  ├── 36. Title and description
+  ├── 37. Donation options (one-time / monthly)
+  └── 38. Payment form
 ```
 
 ---
 
-# Versión Français
+# Template for requesting new content
+
+Copy and paste this into the chat, filling only what you need:
+
+```
+PAGE: [page name]
+SECTION N°: [number from the map above]
+POSITION: [before / after / replace / new section]
+
+NEW TEXT:
+[write the text you want to add]
+
+NOTES:
+[optional: any additional details]
+```
+
+**Example:**
+
+```
+PAGE: Homepage
+SECTION N°: 11
+POSITION: after the second paragraph
+
+NEW TEXT:
+Our team works directly with local community leaders
+to ensure every project is sustainable and culturally appropriate.
+
+NOTES:
+Should be in a separate paragraph, with a handshake icon at the beginning.
+```
+
+---
+
+# Version Française
 
 ```
 PAGE: [nom de la page]
