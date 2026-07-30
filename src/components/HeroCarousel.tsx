@@ -41,6 +41,10 @@ export default function HeroCarousel() {
     { title: "hero.slide1.title" as const, subtitle: "hero.slide1.subtitle" as const, label: "hero.slide1.label" as const },
     { title: "hero.slide2.title" as const, subtitle: "hero.slide2.subtitle" as const, label: "hero.slide2.label" as const },
     { title: "hero.slide3.title" as const, subtitle: "hero.slide3.subtitle" as const, label: "hero.slide3.label" as const },
+    { title: "hero.slide4.title" as const, subtitle: "hero.slide4.subtitle" as const, label: "hero.slide4.label" as const },
+    { title: "hero.slide5.title" as const, subtitle: "hero.slide5.subtitle" as const, label: "hero.slide5.label" as const },
+    { title: "hero.slide6.title" as const, subtitle: "hero.slide6.subtitle" as const, label: "hero.slide6.label" as const },
+    { title: "hero.slide7.title" as const, subtitle: "hero.slide7.subtitle" as const, label: "hero.slide7.label" as const },
   ];
   const slideTitleKey = slideKeys[current].title;
   const slideSubtitleKey = slideKeys[current].subtitle;
