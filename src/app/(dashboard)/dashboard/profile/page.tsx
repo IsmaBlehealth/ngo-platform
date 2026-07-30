@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();
@@ -17,14 +17,19 @@ export default function ProfilePage() {
   const [changingPassword, setChangingPassword] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState("");
 
+  const namesInitialized = useRef(false);
+
   useEffect(() => {
     fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
   }, []);
 
   useEffect(() => {
-    if (session?.user) {
-      setFirstName(session.user.name?.split(" ")[0] || "");
-      setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
+    if (session?.user && !namesInitialized.current) {
+      namesInitialized.current = true;
+      setTimeout(() => {
+        setFirstName(session.user.name?.split(" ")[0] || "");
+        setLastName(session.user.name?.split(" ").slice(1).join(" ") || "");
+      }, 0);
     }
   }, [session]);
 
