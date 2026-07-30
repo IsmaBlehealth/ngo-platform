@@ -232,37 +232,37 @@ export default function DonatePage() {
             <div className="lg:col-span-2 space-y-6">
               <div className="rounded-2xl bg-primary p-6 text-white">
                 <h3 className="text-lg font-bold">Your Impact</h3>
-                <div className="mt-4 space-y-4">
+<div className="mt-4 space-y-4">
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">💧</span>
+                    <svg className="h-6 w-6 shrink-0 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0V3" /><path strokeLinecap="round" strokeLinejoin="round" d="M3.6 9h16.8M3.6 15h16.8" /></svg>
                     <div>
                       <p className="font-semibold">$25</p>
                       <p className="text-sm text-white/70">Provides clean water for one person for a year</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">📚</span>
+                    <svg className="h-6 w-6 shrink-0 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.252v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.252v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.252m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.252v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.252" /></svg>
                     <div>
                       <p className="font-semibold">$50</p>
                       <p className="text-sm text-white/70">Supplies school materials for one student</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">🏥</span>
+                    <svg className="h-6 w-6 shrink-0 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.223 9 12 9 12s9-4.777 9-12z" /></svg>
                     <div>
                       <p className="font-semibold">$100</p>
                       <p className="text-sm text-white/70">Funds a medical checkup for a family</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">🏫</span>
+                    <svg className="h-6 w-6 shrink-0 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-3.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
                     <div>
                       <p className="font-semibold">$250</p>
                       <p className="text-sm text-white/70">{'Supports a child\'s full school year'}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">🌍</span>
+                    <svg className="h-6 w-6 shrink-0 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18" /></svg>
                     <div>
                       <p className="font-semibold">$500</p>
                       <p className="text-sm text-white/70">Builds a water well for a village</p>

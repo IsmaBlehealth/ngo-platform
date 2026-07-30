@@ -134,7 +134,7 @@ export default function ImpactPage() {
             </div>
             <div className="space-y-6 order-1 lg:order-2">
               <div className="flex items-center gap-3 text-accent">
-                <span className="text-2xl">💧</span>
+                <span className="material-symbols-outlined text-2xl text-accent">water_drop</span>
                 <span className="text-xs font-bold uppercase tracking-[0.2em]">
                   {impactStories[0].category}
                 </span>
@@ -159,7 +159,7 @@ export default function ImpactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <div className="flex items-center gap-3 text-accent">
-                <span className="text-2xl">📚</span>
+                <span className="material-symbols-outlined text-2xl text-accent">school</span>
                 <span className="text-xs font-bold uppercase tracking-[0.2em]">
                   {impactStories[1].category}
                 </span>
@@ -218,7 +218,7 @@ export default function ImpactPage() {
             </div>
             <div className="space-y-6 order-1 lg:order-2">
               <div className="flex items-center gap-3 text-accent">
-                <span className="text-2xl">🏥</span>
+                <span className="material-symbols-outlined text-2xl text-accent">health_and_safety</span>
                 <span className="text-xs font-bold uppercase tracking-[0.2em]">
                   {impactStories[2].category}
                 </span>

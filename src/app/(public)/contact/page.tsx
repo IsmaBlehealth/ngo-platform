@@ -35,17 +35,17 @@ const contactSchema = {
 
 const infoCards = [
   {
-    icon: "📍",
+    icon: "location_on",
     title: "Our Office",
     lines: ["3200 E Guasti Rd., Suite 100", "Ontario, CA 91761"],
   },
   {
-    icon: "📞",
+    icon: "call",
     title: "Call Us",
     lines: ["909-728-8111"],
   },
   {
-    icon: "✉️",
+    icon: "mail",
     title: "Email Us",
     lines: ["info@gapdev.org"],
   },
@@ -147,8 +147,8 @@ export default function ContactPage() {
               key={card.title}
               className="bento-card bg-[#FAF9F6] rounded-xl p-8 flex flex-col items-center text-center"
             >
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 text-3xl">
-                {card.icon}
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+                <span className="material-symbols-outlined text-3xl text-accent">{card.icon}</span>
               </div>
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted mb-2">
                 {card.title}

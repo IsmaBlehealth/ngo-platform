@@ -12,7 +12,7 @@ import { t } from "@/lib/i18n";
 
 const programs = [
   {
-    icon: "💧",
+    icon: "water_drop",
     image: "/images/old-site/programs/clean-water.jpg",
     stat: "50K+",
     statLabelKey: "program.statLabel",
@@ -21,7 +21,7 @@ const programs = [
     href: "/programs#water",
   },
   {
-    icon: "📚",
+    icon: "school",
     image: "/images/old-site/programs/education.jpg",
     stat: "332",
     statLabelKey: "education.statLabel",
@@ -30,7 +30,7 @@ const programs = [
     href: "/programs/education",
   },
   {
-    icon: "🏥",
+    icon: "health_and_safety",
     image: "/images/old-site/programs/healthcare.jpg",
     stat: "15K+",
     statLabelKey: "health.statLabel",
@@ -72,9 +72,9 @@ const impactItems = [
 ];
 
 const contacts = [
-  { icon: "📍", labelKey: "home.contact.address", value: "3200 E Guasti Rd., Suite 100\nOntario, CA 91761" },
-  { icon: "📞", labelKey: "home.contact.phone", value: "909-728-8111" },
-  { icon: "✉️", labelKey: "home.contact.email", value: "info@gapdev.org" },
+  { icon: "location_on", labelKey: "home.contact.address", value: "3200 E Guasti Rd., Suite 100\nOntario, CA 91761" },
+  { icon: "call", labelKey: "home.contact.phone", value: "909-728-8111" },
+  { icon: "mail", labelKey: "home.contact.email", value: "info@gapdev.org" },
 ];
 
 export default function HomeContent() {
@@ -337,7 +337,7 @@ export default function HomeContent() {
             {contacts.map((c, i) => (
               <ScrollReveal key={c.labelKey} delay={i}>
                 <div className="liquid-glass-surface card-depth-hover rounded-3xl p-8 text-center">
-                  <span className="text-4xl">{c.icon}</span>
+                  <span className="material-symbols-outlined text-4xl text-accent">{c.icon}</span>
                   <p className="micro-header text-accent mt-4 mb-2">{tr(c.labelKey)}</p>
                   <p className="text-sm font-medium text-muted whitespace-pre-line">{c.value}</p>
                 </div>

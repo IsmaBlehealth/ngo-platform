@@ -163,7 +163,7 @@ export default async function EducationPage() {
             <div className="mt-6 grid gap-6 sm:grid-cols-3">
               <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg card-hover">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <span className="text-xl">&#127967;</span>
+                  <span className="material-symbols-outlined text-xl">diversity_3</span>
                 </div>
                 <h4 className="mt-4 font-bold text-primary">Children&apos;s Clubs</h4>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
@@ -172,7 +172,7 @@ export default async function EducationPage() {
               </div>
               <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg card-hover">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <span className="text-xl">&#128218;</span>
+                  <span className="material-symbols-outlined text-xl">menu_book</span>
                 </div>
                 <h4 className="mt-4 font-bold text-primary">Literacy Courses</h4>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
@@ -181,7 +181,7 @@ export default async function EducationPage() {
               </div>
               <div className="rounded-2xl liquid-glass-surface p-8 shadow-lg card-hover">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <span className="text-xl">&#127912;</span>
+                  <span className="material-symbols-outlined text-xl">palette</span>
                 </div>
                 <h4 className="mt-4 font-bold text-primary">Art Education</h4>
                 <p className="mt-2 text-sm text-muted leading-relaxed">
@@ -196,7 +196,7 @@ export default async function EducationPage() {
             <div className="p-8 sm:p-10">
               <div className="flex items-start gap-4">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent text-white shadow-lg">
-                  <span className="text-2xl">&#10084;</span>
+                  <span className="material-symbols-outlined text-2xl">favorite</span>
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-primary">Your Help Is Needed</h3>

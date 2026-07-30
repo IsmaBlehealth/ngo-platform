@@ -78,17 +78,15 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      {/* Gradient overlays for text legibility — stronger on left where text sits */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
+      {/* Dark gradient base — full coverage left side */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
 
-      {/* Liquid glass text backdrop — subtle blur panel behind content area */}
+      {/* Solid liquid glass panel behind text content */}
       <div
-        className="absolute left-0 top-0 h-full w-full md:w-[60%] z-10 pointer-events-none"
+        className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
         style={{
-          background: "linear-gradient(90deg, rgba(0,42,21,0.45) 0%, rgba(0,42,21,0.2) 60%, transparent 100%)",
-          backdropFilter: "blur(2px)",
-          WebkitBackdropFilter: "blur(2px)",
+          background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
         }}
       />
 
