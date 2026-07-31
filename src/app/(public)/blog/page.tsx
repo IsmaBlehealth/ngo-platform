@@ -25,7 +25,7 @@ const blogPosts = [
     excerpt: "Scholarships provide a critical lifeline for underprivileged students, allowing them to pursue higher education despite financial hardships. These programs not only offer financial support but also create opportunities for personal and academic...",
     category: "Education",
     publishedAt: "2024-09-19",
-    image: "/images/old-site/programs/education.jpg",
+    image: "/images/hero/gad-hero-3.jpg",
   },
   {
     slug: "mobile-health-clinics",
@@ -64,32 +64,33 @@ export default function BlogPage() {
             priority
           />
         </div>
-        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
-        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/55 via-transparent to-black/25" />
         <div
-          className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
+          className="absolute left-0 top-0 h-full w-full md:w-[60%] z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+            background: "linear-gradient(105deg, rgba(0,30,15,0.42) 0%, rgba(0,50,25,0.18) 55%, transparent 100%)",
+            backdropFilter: "blur(2px)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 z-20">
           <span
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase mb-6"
             style={{
-              background: "rgba(0,42,21,0.4)",
+              background: "rgba(255,255,255,0.08)",
               backdropFilter: "blur(40px)",
               WebkitBackdropFilter: "blur(40px)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              textShadow: "0 1px 8px rgba(0,0,0,0.8)",
+              border: "1px solid rgba(255,255,255,0.16)",
+              textShadow: "0 1px 6px rgba(0,0,0,0.5)",
             }}
           >
-            <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-accent rounded-full animate-pulse shadow-[0_0_8px_rgba(255,127,57,0.6)]" />
             Updates & Stories
           </span>
-          <h1 className="text-4xl font-bold text-white sm:text-5xl" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
+          <h1 className="text-4xl font-bold text-white sm:text-5xl" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.65), 0 1px 8px rgba(0,0,0,0.45)" }}>
             Blog
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/90" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
+          <p className="mt-4 max-w-2xl text-lg text-white/90" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.35)" }}>
             Education, healthcare, and access to clean water are fundamental rights. This blog explores the impact of various initiatives, showcasing how communities are transforming through empowerment and equal opportunity.
           </p>
         </div>

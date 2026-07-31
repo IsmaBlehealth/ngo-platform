@@ -122,12 +122,13 @@ export default function ContactPage() {
             priority
           />
         </div>
-        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
-        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
+        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/55 via-transparent to-black/25" />
         <div
-          className="absolute left-0 top-0 h-full w-full md:w-[55%] z-10 pointer-events-none"
+          className="absolute left-0 top-0 h-full w-full md:w-[60%] z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(105deg, rgba(0,30,15,0.75) 0%, rgba(0,50,25,0.55) 50%, rgba(0,30,15,0.1) 85%, transparent 100%)",
+            background: "linear-gradient(105deg, rgba(0,30,15,0.42) 0%, rgba(0,50,25,0.18) 55%, transparent 100%)",
+            backdropFilter: "blur(2px)",
           }}
         />
         <div className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
@@ -135,20 +136,20 @@ export default function ContactPage() {
             <span
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs font-bold tracking-widest uppercase mb-6"
               style={{
-                background: "rgba(0,42,21,0.4)",
+                background: "rgba(255,255,255,0.08)",
                 backdropFilter: "blur(40px)",
                 WebkitBackdropFilter: "blur(40px)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                textShadow: "0 1px 8px rgba(0,0,0,0.8)",
+                border: "1px solid rgba(255,255,255,0.16)",
+                textShadow: "0 1px 6px rgba(0,0,0,0.5)",
               }}
             >
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse shadow-[0_0_8px_rgba(255,127,57,0.6)]" />
               Get In Touch
             </span>
-            <h1 className="text-5xl md:text-7xl font-black text-white" style={{ textShadow: "0 4px 30px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7)" }}>
+            <h1 className="text-5xl md:text-7xl font-black text-white" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.65), 0 1px 8px rgba(0,0,0,0.45)" }}>
               Contact Us
             </h1>
-            <p className="mt-4 text-lg text-white/90" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.85)" }}>
+            <p className="mt-4 text-lg text-white/90" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.35)" }}>
               We would love to hear from you…why not get in touch?
             </p>
           </div>
@@ -160,23 +161,31 @@ export default function ContactPage() {
       {/* Main Content — overlapping the hero */}
       <main className="relative z-20 -mt-12 md:-mt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24 pb-24">
         {/* Info Cards — liquid glass premium */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {infoCards.map((card, idx) => (
             <div
               key={card.title}
-              className="liquid-glass-surface rounded-2xl p-8 md:p-10 flex flex-col items-center text-center card-depth-hover group"
-              style={{ animationDelay: `${idx * 0.1}s` }}
+              className="relative overflow-hidden rounded-2xl p-6 md:p-8 flex flex-col items-center text-center card-depth-hover group"
+              style={{
+                animationDelay: `${idx * 0.1}s`,
+                background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(250,249,246,0.72) 100%)",
+                backdropFilter: "blur(32px)",
+                WebkitBackdropFilter: "blur(32px)",
+                border: "1px solid rgba(255,255,255,0.20)",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.25)",
+              }}
             >
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-accent/10 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500" />
-                <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center border border-accent/10 group-hover:border-accent/25 group-hover:scale-110 transition-all duration-500">
-                  <span className="material-symbols-outlined text-3xl text-accent drop-shadow-sm">{card.icon}</span>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/[0.04] to-transparent" />
+              <div className="relative mb-4">
+                <div className="absolute inset-0 bg-accent/10 rounded-full blur-lg group-hover:blur-xl transition-all duration-500" />
+                <div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-accent/15 to-accent/5 flex items-center justify-center border border-accent/10 group-hover:border-accent/25 group-hover:scale-110 transition-all duration-500">
+                  <span className="material-symbols-outlined text-accent drop-shadow-sm" style={{ fontSize: "22px" }}>{card.icon}</span>
                 </div>
               </div>
-              <span className="micro-header text-accent mb-3 group-hover:tracking-[0.25em] transition-all duration-300">
+              <span className="micro-header text-accent mb-2 group-hover:tracking-[0.22em] transition-all duration-300">
                 {card.title}
               </span>
-              <div className="text-foreground font-semibold leading-relaxed text-lg">
+              <div className="text-foreground font-semibold leading-relaxed text-base">
                 {card.lines.map((line, i) => (
                   <span key={i}>
                     {line}
@@ -334,20 +343,29 @@ export default function ContactPage() {
         </section>
 
         {/* Map Section */}
-        <section className="relative rounded-2xl overflow-hidden h-[500px]">
+        <section className="relative rounded-2xl overflow-hidden h-[420px] md:h-[500px] border border-white/20 shadow-lg">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.5!2d-117.6!3d34.06!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzQyLjAiTiAxMTfCsDM2JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-117.62%2C34.04%2C-117.54%2C34.08&amp;layer=mapnik&amp;marker=34.06%2C-117.58"
             width="100%"
             height="100%"
-            style={{ border: 0 }}
+            style={{ border: 0, filter: "saturate(0.85) contrast(1.02)" }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Office location"
           />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-full max-w-sm px-4">
-            <div className="bento-card bg-[#FAF9F6]/90 backdrop-blur-md rounded-xl p-6 text-center">
-              <p className="text-foreground mb-3 font-semibold">
+            <div
+              className="rounded-xl p-5 text-center"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(250,249,246,0.88) 100%)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: "1px solid rgba(255,255,255,0.30)",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
+              }}
+            >
+              <p className="text-foreground mb-3 font-semibold text-sm">
                 3200 E Guasti Rd., Suite 100<br />
                 Ontario, CA 91761
               </p>
