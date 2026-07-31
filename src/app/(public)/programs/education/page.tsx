@@ -20,7 +20,7 @@ export default async function EducationPage() {
       <section className="relative min-h-[50vh] flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/old-site/programs/education.jpg"
+            src="/images/hero/gad-hero-4.jpg"
             alt="Education"
             fill
             className="object-cover opacity-20"

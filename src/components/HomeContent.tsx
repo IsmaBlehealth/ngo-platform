@@ -22,7 +22,7 @@ const programs = [
   },
   {
     icon: "school",
-    image: "/images/old-site/programs/education.jpg",
+    image: "/images/hero/gad-hero-2.jpg",
     stat: "332",
     statLabelKey: "education.statLabel",
     titleKey: "education.title",

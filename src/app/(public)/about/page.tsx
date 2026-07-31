@@ -129,7 +129,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl overflow-hidden group relative" style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1), 0 10px 30px -10px rgba(0,6,19,0.5)' }}>
               <div className="aspect-[1.34] overflow-hidden">
                 <Image
-                  src="/images/old-site/programs/education.jpg"
+                  src="/images/hero/gad-hero-5.jpg"
                   alt="Cote d'Ivoire school"
                   width={400}
                   height={300}

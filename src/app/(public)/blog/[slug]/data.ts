@@ -35,7 +35,7 @@ export const blogPosts: Record<string, BlogPost> = {
     category: "Education",
     publishedAt: "2024-09-19",
     image:
-      "/images/old-site/programs/education.jpg",
+      "/images/hero/gad-hero-3.jpg",
     excerpt:
       "With 332 students enrolled and a 99% national passing rate in Cote d'Ivoire, GAD's Education & Scholarships program proves that investment in education transforms communities.",
     content:

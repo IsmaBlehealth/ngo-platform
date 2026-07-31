@@ -29,7 +29,7 @@ const fallbackPrograms = [
   {
     id: "education",
     title: "Education & Scholarships",
-    image: "/images/old-site/programs/education.jpg",
+    image: "/images/hero/gad-hero-2.jpg",
     description:
       "Education is the key to breaking cycles of poverty, and we are committed to making it accessible to all. Through our Education & Scholarships program, we provide financial support and educational resources to underprivileged students, enabling them to pursue higher learning.",
     highlights: [
