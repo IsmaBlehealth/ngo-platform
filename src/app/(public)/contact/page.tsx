@@ -168,18 +168,33 @@ export default function ContactPage() {
               className="relative overflow-hidden rounded-2xl p-6 md:p-8 flex flex-col items-center text-center card-depth-hover group"
               style={{
                 animationDelay: `${idx * 0.1}s`,
-                background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(250,249,246,0.72) 100%)",
-                backdropFilter: "blur(32px)",
-                WebkitBackdropFilter: "blur(32px)",
-                border: "1px solid rgba(255,255,255,0.20)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.25)",
+                background: "linear-gradient(135deg, rgba(250,249,246,0.92) 0%, rgba(255,255,255,0.88) 100%)",
+                backdropFilter: "blur(24px)",
+                WebkitBackdropFilter: "blur(24px)",
+                border: "1px solid rgba(255,255,255,0.35)",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.40)",
               }}
             >
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/[0.04] to-transparent" />
-              <div className="relative mb-4">
+                <div className="relative mb-4">
                 <div className="absolute inset-0 bg-accent/10 rounded-full blur-lg group-hover:blur-xl transition-all duration-500" />
                 <div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-accent/15 to-accent/5 flex items-center justify-center border border-accent/10 group-hover:border-accent/25 group-hover:scale-110 transition-all duration-500">
-                  <span className="material-symbols-outlined text-accent drop-shadow-sm" style={{ fontSize: "22px" }}>{card.icon}</span>
+                  {card.icon === "location_on" && (
+                    <svg className="w-5 h-5 text-accent drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )}
+                  {card.icon === "call" && (
+                    <svg className="w-5 h-5 text-accent drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  )}
+                  {card.icon === "mail" && (
+                    <svg className="w-5 h-5 text-accent drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
                 </div>
               </div>
               <span className="micro-header text-accent mb-2 group-hover:tracking-[0.22em] transition-all duration-300">
@@ -327,9 +342,9 @@ export default function ContactPage() {
                   className="gold-button w-full bg-accent text-white font-bold text-base py-4 rounded-full flex items-center justify-center gap-2 group hover:opacity-90 active:scale-95 transition-all disabled:opacity-50"
                 >
                   {status === "sending" ? "Sending..." : "Send Message"}
-                  <span className="material-symbols-outlined btn-icon transition-transform text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
-                    arrow_forward
-                  </span>
+                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </button>
                 {status === "success" && (
                   <p className="mt-3 text-sm text-green-600 font-medium">Message sent successfully! We&apos;ll respond within 24 hours.</p>
