@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { blogPosts, categoryColors, formatDate } from "./data";
 
 export function BlogPostContent({ slug }: { slug: string }) {
-  const pathname = usePathname();
   const post = blogPosts[slug as keyof typeof blogPosts];
 
   if (!post) {
