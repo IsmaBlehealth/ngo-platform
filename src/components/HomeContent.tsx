@@ -90,20 +90,20 @@ export default function HomeContent() {
         <div
           className="relative overflow-hidden rounded-3xl p-8 md:p-10"
           style={{
-            background: "rgba(255,255,255,0.04)",
+            background: "linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)",
             backdropFilter: "blur(60px)",
             WebkitBackdropFilter: "blur(60px)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "0 20px 60px rgba(0,0,0,0.04)",
+            border: "1px solid rgba(255,255,255,0.14)",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.12)",
           }}
         >
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/[0.03] to-transparent" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/[0.04] to-transparent" />
           <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((s, i) => (
               <ScrollReveal key={s.labelKey} delay={i}>
                 <div className="flex flex-col items-center justify-center text-center">
-                  <p className={`text-3xl md:text-4xl font-black mb-2 drop-shadow-sm ${s.color}`}><AnimatedCounter end={s.end} suffix={s.suffix} /></p>
-                  <p className="text-sm font-medium text-white/60 uppercase tracking-wider">{tr(s.labelKey)}</p>
+                  <p className={`text-3xl md:text-4xl font-black mb-1 drop-shadow-sm ${s.color}`}><AnimatedCounter end={s.end} suffix={s.suffix} /></p>
+                  <p className="text-xs md:text-sm font-semibold text-white/95 uppercase tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]">{tr(s.labelKey)}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -200,9 +200,18 @@ export default function HomeContent() {
 
             <ScrollReveal delay={2}>
               <div className="relative">
-                <div className="absolute -top-6 -right-6 z-10 animate-float rounded-2xl bg-accent px-6 py-4 text-center shadow-glow">
-                  <p className="text-3xl font-black text-on-primary">10+</p>
-                  <p className="text-xs font-bold uppercase tracking-wider text-on-primary">{tr("home.years")}</p>
+                <div
+                  className="absolute -top-6 -right-6 z-10 animate-float rounded-2xl px-6 py-4 text-center"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)",
+                    backdropFilter: "blur(40px)",
+                    WebkitBackdropFilter: "blur(40px)",
+                    border: "1px solid rgba(255,127,57,0.35)",
+                    boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  <p className="text-3xl font-black text-accent drop-shadow-sm">10+</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]">{tr("home.years")}</p>
                 </div>
                 <div className="card-depth overflow-hidden rounded-3xl">
 <Image
