@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { heroSlides } from "@/data/hero-images";
@@ -11,7 +11,19 @@ export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
   const { locale } = useLocale();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
 
   const goTo = useCallback(
     (index: number) => {
@@ -20,7 +32,7 @@ export default function HeroCarousel() {
       setCurrent(index);
       setTimeout(() => setIsTransitioning(false), 1200);
     },
-    [isTransitioning],
+    [isTransitioning]
   );
 
   const next = useCallback(() => {
@@ -32,10 +44,23 @@ export default function HeroCarousel() {
   }, [current, goTo]);
 
   useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [isPaused, next]);
+    if (isPaused || prefersReducedMotion) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      return;
+    }
+    intervalRef.current = setInterval(next, 5000);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [isPaused, prefersReducedMotion, next]);
+
+  const togglePause = () => setIsPaused((p) => !p);
 
   const slideKeys = [
     { title: "hero.slide1.title" as const, subtitle: "hero.slide1.subtitle" as const, label: "hero.slide1.label" as const },
@@ -52,15 +77,21 @@ export default function HeroCarousel() {
 
   return (
     <section
-      className="relative w-full h-screen overflow-hidden flex items-center"
+      className="relative w-full h-[100dvh] min-h-[500px] overflow-hidden flex items-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Hero slides"
     >
       {heroSlides.map((s, i) => (
         <div
           key={i}
           className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
+          aria-hidden={i !== current}
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`Slide ${i + 1} of ${heroSlides.length}`}
         >
           <Image
             src={s.src}
@@ -70,7 +101,7 @@ export default function HeroCarousel() {
             priority={i === 0}
             sizes="100vw"
             style={{
-              animation: i === current ? "kenBurns 8s ease-out forwards" : "none",
+              animation: !prefersReducedMotion && i === current ? "kenBurns 8s ease-out forwards" : "none",
               transformOrigin: "center center",
               filter: "saturate(1.05) contrast(1.02) brightness(0.92)",
             }}
@@ -95,7 +126,7 @@ export default function HeroCarousel() {
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="hidden md:flex absolute top-1/2 left-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+        className="hidden md:flex absolute top-1/2 left-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         style={{
           background: "rgba(255,255,255,0.04)",
           backdropFilter: "blur(60px)",
@@ -111,7 +142,7 @@ export default function HeroCarousel() {
       <button
         onClick={next}
         aria-label="Next slide"
-        className="hidden md:flex absolute top-1/2 right-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+        className="hidden md:flex absolute top-1/2 right-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         style={{
           background: "rgba(255,255,255,0.04)",
           backdropFilter: "blur(60px)",
@@ -167,7 +198,7 @@ export default function HeroCarousel() {
           </p>
 
           <div className="animate-fade-up flex flex-wrap items-center gap-4" style={{ animationDelay: "0.3s" }}>
-            <Link href="/donate" className="btn-primary px-8 py-4">
+            <Link href="/donate" className="btn-primary px-8 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
               {t(locale, "hero.cta")}
               <svg className="btn-arrow h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -175,7 +206,7 @@ export default function HeroCarousel() {
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-white transition-all duration-200 hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-medium text-white transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               style={{
                 background: "rgba(255,255,255,0.08)",
                 backdropFilter: "blur(40px)",
@@ -211,7 +242,8 @@ export default function HeroCarousel() {
                 key={i}
                 onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={`h-2 rounded-full transition-all duration-500 ${
+                aria-current={i === current ? "true" : undefined}
+                className={`h-2 rounded-full transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                   i === current
                     ? "w-8 bg-accent"
                     : "w-2 bg-white/30 hover:bg-white/50"
@@ -230,7 +262,22 @@ export default function HeroCarousel() {
               boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
             }}
           >
-            <span className="text-sm text-white font-medium tracking-wider tabular-nums drop-shadow-md">
+            <button
+              onClick={togglePause}
+              aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+              className="flex items-center justify-center w-8 h-8 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              {isPaused ? (
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              ) : (
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+              )}
+            </button>
+            <span className="ml-2 text-sm text-white font-medium tracking-wider tabular-nums drop-shadow-md">
               {String(current + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
             </span>
           </div>

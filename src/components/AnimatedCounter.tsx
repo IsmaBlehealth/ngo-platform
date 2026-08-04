@@ -9,14 +9,30 @@ interface AnimatedCounterProps {
   prefix?: string;
 }
 
-export default function AnimatedCounter({ end, suffix = "", duration = 2000, prefix = "" }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
+export default function AnimatedCounter({
+  end,
+  suffix = "",
+  duration = 2000,
+  prefix = "",
+}: AnimatedCounterProps) {
+  const [count, setCount] = useState(end);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // If the element is already visible on mount (e.g. hero stats),
+    // show the final number immediately and skip animation to avoid a "0" flash.
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+    if (alreadyVisible) {
+      setCount(end);
+      setHasAnimated(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -30,7 +46,7 @@ export default function AnimatedCounter({ end, suffix = "", duration = 2000, pre
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [hasAnimated]);
+  }, [hasAnimated, end]);
 
   useEffect(() => {
     if (!hasAnimated) return;
@@ -56,7 +72,9 @@ export default function AnimatedCounter({ end, suffix = "", duration = 2000, pre
 
   return (
     <span ref={ref}>
-      {prefix}{count}{suffix}
+      {prefix}
+      {count}
+      {suffix}
     </span>
   );
 }

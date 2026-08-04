@@ -552,3 +552,42 @@ body { background: var(--color-background); color: var(--color-foreground); }
   color: var(--color-outline-variant);
   margin: 0 0.5rem;
 }
+
+/* Focus-visible ring for all interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="radio"]:focus-visible,
+[role="tab"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ff7f39, 0 0 0 4px rgba(255, 127, 57, 0.25);
+  border-radius: 0.5rem;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ken-burns,
+  .animate-fade-up,
+  .animate-pulse,
+  .animate-float,
+  .animate-spin,
+  .animate-marquee {
+    animation: none !important;
+  }
+
+  .img-zoom {
+    transform: none !important;
+  }
+}

@@ -50,6 +50,8 @@ export default function DashboardMobileNav({
           onClick={() => setOpen(!open)}
           className="flex items-center rounded-lg p-2"
           aria-label="Toggle navigation menu"
+          aria-expanded={open}
+          aria-controls="dashboard-mobile-nav"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {open ? (
@@ -62,7 +64,7 @@ export default function DashboardMobileNav({
       </div>
 
       {open && (
-        <div className="border-b bg-white px-4 pb-4 pt-2 shadow-lg">
+        <div id="dashboard-mobile-nav" className="border-b bg-white px-4 pb-4 pt-2 shadow-lg">
           <nav className="space-y-1">
             {navItems.map((item) => (
               <Link

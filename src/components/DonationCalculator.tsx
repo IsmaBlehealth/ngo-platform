@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 
 const presets = [
@@ -25,11 +25,28 @@ function getCustomImpact(amount: number): string {
   return `Provides school supplies for ${students} students for a full semester`;
 }
 
-export default function DonationCalculator() {
-  const [selected, setSelected] = useState<number>(50);
-  const [customAmount, setCustomAmount] = useState<string>("");
-  const [isCustom, setIsCustom] = useState(false);
+interface DonationCalculatorProps {
+  externalAmount?: number;
+  externalIsCustom?: boolean;
+  externalCustomAmount?: string;
+  onAmountChange?: (amount: number, isCustom: boolean, customAmount: string) => void;
+}
+
+export default function DonationCalculator({
+  externalAmount,
+  externalIsCustom,
+  externalCustomAmount,
+  onAmountChange,
+}: DonationCalculatorProps) {
+  const isControlled = externalAmount !== undefined;
+  const [internalSelected, setInternalSelected] = useState<number>(50);
+  const [internalCustom, setInternalCustom] = useState<string>("");
+  const [internalIsCustom, setInternalIsCustom] = useState(false);
   const [animating, setAnimating] = useState(false);
+
+  const selected = isControlled ? externalAmount! : internalSelected;
+  const customAmount = isControlled ? externalCustomAmount ?? "" : internalCustom;
+  const isCustom = isControlled ? externalIsCustom ?? false : internalIsCustom;
 
   const activeAmount = isCustom ? Number(customAmount) || 0 : selected;
 
@@ -39,23 +56,44 @@ export default function DonationCalculator() {
     return preset?.impact ?? "";
   }, [isCustom, activeAmount, selected]);
 
-  const handlePresetClick = (amount: number) => {
-    setIsCustom(false);
-    setCustomAmount("");
-    setAnimating(true);
-    setSelected(amount);
-    setTimeout(() => setAnimating(false), 300);
+  const setSelected = (amount: number) => {
+    if (!isControlled) {
+      setInternalIsCustom(false);
+      setInternalCustom("");
+      setAnimating(true);
+      setInternalSelected(amount);
+      setTimeout(() => setAnimating(false), 300);
+    }
+    onAmountChange?.(amount, false, "");
   };
 
-  const handleCustomChange = (value: string) => {
+  const setCustom = (value: string) => {
     const cleaned = value.replace(/[^0-9]/g, "");
-    setCustomAmount(cleaned);
-    if (!isCustom) {
-      setIsCustom(true);
+    if (!isControlled) {
+      setInternalCustom(cleaned);
+      if (!isCustom) {
+        setInternalIsCustom(true);
+        setAnimating(true);
+        setTimeout(() => setAnimating(false), 300);
+      }
+    }
+    onAmountChange?.(selected, true, cleaned);
+  };
+
+  const setCustomActive = () => {
+    if (!isControlled && !isCustom) {
+      setInternalIsCustom(true);
       setAnimating(true);
       setTimeout(() => setAnimating(false), 300);
     }
+    onAmountChange?.(selected, true, customAmount);
   };
+
+  useEffect(() => {
+    if (isControlled && onAmountChange && externalAmount === undefined) {
+      // Keep internal state in sync if switching from uncontrolled to controlled
+    }
+  }, [isControlled, externalAmount, onAmountChange]);
 
   return (
     <div className="w-full max-w-xl mx-auto">
@@ -69,7 +107,8 @@ export default function DonationCalculator() {
           {presets.map((p) => (
             <button
               key={p.amount}
-              onClick={() => handlePresetClick(p.amount)}
+              type="button"
+              onClick={() => setSelected(p.amount)}
               className={`rounded-xl py-3 px-4 text-sm font-bold transition-all duration-200 cursor-pointer ${
                 !isCustom && selected === p.amount
                   ? "bg-accent text-white shadow-[0_4px_16px_rgba(255,127,57,0.3)] scale-105"
@@ -86,8 +125,8 @@ export default function DonationCalculator() {
               inputMode="numeric"
               placeholder="Other"
               value={customAmount}
-              onChange={(e) => handleCustomChange(e.target.value)}
-              onFocus={() => setIsCustom(true)}
+              onChange={(e) => setCustom(e.target.value)}
+              onFocus={() => setCustomActive()}
               className={`w-full rounded-xl py-3 pl-7 pr-3 text-sm font-bold transition-all duration-200 outline-none ${
                 isCustom
                   ? "bg-accent/10 border-2 border-accent text-foreground"
@@ -115,18 +154,40 @@ export default function DonationCalculator() {
         </div>
 
         <div className="flex justify-center">
-          <Link href="/donate" className="btn-primary">
-            Donate Now
-            <svg
-              className="btn-arrow h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
+          {isControlled ? (
+            <a
+              href="#donation-form"
+              className="btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("donation-form")?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+              Donate Now
+              <svg
+                className="btn-arrow h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          ) : (
+            <Link href="/donate" className="btn-primary">
+              Donate Now
+              <svg
+                className="btn-arrow h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          )}
         </div>
       </div>
     </div>

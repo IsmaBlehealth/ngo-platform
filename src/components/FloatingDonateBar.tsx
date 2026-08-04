@@ -41,7 +41,7 @@ export default function FloatingDonateBar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div className="hidden items-center gap-4 sm:flex">
             <span className="text-xs font-medium uppercase tracking-wider text-on-surface/60">
-              {t(locale, "floating.goal")}
+              {t(locale, "floating.readingProgress")}
             </span>
             <div className="relative h-2 w-48 overflow-hidden rounded-full bg-on-surface/10">
               <div

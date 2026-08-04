@@ -99,6 +99,8 @@ export default function Header() {
           onClick={() => setOpen(!open)}
           className="flex items-center rounded-lg p-2 lg:hidden"
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {open ? (
@@ -111,7 +113,7 @@ export default function Header() {
       </nav>
 
       {open && (
-        <div className="border-t border-primary/10 bg-surface/95 backdrop-blur-xl lg:hidden">
+        <div id="mobile-navigation" className="border-t border-primary/10 bg-surface/95 backdrop-blur-xl lg:hidden">
           <div className="space-y-1 px-4 pb-4 pt-2">
             {navLinks.map((link) => (
               <Link

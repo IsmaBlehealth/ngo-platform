@@ -11,7 +11,7 @@ const defaultItems = [
   {
     question: "How can I donate?",
     answer:
-      "You can donate through our Donate page. 100% of your donation goes directly to our programs. We accept one-time and monthly donations via PayPal.",
+      "You can donate through our Donate page. 100% of your donation goes directly to our programs. We accept one-time and monthly donations via Stripe.",
   },
   {
     question: "Where does GAD operate?",

@@ -66,7 +66,9 @@ export default function ContactPage() {
   const [csrfToken, setCsrfToken] = useState("");
 
   useEffect(() => {
-    fetch("/api/csrf").then((r) => r.json()).then((d) => setCsrfToken(d.csrfToken));
+    fetch("/api/csrf")
+      .then((r) => r.json())
+      .then((d) => setCsrfToken(d.csrfToken));
   }, []);
 
   function handleChange(field: string, value: string | boolean) {
@@ -91,7 +93,15 @@ export default function ContactPage() {
       });
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", subject: "", message: "", website: "", consent: false });
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+          website: "",
+          consent: false,
+        });
       } else if (res.status === 400) {
         const data = await res.json();
         setErrors(data.errors || {});
@@ -127,7 +137,8 @@ export default function ContactPage() {
         <div
           className="absolute left-0 top-0 h-full w-full md:w-[60%] z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(105deg, rgba(0,30,15,0.42) 0%, rgba(0,50,25,0.18) 55%, transparent 100%)",
+            background:
+              "linear-gradient(105deg, rgba(0,30,15,0.42) 0%, rgba(0,50,25,0.18) 55%, transparent 100%)",
             backdropFilter: "blur(2px)",
           }}
         />
@@ -146,10 +157,22 @@ export default function ContactPage() {
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse shadow-[0_0_8px_rgba(255,127,57,0.6)]" />
               Get In Touch
             </span>
-            <h1 className="text-5xl md:text-7xl font-black text-white" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.65), 0 1px 8px rgba(0,0,0,0.45)" }}>
+            <h1
+              className="text-5xl md:text-7xl font-black text-white"
+              style={{
+                textShadow:
+                  "0 4px 24px rgba(0,0,0,0.65), 0 1px 8px rgba(0,0,0,0.45)",
+              }}
+            >
               Contact Us
             </h1>
-            <p className="mt-4 text-lg text-white/90" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.35)" }}>
+            <p
+              className="mt-4 text-lg text-white/90"
+              style={{
+                textShadow:
+                  "0 2px 12px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.35)",
+              }}
+            >
               We would love to hear from you…why not get in touch?
             </p>
           </div>
@@ -168,31 +191,67 @@ export default function ContactPage() {
               className="relative overflow-hidden rounded-2xl p-6 md:p-8 flex flex-col items-center text-center card-depth-hover group"
               style={{
                 animationDelay: `${idx * 0.1}s`,
-                background: "linear-gradient(135deg, rgba(250,249,246,0.92) 0%, rgba(255,255,255,0.88) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(250,249,246,0.92) 0%, rgba(255,255,255,0.88) 100%)",
                 backdropFilter: "blur(24px)",
                 WebkitBackdropFilter: "blur(24px)",
                 border: "1px solid rgba(255,255,255,0.35)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.40)",
+                boxShadow:
+                  "0 20px 60px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.40)",
               }}
             >
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/[0.04] to-transparent" />
-                <div className="relative mb-4">
+              <div className="relative mb-4">
                 <div className="absolute inset-0 bg-accent/10 rounded-full blur-lg group-hover:blur-xl transition-all duration-500" />
                 <div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-accent/15 to-accent/5 flex items-center justify-center border border-accent/10 group-hover:border-accent/25 group-hover:scale-110 transition-all duration-500">
                   {card.icon === "location_on" && (
-                    <svg className="w-5 h-5 text-accent drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <svg
+                      className="w-5 h-5 text-accent drop-shadow-sm"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
                     </svg>
                   )}
                   {card.icon === "call" && (
-                    <svg className="w-5 h-5 text-accent drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    <svg
+                      className="w-5 h-5 text-accent drop-shadow-sm"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
                     </svg>
                   )}
                   {card.icon === "mail" && (
-                    <svg className="w-5 h-5 text-accent drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <svg
+                      className="w-5 h-5 text-accent drop-shadow-sm"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
                     </svg>
                   )}
                 </div>
@@ -219,81 +278,136 @@ export default function ContactPage() {
             <div
               className="absolute inset-0 opacity-[0.03]"
               style={{
-                backgroundImage: "radial-gradient(circle at 2px 2px, #0D5C63 1px, transparent 0)",
+                backgroundImage:
+                  "radial-gradient(circle at 2px 2px, #0D5C63 1px, transparent 0)",
                 backgroundSize: "24px 24px",
               }}
             />
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Left: Form fields */}
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-black text-primary font-[family-name:var(--font-montserrat)] mb-2">
-                    Send Us a Message
-                  </h2>
-                  <p className="text-muted">
-                    Complete the form below, and we&apos;ll be in touch promptly. We promise to respond within 24 hours.
-                  </p>
-                </div>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Honeypot */}
-                  <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
-                    <label htmlFor="website">Leave this empty</label>
-                    <input id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => handleChange("website", e.target.value)} />
-                  </div>
+            <div className="relative z-10">
+              <div className="mb-8">
+                <h2 className="text-3xl md:text-4xl font-black text-primary font-[family-name:var(--font-montserrat)] mb-2">
+                  Send Us a Message
+                </h2>
+                <p className="text-muted">
+                  Complete the form below, and we&apos;ll be in touch promptly. We
+                  promise to respond within 24 hours.
+                </p>
+              </div>
 
+              <form
+                onSubmit={handleSubmit}
+                className="grid grid-cols-1 md:grid-cols-2 gap-12"
+              >
+                {/* Honeypot */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    opacity: 0,
+                    height: 0,
+                    width: 0,
+                    overflow: "hidden",
+                  }}
+                >
+                  <label htmlFor="website">Leave this empty</label>
+                  <input
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={(e) => handleChange("website", e.target.value)}
+                  />
+                </div>
+
+                {/* Left: Form fields */}
+                <div className="space-y-5">
                   <div>
-                    <label htmlFor="name" className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2">Full Name *</label>
+                    <label
+                      htmlFor="name"
+                      className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2"
+                    >
+                      Full Name *
+                    </label>
                     <input
                       id="name"
                       required
                       value={form.name}
                       onChange={(e) => handleChange("name", e.target.value)}
-                      aria-describedby={errors.name?.length ? "name-error" : undefined}
+                      aria-describedby={
+                        errors.name?.length ? "name-error" : undefined
+                      }
                       aria-invalid={errors.name?.length ? "true" : undefined}
                       className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none"
                       placeholder="John Doe"
                     />
                     {errors.name?.length > 0 && (
-                      <p id="name-error" className="mt-1 text-xs text-red-600">{errors.name[0]}</p>
+                      <p id="name-error" className="mt-1 text-xs text-red-600">
+                        {errors.name[0]}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2">Email Address *</label>
+                    <label
+                      htmlFor="email"
+                      className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2"
+                    >
+                      Email Address *
+                    </label>
                     <input
                       id="email"
                       type="email"
                       required
                       value={form.email}
                       onChange={(e) => handleChange("email", e.target.value)}
-                      aria-describedby={errors.email?.length ? "email-error" : undefined}
+                      aria-describedby={
+                        errors.email?.length ? "email-error" : undefined
+                      }
                       aria-invalid={errors.email?.length ? "true" : undefined}
                       className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none"
                       placeholder="john@example.com"
                     />
                     {errors.email?.length > 0 && (
-                      <p id="email-error" className="mt-1 text-xs text-red-600">{errors.email[0]}</p>
+                      <p id="email-error" className="mt-1 text-xs text-red-600">
+                        {errors.email[0]}
+                      </p>
                     )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="phone" className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2">Phone (Optional)</label>
+                      <label
+                        htmlFor="phone"
+                        className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2"
+                      >
+                        Phone (Optional)
+                      </label>
                       <input
                         id="phone"
                         type="tel"
                         value={form.phone}
-                        onChange={(e) => handleChange("phone", e.target.value)}
+                        onChange={(e) =>
+                          handleChange("phone", e.target.value)
+                        }
                         className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none"
                         placeholder="(555) 000-0000"
                       />
                     </div>
                     <div>
-                      <label htmlFor="subject" className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2">Subject</label>
+                      <label
+                        htmlFor="subject"
+                        className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2"
+                      >
+                        Subject
+                      </label>
                       <select
                         id="subject"
                         value={form.subject}
-                        onChange={(e) => handleChange("subject", e.target.value)}
+                        onChange={(e) =>
+                          handleChange("subject", e.target.value)
+                        }
                         className="w-full bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none appearance-none"
                       >
                         <option value="general">General Inquiry</option>
@@ -310,49 +424,94 @@ export default function ContactPage() {
                       type="checkbox"
                       required
                       checked={form.consent}
-                      onChange={(e) => handleChange("consent", e.target.checked)}
+                      onChange={(e) =>
+                        handleChange("consent", e.target.checked)
+                      }
                       className="mt-1 h-4 w-4 rounded border-gray-300"
                     />
                     <label htmlFor="consent" className="text-xs text-muted">
-                      I consent to the collection and processing of my personal information. This is for the purpose of evaluating or fulfilling my request, in accordance with the Privacy Policy.
+                      I consent to the collection and processing of my personal
+                      information. This is for the purpose of evaluating or
+                      fulfilling my request, in accordance with the Privacy
+                      Policy.
                     </label>
                   </div>
-                </form>
-              </div>
+                </div>
 
-              {/* Right: Message textarea + submit */}
-              <div className="flex flex-col h-full">
-                <label className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2">Message *</label>
-                <textarea
-                  required
-                  value={form.message}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  aria-describedby={errors.message?.length ? "message-error" : undefined}
-                  aria-invalid={errors.message?.length ? "true" : undefined}
-                  className="w-full h-full min-h-[200px] bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none resize-none mb-6"
-                  placeholder="How can we help you?"
-                />
-                {errors.message?.length > 0 && (
-                  <p id="message-error" className="mb-2 text-xs text-red-600">{errors.message[0]}</p>
-                )}
-                <button
-                  type="submit"
-                  onClick={handleSubmit}
-                  disabled={status === "sending"}
-                  className="gold-button w-full bg-accent text-white font-bold text-base py-4 rounded-full flex items-center justify-center gap-2 group hover:opacity-90 active:scale-95 transition-all disabled:opacity-50"
-                >
-                  {status === "sending" ? "Sending..." : "Send Message"}
-                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-                {status === "success" && (
-                  <p className="mt-3 text-sm text-green-600 font-medium">Message sent successfully! We&apos;ll respond within 24 hours.</p>
-                )}
-                {status === "error" && Object.keys(errors).length === 0 && (
-                  <p className="mt-3 text-sm text-red-600 font-medium">Failed to send message. Please try again.</p>
-                )}
-              </div>
+                {/* Right: Message textarea + submit */}
+                <div className="flex flex-col h-full">
+                  <label
+                    htmlFor="message"
+                    className="text-xs font-bold uppercase tracking-[0.2em] text-muted block mb-2"
+                  >
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    value={form.message}
+                    onChange={(e) =>
+                      handleChange("message", e.target.value)
+                    }
+                    aria-describedby={
+                      errors.message?.length ? "message-error" : undefined
+                    }
+                    aria-invalid={
+                      errors.message?.length ? "true" : undefined
+                    }
+                    className="w-full h-full min-h-[200px] bg-primary/5 border border-primary/10 rounded-xl px-4 py-3 text-foreground focus:border-accent focus:ring-1 focus:ring-accent transition-colors outline-none resize-none mb-6"
+                    placeholder="How can we help you?"
+                  />
+                  {errors.message?.length > 0 && (
+                    <p id="message-error" className="mb-2 text-xs text-red-600">
+                      {errors.message[0]}
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="gold-button w-full bg-accent text-white font-bold text-base py-4 rounded-full flex items-center justify-center gap-2 group hover:opacity-90 active:scale-95 transition-all disabled:opacity-50"
+                  >
+                    {status === "sending" ? (
+                      <>
+                        <span className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <svg
+                          className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+
+                  {status === "success" && (
+                    <p className="mt-3 text-sm text-green-600 font-medium">
+                      Message sent successfully! We&apos;ll respond within 24
+                      hours.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="mt-3 text-sm text-red-600 font-medium">
+                      {Object.keys(errors).length > 0
+                        ? "Please fix the errors above and try again."
+                        : "Failed to send message. Please try again."}
+                    </p>
+                  )}
+                </div>
+              </form>
             </div>
           </div>
         </section>
@@ -373,7 +532,8 @@ export default function ContactPage() {
             <div
               className="rounded-xl p-5 text-center"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(250,249,246,0.88) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(250,249,246,0.88) 100%)",
                 backdropFilter: "blur(16px)",
                 WebkitBackdropFilter: "blur(16px)",
                 border: "1px solid rgba(255,255,255,0.30)",
@@ -381,7 +541,8 @@ export default function ContactPage() {
               }}
             >
               <p className="text-foreground mb-3 font-semibold text-sm">
-                3200 E Guasti Rd., Suite 100<br />
+                3200 E Guasti Rd., Suite 100
+                <br />
                 Ontario, CA 91761
               </p>
               <a

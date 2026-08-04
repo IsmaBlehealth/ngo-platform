@@ -34,6 +34,17 @@ export default function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isFading, setIsFading] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
 
   const goTo = useCallback(
     (index: number) => {
@@ -42,9 +53,9 @@ export default function TestimonialsCarousel() {
       setTimeout(() => {
         setCurrent(index);
         setIsFading(false);
-      }, 400);
+      }, prefersReducedMotion ? 0 : 400);
     },
-    [isFading]
+    [isFading, prefersReducedMotion]
   );
 
   const next = useCallback(() => {
@@ -52,16 +63,20 @@ export default function TestimonialsCarousel() {
   }, [current, goTo]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || prefersReducedMotion) return;
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
-  }, [isPaused, next]);
+  }, [isPaused, prefersReducedMotion, next]);
+
+  const togglePause = () => setIsPaused((p) => !p);
 
   return (
     <div
       className="w-full max-w-3xl mx-auto"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Testimonials"
     >
       <div className="liquid-glass-surface rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[280px] flex flex-col justify-between">
         <div className="absolute top-6 left-8 text-accent/15">
@@ -73,6 +88,9 @@ export default function TestimonialsCarousel() {
         <div
           className="relative z-10 flex-1 flex flex-col justify-center transition-opacity duration-400"
           style={{ opacity: isFading ? 0 : 1 }}
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`Testimonial ${current + 1} of ${testimonials.length}`}
         >
           <blockquote className="text-lg md:text-xl font-medium leading-relaxed text-foreground mb-6 mt-8">
             &ldquo;{testimonials[current].quote}&rdquo;
@@ -97,13 +115,29 @@ export default function TestimonialsCarousel() {
               key={index}
               onClick={() => goTo(index)}
               aria-label={`Go to testimonial ${index + 1}`}
-              className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+              aria-current={index === current ? "true" : undefined}
+              className={`h-2 rounded-full transition-all duration-500 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                 index === current
                   ? "w-8 bg-accent"
                   : "w-2 bg-primary/20 hover:bg-primary/40"
               }`}
             />
           ))}
+          <button
+            onClick={togglePause}
+            aria-label={isPaused ? "Play testimonials" : "Pause testimonials"}
+            className="ml-2 flex items-center justify-center w-8 h-8 rounded-full text-muted hover:text-foreground hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          >
+            {isPaused ? (
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            ) : (
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
     </div>
