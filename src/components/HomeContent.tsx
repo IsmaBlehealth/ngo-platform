@@ -18,7 +18,7 @@ const programs = [
     statLabelKey: "program.statLabel",
     titleKey: "program.title",
     descKey: "program.desc",
-    href: "/programs#water",
+    href: "/programs#clean-water",
   },
   {
     icon: "school",
@@ -36,7 +36,7 @@ const programs = [
     statLabelKey: "health.statLabel",
     titleKey: "health.title",
     descKey: "health.desc",
-    href: "/programs#health",
+    href: "/programs#healthcare",
   },
 ];
 

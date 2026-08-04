@@ -18,7 +18,7 @@ export function generateOrganizationSchema() {
     "@type": "NGO",
     name: "Global Approach To Development",
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/images/old-site/logos/main-logo.png`,
     foundingDate: "2014",
     description:
       "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa.",

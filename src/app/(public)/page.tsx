@@ -7,7 +7,7 @@ export default function HomePage() {
     name: "Global Approach To Development",
     alternateName: "GAD",
     url: "https://ngo-platform-399q.vercel.app",
-    logo: "https://ngo-platform-399q.vercel.app/logo.png",
+    logo: "https://ngo-platform-399q.vercel.app/images/old-site/logos/main-logo.png",
     description: "Building sustainable futures through clean water, quality education, and accessible healthcare in West Africa.",
     foundingDate: "2014",
     nonprofitStatus: "501(c)(3)",
