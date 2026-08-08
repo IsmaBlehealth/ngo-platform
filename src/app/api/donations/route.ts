@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getPaymentProviderByName, type PaymentProviderName } from "@/lib/payments";
+import { getPaymentProviderByName, getAvailableProviders, type PaymentProviderName } from "@/lib/payments";
 import { prisma } from "@/lib/prisma";
 import { donationSchema } from "@/lib/validation";
 import { auth } from "@/lib/auth";
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   }
 
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`donation:${key}`, RATE_LIMITS.donation.limit, RATE_LIMITS.donation.windowMs);
+  const rl = await rateLimit(`donation:${key}`, RATE_LIMITS.donation.limit, RATE_LIMITS.donation.windowMs);
 
   if (!rl.allowed) {
     logger.security("Rate limit exceeded: donation", { ip: getClientIp(req) });
@@ -40,6 +40,14 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     const providerName = (body.provider as PaymentProviderName) || "stripe";
+
+    const availableProviders = getAvailableProviders();
+    if (!availableProviders.includes(providerName)) {
+      return NextResponse.json(
+        { error: "Invalid payment provider" },
+        { status: 400, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } }
+      );
+    }
 
     const parsed = donationSchema.safeParse({
       amount: body.amount,

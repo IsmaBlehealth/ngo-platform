@@ -4,11 +4,19 @@ import { auth } from "@/lib/auth";
 import { nameSchema } from "@/lib/validation";
 import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
+import { rateLimit, getRateLimitKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 export async function PATCH(req: NextRequest) {
   const csrfToken = req.headers.get("x-csrf-token");
   if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
     return NextResponse.json({ error: "Invalid request" }, { status: 403 });
+  }
+
+  const key = getRateLimitKey(req);
+  const rl = await rateLimit(`profile:${key}`, RATE_LIMITS.profileUpdate.limit, RATE_LIMITS.profileUpdate.windowMs);
+
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   if (!req.headers.get("content-type")?.includes("application/json")) {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { emailSchema } from "@/lib/validation";
-import { rateLimit, getRateLimitKey } from "@/lib/rate-limit";
+import { rateLimit, getRateLimitKey, RATE_LIMITS } from "@/lib/rate-limit";
 import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
 
@@ -9,6 +9,13 @@ export async function POST(req: NextRequest) {
   const csrfToken = req.headers.get("x-csrf-token");
   if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
     return NextResponse.json({ error: "Invalid request" }, { status: 403 });
+  }
+
+  const key = getRateLimitKey(req);
+  const rl = await rateLimit(`newsletter:${key}`, RATE_LIMITS.newsletter.limit, RATE_LIMITS.newsletter.windowMs);
+
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   if (!req.headers.get("content-type")?.includes("application/json")) {
@@ -19,13 +26,6 @@ export async function POST(req: NextRequest) {
 
   if (body.website) {
     return NextResponse.json({ success: true });
-  }
-
-  const key = getRateLimitKey(req);
-  const rl = rateLimit(`newsletter:${key}`, 3, 60_000);
-
-  if (!rl.allowed) {
-    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   try {
@@ -68,6 +68,13 @@ export async function DELETE(req: NextRequest) {
   const csrfToken = req.headers.get("x-csrf-token");
   if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
     return NextResponse.json({ error: "Invalid request" }, { status: 403 });
+  }
+
+  const key = getRateLimitKey(req);
+  const rl = await rateLimit(`newsletter-delete:${key}`, RATE_LIMITS.newsletter.limit, RATE_LIMITS.newsletter.windowMs);
+
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   if (!req.headers.get("content-type")?.includes("application/json")) {

@@ -1,6 +1,7 @@
 // NOTE: next-auth v5 is currently in beta. Monitor for stable release. API may change.
 import "server-only";
 import NextAuth from "next-auth";
+import type { Session } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -8,37 +9,9 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { loginSchema } from "@/lib/validation";
 import { env } from "@/lib/env";
+import { isLoginLocked, recordLoginFailure, clearLoginFailures } from "@/lib/login-lockout";
+import { revokeAllSessions, isSessionRevoked } from "@/lib/session-revocation";
 import type { UserRole } from "@/generated/prisma/client";
-
-const loginAttempts = new Map<string, { count: number; lockedUntil: number }>();
-const MAX_LOGIN_ATTEMPTS = 5;
-const LOCKOUT_DURATION_MS = 15 * 60 * 1000;
-
-function isLockedOut(email: string): boolean {
-  const entry = loginAttempts.get(email);
-  if (!entry) return false;
-  if (Date.now() > entry.lockedUntil) {
-    loginAttempts.delete(email);
-    return false;
-  }
-  return true;
-}
-
-function recordFailedLogin(email: string): void {
-  const entry = loginAttempts.get(email);
-  if (entry) {
-    entry.count++;
-    if (entry.count >= MAX_LOGIN_ATTEMPTS) {
-      entry.lockedUntil = Date.now() + LOCKOUT_DURATION_MS;
-    }
-  } else {
-    loginAttempts.set(email, { count: 1, lockedUntil: 0 });
-  }
-}
-
-function clearLoginAttempts(email: string): void {
-  loginAttempts.delete(email);
-}
 
 declare module "next-auth" {
   interface Session {
@@ -98,21 +71,21 @@ export const {
 
         const { email, password } = parsed.data;
 
-        if (isLockedOut(email)) return null;
+        if (await isLoginLocked(email)) return null;
 
         const user = await prisma.user.findUnique({ where: { email } });
         if (!user?.passwordHash) {
-          recordFailedLogin(email);
+          await recordLoginFailure(email);
           return null;
         }
 
         const isValid = await bcrypt.compare(password, user.passwordHash);
         if (!isValid) {
-          recordFailedLogin(email);
+          await recordLoginFailure(email);
           return null;
         }
 
-        clearLoginAttempts(email);
+        await clearLoginFailures(email);
 
         return {
           id: user.id,
@@ -136,6 +109,13 @@ export const {
         session.user.id = (token.id as string) ?? "";
         session.user.role = (token.role as UserRole) ?? "DONOR";
 
+        // Revocation check: reject JWTs issued before the user's latest
+        // revokeAllSessions() call (password change, sign out, admin action).
+        const tokenIatMs = typeof token.iat === "number" ? token.iat * 1000 : 0;
+        if (session.user.id && (await isSessionRevoked(session.user.id, tokenIatMs))) {
+          return { ...session, user: undefined as unknown as Session["user"] };
+        }
+
         try {
           const dbUser = await prisma.user.findUnique({
             where: { id: session.user.id },
@@ -152,6 +132,15 @@ export const {
         }
       }
       return session;
+    },
+  },
+  events: {
+    async signOut(message) {
+      // Invalidate all JWTs for this user on sign-out.
+      const token = "token" in message ? message.token : null;
+      if (token?.id) {
+        await revokeAllSessions(token.id as string);
+      }
     },
   },
 });

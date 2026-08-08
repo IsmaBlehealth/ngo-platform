@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   }
 
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`contact:${key}`, RATE_LIMITS.contact.limit, RATE_LIMITS.contact.windowMs);
+  const rl = await rateLimit(`contact:${key}`, RATE_LIMITS.contact.limit, RATE_LIMITS.contact.windowMs);
 
   if (!rl.allowed) {
     logger.security("Rate limit exceeded: contact", { ip: getClientIp(req) });

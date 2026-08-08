@@ -6,7 +6,7 @@ import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`webhook:paypal:${key}`, RATE_LIMITS.webhook.limit, RATE_LIMITS.webhook.windowMs);
+  const rl = await rateLimit(`webhook:paypal:${key}`, RATE_LIMITS.webhook.limit, RATE_LIMITS.webhook.windowMs);
 
   if (!rl.allowed) {
     return NextResponse.json({ error: "Rate limited" }, { status: 429 });
@@ -37,13 +37,14 @@ export async function POST(req: NextRequest) {
 
   const result = await paypalProvider.parseWebhook(body, headers);
 
-  // Idempotent event logging
   const eventBody = JSON.parse(body);
+  const eventId = eventBody.id || `paypal-${Date.now()}`;
+
   try {
     await prisma.webhookEvent.create({
       data: {
         provider: "paypal",
-        providerEventId: eventBody.id || `paypal-${Date.now()}`,
+        providerEventId: eventId,
         type: result.type,
       },
     });
@@ -63,7 +64,6 @@ export async function POST(req: NextRequest) {
     switch (result.type) {
       case "donation.completed": {
         if (result.providerPaymentId) {
-          // PayPal: try to match by providerPaymentId or providerSessionId
           const updated = await prisma.donation.updateMany({
             where: {
               OR: [
@@ -104,10 +104,22 @@ export async function POST(req: NextRequest) {
         logger.info("PayPal payment refunded", { ...result });
         break;
       }
+      case "subscription.created": {
+        logger.info("PayPal subscription created", { ...result });
+        break;
+      }
+      case "subscription.cancelled": {
+        logger.info("PayPal subscription cancelled", { ...result });
+        break;
+      }
     }
     return NextResponse.json({ received: true });
   } catch (error) {
+    await prisma.webhookEvent.deleteMany({
+      where: { providerEventId: eventId, provider: "paypal" },
+    });
     logger.error(`Error processing PayPal webhook: ${result.type}`, { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Webhook handler failed" }, { status: 500 });
   }
+
 }

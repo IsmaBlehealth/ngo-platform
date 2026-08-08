@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   }
 
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`reset-password:${key}`, 5, 300_000);
+  const rl = await rateLimit(`reset-password:${key}`, 5, 300_000);
 
   if (!rl.allowed) {
     logger.security("Rate limit exceeded: reset-password", { ip: getClientIp(req) });
@@ -41,9 +41,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    if (!token || !password) {
+    if (!token || !password || typeof token !== "string" || typeof password !== "string") {
       return NextResponse.json(
         { error: "Token and password are required" },
+        { status: 400 }
+      );
+    }
+
+    if (token.length !== 64 || !/^[0-9a-f]+$/.test(token)) {
+      return NextResponse.json(
+        { error: "Invalid token" },
         { status: 400 }
       );
     }

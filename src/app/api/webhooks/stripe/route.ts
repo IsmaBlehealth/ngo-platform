@@ -6,7 +6,7 @@ import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`webhook:stripe:${key}`, RATE_LIMITS.webhook.limit, RATE_LIMITS.webhook.windowMs);
+  const rl = await rateLimit(`webhook:stripe:${key}`, RATE_LIMITS.webhook.limit, RATE_LIMITS.webhook.windowMs);
 
   if (!rl.allowed) {
     return NextResponse.json({ error: "Rate limited" }, { status: 429 });
@@ -33,14 +33,9 @@ export async function POST(req: NextRequest) {
 
   const result = await stripeProvider.parseWebhook(body, headers);
 
-  // Extract event ID from body for idempotent logging
-  let eventId = `stripe-${Date.now()}`;
-  try {
-    const parsed = JSON.parse(body);
-    if (parsed.id) eventId = parsed.id;
-  } catch { /* use fallback */ }
+  const eventBody = JSON.parse(body);
+  const eventId = eventBody.id || `stripe-${Date.now()}`;
 
-  // Idempotent event logging
   try {
     await prisma.webhookEvent.create({
       data: {
@@ -96,10 +91,18 @@ export async function POST(req: NextRequest) {
         logger.info("Stripe payment refunded", { ...result });
         break;
       }
+      case "subscription.created": {
+        logger.info("Stripe subscription created", { ...result });
+        break;
+      }
     }
     return NextResponse.json({ received: true });
   } catch (error) {
+    await prisma.webhookEvent.deleteMany({
+      where: { providerEventId: eventId, provider: "stripe" },
+    });
     logger.error(`Error processing Stripe webhook: ${result.type}`, { error: error instanceof Error ? error.message : "Unknown" });
     return NextResponse.json({ error: "Webhook handler failed" }, { status: 500 });
   }
+
 }

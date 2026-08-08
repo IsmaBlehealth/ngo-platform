@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   }
 
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`register:${key}`, RATE_LIMITS.register.limit, RATE_LIMITS.register.windowMs);
+  const rl = await rateLimit(`register:${key}`, RATE_LIMITS.register.limit, RATE_LIMITS.register.windowMs);
 
   if (!rl.allowed) {
     logger.security("Rate limit exceeded: register", { key });

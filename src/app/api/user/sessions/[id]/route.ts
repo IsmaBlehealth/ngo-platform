@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { validateCsrfToken } from "@/lib/csrf";
 import { logger } from "@/lib/logger";
+import { rateLimit, getRateLimitKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 export async function DELETE(
   req: NextRequest,
@@ -11,6 +12,13 @@ export async function DELETE(
   const csrfToken = req.headers.get("x-csrf-token");
   if (!csrfToken || !(await validateCsrfToken(csrfToken))) {
     return NextResponse.json({ error: "Invalid request" }, { status: 403 });
+  }
+
+  const key = getRateLimitKey(req);
+  const rl = await rateLimit(`sessions-delete:${key}`, RATE_LIMITS.sessions.limit, RATE_LIMITS.sessions.windowMs);
+
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
   try {

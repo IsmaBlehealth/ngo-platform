@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   }
 
   const key = getRateLimitKey(req);
-  const rl = rateLimit(`forgot-password:${key}`, 3, 300_000);
+  const rl = await rateLimit(`forgot-password:${key}`, 3, 300_000);
 
   if (!rl.allowed) {
     logger.security("Rate limit exceeded: forgot-password", { ip: getClientIp(req) });
@@ -48,10 +48,6 @@ export async function POST(req: NextRequest) {
 
     const user = await prisma.user.findUnique({ where: { email } });
 
-    if (!user) {
-      await new Promise((r) => setTimeout(r, 800));
-    }
-
     if (user) {
       await prisma.passwordResetToken.updateMany({
         where: { userId: user.id, used: false },
@@ -78,7 +74,11 @@ export async function POST(req: NextRequest) {
 
       logger.info("Password reset token generated", { userId: user.id, email });
     } else {
-      logger.info("Password reset requested for non-existent email", { email });
+      // Constant-time response: perform equivalent work to prevent user enumeration
+      crypto.randomBytes(32);
+      crypto.createHash("sha256").update(crypto.randomBytes(32).toString("hex")).digest("hex");
+      await new Promise((r) => setTimeout(r, 800));
+      logger.info("Password reset requested for non-existent user", { emailHash: crypto.createHash("sha256").update(email).digest("hex").substring(0, 8) });
     }
 
     return NextResponse.json({ success: true });

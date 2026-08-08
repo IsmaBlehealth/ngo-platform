@@ -1,3 +1,5 @@
+import { getRedis } from "@/lib/redis";
+
 const requests = new Map<string, { count: number; resetAt: number }>();
 
 const MAX_ENTRIES = 10_000;
@@ -20,7 +22,7 @@ export interface RateLimitResult {
   retryAfter: number;
 }
 
-export function rateLimit(
+function rateLimitMemory(
   key: string,
   limit: number,
   windowMs: number
@@ -65,6 +67,51 @@ export function rateLimit(
   };
 }
 
+async function rateLimitRedis(
+  key: string,
+  limit: number,
+  windowMs: number
+): Promise<RateLimitResult | null> {
+  const redis = getRedis();
+  if (!redis) return null;
+  try {
+    const redisKey = `rl:${key}`;
+    const [incrResult, pttlResult] = await redis
+      .pipeline()
+      .incr(redisKey)
+      .pttl(redisKey)
+      .exec() ?? [];
+    const count = (incrResult?.[1] as number) ?? 1;
+    let ttl = (pttlResult?.[1] as number) ?? -1;
+    if (ttl < 0) {
+      await redis.pexpire(redisKey, windowMs);
+      ttl = windowMs;
+    }
+    const resetAt = Date.now() + ttl;
+    if (count > limit) {
+      return { allowed: false, remaining: 0, resetAt, retryAfter: Math.ceil(ttl / 1000) };
+    }
+    return { allowed: true, remaining: limit - count, resetAt, retryAfter: 0 };
+  } catch {
+    return null; // Redis unavailable — caller falls back to memory.
+  }
+}
+
+/**
+ * Fixed-window rate limiter. Uses Redis when REDIS_URL is configured
+ * (shared across instances, survives restarts); otherwise falls back to
+ * an in-memory store (per-instance, resets on restart).
+ */
+export async function rateLimit(
+  key: string,
+  limit: number,
+  windowMs: number
+): Promise<RateLimitResult> {
+  const redisResult = await rateLimitRedis(key, limit, windowMs);
+  if (redisResult) return redisResult;
+  return rateLimitMemory(key, limit, windowMs);
+}
+
 function hashString(str: string): string {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -77,10 +124,12 @@ function hashString(str: string): string {
 function getIpFromRequest(request: Request): string {
   const sessionId = getSessionCookieId(request);
   if (sessionId) return hashString(sessionId);
+  const xRealIp = request.headers.get("x-real-ip");
+  if (xRealIp && /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(xRealIp)) return xRealIp;
   const xff = request.headers.get("x-forwarded-for");
   if (xff) {
     const ips = xff.split(",").map((s) => s.trim()).filter(Boolean);
-    const realIp = ips[0];
+    const realIp = ips[ips.length - 1];
     if (realIp && /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(realIp)) return realIp;
   }
   return "127.0.0.1";
@@ -110,4 +159,10 @@ export const RATE_LIMITS = {
   forgotPassword: { limit: 3, windowMs: 300_000 },
   resetPassword: { limit: 5, windowMs: 300_000 },
   webhook: { limit: 100, windowMs: 60_000 },
+  csrf: { limit: 30, windowMs: 60_000 },
+  passwordChange: { limit: 5, windowMs: 300_000 },
+  profileUpdate: { limit: 10, windowMs: 300_000 },
+  sessions: { limit: 20, windowMs: 60_000 },
+  admin: { limit: 30, windowMs: 60_000 },
+  newsletter: { limit: 3, windowMs: 60_000 },
 } as const;
