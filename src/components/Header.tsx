@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSession, signOut } from "next-auth/react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "@/lib/locale-context";
@@ -24,6 +24,30 @@ export default function Header() {
   const router = useRouter();
   const { data: session } = useSession();
   const { locale } = useLocale();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const handleEsc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (menuRef.current && !menuRef.current.contains(target)) {
+        const isMenuButton = target.closest('[aria-controls="mobile-navigation"]');
+        if (!isMenuButton) setOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleEsc);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
@@ -113,7 +137,7 @@ export default function Header() {
       </nav>
 
       {open && (
-        <div id="mobile-navigation" className="border-t border-primary/10 bg-surface/95 backdrop-blur-xl lg:hidden">
+        <div ref={menuRef} id="mobile-navigation" className="border-t border-primary/10 bg-surface/95 backdrop-blur-xl lg:hidden">
           <div className="space-y-1 px-4 pb-4 pt-2">
             {navLinks.map((link) => (
               <Link

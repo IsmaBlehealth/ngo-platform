@@ -141,6 +141,7 @@ export default function ImpactPage() {
                 width={1200}
                 height={700}
                 className="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl heavy-shadow"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute -bottom-6 -right-6 liquid-glass-light p-6 rounded-xl heavy-shadow hidden md:block">
                 <div className="text-4xl font-black gold-gradient font-[family-name:var(--font-montserrat)]">
@@ -197,6 +198,7 @@ export default function ImpactPage() {
                 width={1200}
                 height={700}
                 className="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl heavy-shadow"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute -bottom-6 -left-6 liquid-glass-light p-6 rounded-xl heavy-shadow hidden md:block">
                 <div className="text-4xl font-black gold-gradient font-[family-name:var(--font-montserrat)]">
@@ -225,6 +227,7 @@ export default function ImpactPage() {
                 width={1200}
                 height={700}
                 className="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl heavy-shadow"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute -bottom-6 -right-6 liquid-glass-light p-6 rounded-xl heavy-shadow hidden md:block">
                 <div className="text-4xl font-black gold-gradient font-[family-name:var(--font-montserrat)]">

@@ -147,7 +147,7 @@ export default async function ProgramsPage() {
               key={program.id}
               id={program.id}
               className={`scroll-mt-20 grid grid-cols-1 gap-12 items-center ${
-                index % 2 === 1 ? "lg:grid-cols-2-reverse" : "lg:grid-cols-2"
+                index % 2 === 1 ? "lg:grid-cols-2" : "lg:grid-cols-2"
               }`}
             >
               <div className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}>

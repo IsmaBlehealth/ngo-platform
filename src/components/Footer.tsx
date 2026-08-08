@@ -33,17 +33,17 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-on-primary/80">{t(locale, "footer.programs")}</h4>
             <ul className="mt-4 space-y-3 text-sm text-on-primary/60">
               <li>
-                <Link href="/programs#clean-water" className="transition-colors hover:text-accent">
+                <Link href="/programs#clean-water" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "footer.program.water")}
                 </Link>
               </li>
               <li>
-                <Link href="/programs#education" className="transition-colors hover:text-accent">
+                <Link href="/programs#education" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "footer.program.education")}
                 </Link>
               </li>
               <li>
-                <Link href="/programs#healthcare" className="transition-colors hover:text-accent">
+                <Link href="/programs#healthcare" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "footer.program.health")}
                 </Link>
               </li>
@@ -55,32 +55,32 @@ export default function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-on-primary/80">{t(locale, "footer.quickLinks")}</h4>
             <ul className="mt-4 space-y-3 text-sm text-on-primary/60">
               <li>
-                <Link href="/" className="transition-colors hover:text-accent">
+                <Link href="/" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "nav.home")}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="transition-colors hover:text-accent">
+                <Link href="/about" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "nav.about")}
                 </Link>
               </li>
               <li>
-                <Link href="/impact" className="transition-colors hover:text-accent">
+                <Link href="/impact" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "nav.impact")}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="transition-colors hover:text-accent">
+                <Link href="/blog" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "nav.blog")}
                 </Link>
               </li>
               <li>
-                <Link href="/donate" className="transition-colors hover:text-accent">
+                <Link href="/donate" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "nav.donate")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="transition-colors hover:text-accent">
+                <Link href="/contact" className="block py-1.5 transition-colors hover:text-accent">
                   {t(locale, "nav.contact")}
                 </Link>
               </li>

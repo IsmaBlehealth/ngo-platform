@@ -79,7 +79,7 @@ export default function FAQAccordion({ items = defaultItems }: FAQAccordionProps
             </button>
             <div
               className="transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
-              style={{ maxHeight: isOpen ? "500px" : "0px" }}
+              style={{ maxHeight: isOpen ? "2000px" : "0px" }}
             >
               <div className="px-6 pb-5 text-sm leading-relaxed text-muted">
                 {item.answer}

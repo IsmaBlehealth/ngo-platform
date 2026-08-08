@@ -126,7 +126,7 @@ export default function HeroCarousel() {
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="hidden md:flex absolute top-1/2 left-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        className="flex absolute top-1/2 left-4 md:left-6 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         style={{
           background: "rgba(255,255,255,0.04)",
           backdropFilter: "blur(60px)",
@@ -142,7 +142,7 @@ export default function HeroCarousel() {
       <button
         onClick={next}
         aria-label="Next slide"
-        className="hidden md:flex absolute top-1/2 right-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        className="flex absolute top-1/2 right-4 md:right-6 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         style={{
           background: "rgba(255,255,255,0.04)",
           backdropFilter: "blur(60px)",
@@ -243,10 +243,10 @@ export default function HeroCarousel() {
                 onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === current ? "true" : undefined}
-                className={`h-2 rounded-full transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+                className={`h-3 rounded-full transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 p-1.5 ${
                   i === current
-                    ? "w-8 bg-accent"
-                    : "w-2 bg-white/30 hover:bg-white/50"
+                    ? "w-10 bg-accent"
+                    : "w-3 bg-white/30 hover:bg-white/50"
                 }`}
               />
             ))}
@@ -265,7 +265,7 @@ export default function HeroCarousel() {
             <button
               onClick={togglePause}
               aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
-              className="flex items-center justify-center w-8 h-8 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="flex items-center justify-center w-11 h-11 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               {isPaused ? (
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">

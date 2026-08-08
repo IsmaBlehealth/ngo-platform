@@ -73,6 +73,7 @@ export default async function EducationPage() {
                   width={1200}
                   height={600}
                   className="object-cover w-full h-[400px]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
@@ -152,6 +153,7 @@ export default async function EducationPage() {
                   width={1200}
                   height={600}
                   className="object-cover w-full h-[400px]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>

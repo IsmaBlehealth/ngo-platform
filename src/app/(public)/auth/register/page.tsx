@@ -101,6 +101,7 @@ export default function RegisterPage() {
               </label>
               <input
                 id="firstName"
+                autoComplete="given-name"
                 required
                 value={form.firstName}
                 onChange={(e) => setForm({ ...form, firstName: e.target.value })}
@@ -113,6 +114,7 @@ export default function RegisterPage() {
               </label>
               <input
                 id="lastName"
+                autoComplete="family-name"
                 required
                 value={form.lastName}
                 onChange={(e) => setForm({ ...form, lastName: e.target.value })}
@@ -127,6 +129,7 @@ export default function RegisterPage() {
             <input
               id="email"
               type="email"
+              autoComplete="email"
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -140,21 +143,20 @@ export default function RegisterPage() {
             <input
               id="password"
               type="password"
+              autoComplete="new-password"
               required
               minLength={12}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               className="mt-1 block w-full rounded-lg border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             />
-            {form.password.length > 0 && (
-              <ul className="mt-2 space-y-1" aria-label="Password requirements">
+            <ul className="mt-2 space-y-1" aria-label="Password requirements">
                 <PasswordCheck label="At least 12 characters" met={passwordChecks.length} />
                 <PasswordCheck label="One uppercase letter" met={passwordChecks.uppercase} />
                 <PasswordCheck label="One lowercase letter" met={passwordChecks.lowercase} />
                 <PasswordCheck label="One number" met={passwordChecks.number} />
                 <PasswordCheck label="One special character" met={passwordChecks.special} />
               </ul>
-            )}
           </div>
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-medium">
@@ -163,6 +165,7 @@ export default function RegisterPage() {
             <input
               id="confirmPassword"
               type="password"
+              autoComplete="new-password"
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}

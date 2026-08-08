@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ngo_user
+      POSTGRES_PASSWORD: ngo_password_dev
+      POSTGRES_DB: ngo_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ngo_user -d ngo_platform"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://ngo_user:ngo_password_dev@postgres:5432/ngo_platform?sslmode=disable"
+      DIRECT_URL: "postgresql://ngo_user:ngo_password_dev@postgres:5432/ngo_platform?sslmode=disable"
+      NEXTAUTH_SECRET: "${NEXTAUTH_SECRET:-dev-secret-change-in-production}"
+      NEXTAUTH_URL: "${NEXTAUTH_URL:-http://localhost:3000}"
+      PAYMENT_PROVIDER: "${PAYMENT_PROVIDER:-stripe}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

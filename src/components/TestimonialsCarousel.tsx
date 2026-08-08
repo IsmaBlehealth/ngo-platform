@@ -116,17 +116,17 @@ export default function TestimonialsCarousel() {
               onClick={() => goTo(index)}
               aria-label={`Go to testimonial ${index + 1}`}
               aria-current={index === current ? "true" : undefined}
-              className={`h-2 rounded-full transition-all duration-500 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+              className={`h-3 rounded-full transition-all duration-500 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 p-1.5 ${
                 index === current
-                  ? "w-8 bg-accent"
-                  : "w-2 bg-primary/20 hover:bg-primary/40"
+                  ? "w-10 bg-accent"
+                  : "w-3 bg-primary/20 hover:bg-primary/40"
               }`}
             />
           ))}
           <button
             onClick={togglePause}
             aria-label={isPaused ? "Play testimonials" : "Pause testimonials"}
-            className="ml-2 flex items-center justify-center w-8 h-8 rounded-full text-muted hover:text-foreground hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="ml-2 flex items-center justify-center w-11 h-11 rounded-full text-muted hover:text-foreground hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             {isPaused ? (
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">

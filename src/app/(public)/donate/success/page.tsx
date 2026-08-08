@@ -16,7 +16,7 @@ export default async function DonateSuccessPage({
   return (
     <section className="section-padding">
       <div className="mx-auto max-w-lg text-center">
-        <div className="text-6xl">Thank You!</div>
+        <div className="text-6xl font-bold text-foreground">Thank You!</div>
         <h1 className="mt-6 text-3xl font-bold">Donation Successful</h1>
         <p className="mt-4 text-muted">
           Your generous contribution will help us build wells, schools, and
